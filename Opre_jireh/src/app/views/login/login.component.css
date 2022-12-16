@@ -1,0 +1,33 @@
+:root{
+	--colorWhite: #ffffff;
+	--colorBlack: #000000;
+}
+
+.form-signIn {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	background-color: #636fff;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	line-height: 1.25;
+	letter-spacing: 1px;
+}
+
+.background-form{
+	background: url("../../../assets/carro gitano.jpeg" );
+	background-repeat: no-repeat;
+	width: 100%;
+	opacity: 0.9;
+}
+
+.form-signIn button{
+	text-align: center;
+}
+
+.label-small{
+	font-size: 12px;
+}
+
+li{
+	color: var(--colorWhite);
+}
