@@ -13,3 +13,7 @@ header::before{
     filter: blur(2px);
     z-index: -10;
 }
+
+.logo{
+    margin-top: 50px;
+}
