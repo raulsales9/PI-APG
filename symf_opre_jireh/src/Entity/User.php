@@ -3,16 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column]
     private ?int $id_user = null;
 
@@ -31,9 +29,12 @@ class User
     #[ORM\Column]
     private ?bool $is_admin = null;
 
-    public function getId(): ?int
+    #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Files::class)]
+    private Collection $userFiles;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->userFiles = new ArrayCollection();
     }
 
     public function getIdUser(): ?int
@@ -104,6 +105,36 @@ class User
     public function setIsAdmin(bool $is_admin): self
     {
         $this->is_admin = $is_admin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Files>
+     */
+    public function getUserFiles(): Collection
+    {
+        return $this->userFiles;
+    }
+
+    public function addUserFile(Files $userFile): self
+    {
+        if (!$this->userFiles->contains($userFile)) {
+            $this->userFiles->add($userFile);
+            $userFile->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserFile(Files $userFile): self
+    {
+        if ($this->userFiles->removeElement($userFile)) {
+            // set the owning side to null (unless already changed)
+            if ($userFile->getIdUser() === $this) {
+                $userFile->setIdUser(null);
+            }
+        }
 
         return $this;
     }
