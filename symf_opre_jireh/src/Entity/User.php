@@ -35,16 +35,16 @@ class User
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Files::class)]
     private Collection $userFiles;
 
-    #[JoinTable(name: 'EVENT')]
+/*     #[JoinTable(name: 'EVENT')]
     #[JoinColumn(name: 'id_user', referencedColumnName: 'id_user')]
     // #[InverseJoinColumn(name: 'id_event', referencedColumnName: 'id_event')]
     #[ORM\ManyToMany(targetEntity: EVENT::class)]
-    private Collection $eventList;
+    private Collection $eventList; */
  
     public function __construct()
     {
         $this->userFiles = new ArrayCollection();
-        $this->eventList = new ArrayCollection();
+/*         $this->eventList = new ArrayCollection(); */
     }
 
     public function getIdUser(): ?int
@@ -152,7 +152,7 @@ class User
     /**
      * @return Collection<int, EVENT>
      */
-    public function getEventList(): Collection
+/*     public function getEventList(): Collection
     {
         return $this->eventList;
     }
@@ -174,5 +174,5 @@ class User
         }
 
         return $this;
-    }
+    } */
 }

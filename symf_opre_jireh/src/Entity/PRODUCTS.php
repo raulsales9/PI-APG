@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PRODUCTSRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,14 +12,22 @@ use Doctrine\ORM\Mapping as ORM;
 class PRODUCTS
 {
     #[ORM\Id]
+    #[ORM\Column]
+    private ?int $id_product = null;
+
     #[ORM\Column(length: 255)]
     private ?string $name_product = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2, nullable: true)]
     private ?string $price = null;
 
-    #[ORM\Column]
-    private ?int $id_categoria = null;
+    #[ORM\OneToMany(mappedBy: 'productList', targetEntity: CATEGORIAS::class)]
+    private Collection $id_categoria;
+
+    public function __construct()
+    {
+        $this->id_categoria = new ArrayCollection();
+    }
 
     public function getIdProduct(): ?int
     {
@@ -55,14 +65,32 @@ class PRODUCTS
         return $this;
     }
 
-    public function getIdCategoria(): ?int
+    /**
+     * @return Collection<int, CATEGORIAS>
+     */
+    public function getIdCategoria(): Collection
     {
         return $this->id_categoria;
     }
 
-    public function setIdCategoria(int $id_categoria): self
+    public function addIdCategorium(CATEGORIAS $idCategorium): self
     {
-        $this->id_categoria = $id_categoria;
+        if (!$this->id_categoria->contains($idCategorium)) {
+            $this->id_categoria->add($idCategorium);
+            $idCategorium->setProductList($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdCategorium(CATEGORIAS $idCategorium): self
+    {
+        if ($this->id_categoria->removeElement($idCategorium)) {
+            // set the owning side to null (unless already changed)
+            if ($idCategorium->getProductList() === $this) {
+                $idCategorium->setProductList(null);
+            }
+        }
 
         return $this;
     }

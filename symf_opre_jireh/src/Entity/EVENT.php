@@ -30,13 +30,13 @@ class EVENT
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'id_user')]
+/*     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'id_user')]
     #[ORM\JoinColumn(referencedColumnName: "id_user")]
-    private Collection $id_user;
+    private Collection $id_user; */
 
     public function __construct()
     {
-        $this->id_user = new ArrayCollection();
+/*         $this->id_user = new ArrayCollection(); */
     }
 
     public function getIdEvent(): ?int
@@ -114,7 +114,7 @@ class EVENT
     /**
      * @return Collection<int, User>
      */
-    public function getIdUser(): Collection
+    /* public function getIdUser(): Collection
     {
         return $this->id_user;
     }
@@ -133,5 +133,5 @@ class EVENT
         $this->id_user->removeElement($idUser);
 
         return $this;
-    }
+    } */
 }
