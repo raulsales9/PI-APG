@@ -17,6 +17,7 @@ class CATEGORIAS
     private ?string $name_categoria = null;
 
     #[ORM\ManyToOne(inversedBy: 'id_product')]
+    #[ORM\JoinColumn(nullable: false, referencedColumnName: 'id_product')]
     private ?PRODUCTS $productList = null;
 
     public function getIdCategoria(): ?int

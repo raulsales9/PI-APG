@@ -36,7 +36,7 @@ class User
     private Collection $userFiles;
 
 /*     #[JoinTable(name: 'EVENT')]
-    #[JoinColumn(name: 'id_user', referencedColumnName: 'id_user')]
+    #[JoinColumn(referencedColumnName: 'id_event')]
     // #[InverseJoinColumn(name: 'id_event', referencedColumnName: 'id_event')]
     #[ORM\ManyToMany(targetEntity: EVENT::class)]
     private Collection $eventList; */
