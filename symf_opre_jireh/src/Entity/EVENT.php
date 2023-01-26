@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EVENTRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,13 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 class EVENT
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column]
-    private ?int $id_user = null;
-
     #[ORM\Column]
     private ?int $id_event = null;
 
@@ -35,21 +30,13 @@ class EVENT
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $description = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'id_user')]
+    #[ORM\JoinColumn(referencedColumnName: "id_user")]
+    private Collection $id_user;
 
-    public function getIdUser(): ?int
+    public function __construct()
     {
-        return $this->id_user;
-    }
-
-    public function setIdUser(int $id_user): self
-    {
-        $this->id_user = $id_user;
-
-        return $this;
+        $this->id_user = new ArrayCollection();
     }
 
     public function getIdEvent(): ?int
@@ -120,6 +107,30 @@ class EVENT
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getIdUser(): Collection
+    {
+        return $this->id_user;
+    }
+
+    public function addIdUser(User $idUser): self
+    {
+        if (!$this->id_user->contains($idUser)) {
+            $this->id_user->add($idUser);
+        }
+
+        return $this;
+    }
+
+    public function removeIdUser(User $idUser): self
+    {
+        $this->id_user->removeElement($idUser);
 
         return $this;
     }

@@ -6,6 +6,9 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\InverseJoinColumn;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
@@ -32,9 +35,16 @@ class User
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Files::class)]
     private Collection $userFiles;
 
+    #[JoinTable(name: 'EVENT')]
+    #[JoinColumn(name: 'id_user', referencedColumnName: 'id_user')]
+    // #[InverseJoinColumn(name: 'id_event', referencedColumnName: 'id_event')]
+    #[ORM\ManyToMany(targetEntity: EVENT::class)]
+    private Collection $eventList;
+ 
     public function __construct()
     {
         $this->userFiles = new ArrayCollection();
+        $this->eventList = new ArrayCollection();
     }
 
     public function getIdUser(): ?int
@@ -134,6 +144,33 @@ class User
             if ($userFile->getIdUser() === $this) {
                 $userFile->setIdUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EVENT>
+     */
+    public function getEventList(): Collection
+    {
+        return $this->eventList;
+    }
+
+    public function addEventList(EVENT $eventList): self
+    {
+        if (!$this->eventList->contains($eventList)) {
+            $this->eventList->add($eventList);
+            $eventList->addIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventList(EVENT $eventList): self
+    {
+        if ($this->eventList->removeElement($eventList)) {
+            $eventList->removeIdUser($this);
         }
 
         return $this;
