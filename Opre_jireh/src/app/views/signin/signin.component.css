@@ -11,7 +11,7 @@ body {
 	transition: .25s all ease;
 }
 
-.login-container {
+.signin-container {
 	display: block;
 	position: relative;
 	z-index: 0;
@@ -22,7 +22,7 @@ body {
 	box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.85);
 }
 
-.login-container:after {
+.signin-container:after {
 	content: '';
 	display: inline-block;
 	position: absolute;
@@ -35,29 +35,29 @@ body {
 	box-shadow: 0 -20px 150px -20px rgba(0, 0, 0, 0.5);
 }
 
-.form-login {
+.form-signin {
 	position: relative;
 	z-index: 1;
   padding-bottom: 4.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.login-nav {
+.signin-nav {
 	position: relative;
 	padding: 0;
 	margin: 0 0 6em 1rem;
 }
 
-.login-nav__item {
+.signin-nav__item {
 	list-style: none;
 	display: inline-block;
 }
 
-.login-nav__item + .login-nav__item {
+.signin-nav__item + .signin-nav__item {
 	margin-left: 2.25rem;
 }
 
-.login-nav__item a {
+.signin-nav__item a {
 	position: relative;
 	color: rgba(255, 255, 255, 0.5);
 	text-decoration: none;
@@ -67,13 +67,13 @@ body {
 	transition: .20s all ease;
 }
 
-.login-nav__item.active a,
-.login-nav__item a:hover{
+.signin-nav__item.active a,
+.signin-nav__item a:hover{
 	color: #ffffff;
 	transition: .15s all ease;
 }
 
-.login-nav__item a:after {
+.signin-nav__item a:after {
 	content: '';
   display: inline-block;
   height: 10px;
@@ -86,8 +86,8 @@ body {
   transition: .15s all ease;
 }
 
-.login-nav__item a:hover:after,
-.login-nav__item.active a:after{
+.signin-nav__item a:hover:after,
+.signin-nav__item.active a:after{
 	background-color: rgb(17, 97, 237);
 	height: 2px;
 	right: 0;
@@ -95,20 +95,20 @@ body {
 	border-radius: 0;
 	transition: .20s all ease;
 }
-.login__label {
+.signin__label {
 	display: block;
 	padding-left: 1rem;
 }
 
-.login__label,
-.login__label--checkbox {
+.signin__label,
+.signin__label--checkbox {
 	color: rgba(255, 255, 255, 0.5);
 	text-transform: uppercase;
 	font-size: .75rem;
 	margin-bottom: 1rem;
 }
 
-.login__label--checkbox {
+.signin__label--checkbox {
 	display: inline-block;
 	position: relative;
 	padding-left: 1.5rem;
@@ -119,7 +119,7 @@ body {
 	text-transform: inherit;
 }
 
-.login__input {
+.signin__input {
 	color: white;
 	font-size: 1.15rem;
 	width: 100%;
@@ -131,25 +131,25 @@ body {
 	letter-spacing: 1px;
 }
 
-.login__input:hover,
-.login__input:focus{
+.signin__input:hover,
+.signin__input:focus{
 	color: white;
 	border: 2px solid rgba(255, 255, 255, 0.5);
 	background-color: transparent;
 }
 
-.login__input + .login__label {
+.signin__input + .signin__label {
 	margin-top: 1.5rem;
 }
 
-.login__input--checkbox {
+.signin__input--checkbox {
 	position: absolute;
 	top: .1rem;
 	left: 0;
 	margin: 0;
 }
 
-.login__submit {
+.signin__submit {
 	color: #ffffff;
 	font-size: 1rem;
 	font-family: 'Montserrat', sans-serif;
@@ -165,11 +165,11 @@ body {
 	cursor: pointer;
 }
 
-.login__submit:hover {
+.signin__submit:hover {
 	background-color:rgba(237, 17, 17, 0.75);
 }
 
-.login__forgot {
+.signin__forgot {
 	display: block;
 	margin-top: 3rem;
 	text-align: center;
@@ -180,6 +180,6 @@ body {
 	z-index: 1;
 }
 
-.login__forgot:hover {
+.signin__forgot:hover {
 	color: rgba(237, 17, 17, 0.75);
 }

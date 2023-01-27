@@ -1,30 +1,28 @@
-<div class="container background-form" >
-    <div class="row justify-content-center">
-        <div class="col-xl-5 col-lg-6 col-md-7 col-sm-8 col-8">
-            <form action="" method="post" class="form-signIn">
+
+    <section class="container">
+        <div class="login-container mb-5 mt-5 col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+            <form action="" class="form-login">
                 <ul class="login-nav">
-                    <li >
-                        <a href="#">Sign In</a>
+                    <li class="login-nav__item active">
+                        <a href="#" class="text-uppercase">Iniciar Sesion</a>
                     </li>
-                    <li >
-                        <a href="#">Sign Up</a>
+                    <li class="login-nav__item">
+                        <a href="#" class="text-uppercase">Crear Cuenta</a>
                     </li>
                 </ul>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">CORREO ELECTRÓNICO</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">CONTRASEÑA</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label label-small">RECUERDAME</label>
-                  </div>
-                  <button type="submit" class="btn btn-primary submit-form">INICIAR SESIÓN</button>
+                <label for="login-input-user" class="login__label">
+                    Nombre
+                </label>
+                <input id="login-input-user" class="login__input" type="text" />
+                <label for="login-input-password" class="login__label">
+                    Contraseña
+                </label>
+                <input id="login-input-password" class="login__input" type="password" />
+                <label for="login-sign-up" class="login__label--checkbox">
+                    <input id="login-sign-up" type="checkbox" class="login__input--checkbox" />
+                    Recuerdame
+                </label>
+                <button class="login__submit" disabled>Sign in</button>
             </form>
         </div>
-    </div>
-</div>
+    </section>
