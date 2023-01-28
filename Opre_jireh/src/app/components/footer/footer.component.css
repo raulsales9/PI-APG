@@ -1,6 +1,10 @@
 a{
     text-decoration:none;
     font-size: 25px;
+    
+}
+.enlace{
+    color: green;
 }
 a:hover {
     
@@ -11,4 +15,8 @@ p{
 }
 iframe{
     margin-top: 20px;
+}
+.col-xl-4{
+    margin-right:50px ;
+    margin-left:20px ;
 }
