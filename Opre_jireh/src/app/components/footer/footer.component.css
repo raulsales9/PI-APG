@@ -1,11 +1,9 @@
 a{
     text-decoration:none;
     font-size: 25px;
-    
+    color: white;
 }
-.enlace{
-    color: green;
-}
+
 a:hover {
     
     color: #e10000;
@@ -19,4 +17,7 @@ iframe{
 .col-xl-4{
     margin-right:50px ;
     margin-left:20px ;
+}
+footer{
+    color: white;
 }
