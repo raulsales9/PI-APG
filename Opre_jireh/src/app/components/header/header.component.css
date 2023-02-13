@@ -36,3 +36,7 @@ a.nav-link.active{
     padding-right: 1em;
     width: 9em;
 }
+a:hover{
+   color: red !important;
+;
+}
