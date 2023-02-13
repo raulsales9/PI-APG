@@ -19,3 +19,8 @@
     background: linear-gradient(220.55deg, #97E8B5 0%, #5CB67F 100%);
     padding: 0;
 }
+.ruedaCorta{
+position: absolute;
+width: 20em;
+margin-left: 10px;
+}
