@@ -12,9 +12,6 @@ class Files
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column]
     private ?int $idFile = null;
 
     #[ORM\Column(length: 50)]
@@ -29,11 +26,10 @@ class Files
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
+    #[ORM\ManyToOne(inversedBy: 'files')]
+    #[ORM\JoinColumn(nullable: false, name: 'id_user')]
+    private ?User $idUser = null;
+    
     public function getIdFile(): ?int
     {
         return $this->idFile;
@@ -90,6 +86,18 @@ class Files
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
 
         return $this;
     }
