@@ -32,9 +32,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'idUser', targetEntity: Files::class)]
     private Collection $files;
 
+    #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'idUser')]
+    #[ORM\JoinColumn(referencedColumnName:'id_event')]
+    private Collection $events;
+
     public function __construct()
     {
         $this->files = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,6 +137,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($file->getIdUser() === $this) {
                 $file->setIdUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events->add($event);
+            $event->addIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            $event->removeIdUser($this);
         }
 
         return $this;
