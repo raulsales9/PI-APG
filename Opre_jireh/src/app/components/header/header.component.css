@@ -1,5 +1,5 @@
 header{
-    height: 70%;
+    height: 26em;
 }
 
 header::before{
@@ -28,4 +28,11 @@ h2{
     background: rgb(218, 218, 218) !important;
     color: black;
     border-radius: 20px;
+
+}
+
+a.nav-link.active{
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 9em;
 }
