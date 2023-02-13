@@ -3,176 +3,97 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\InverseJoinColumn;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\JoinTable;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
+    #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id_user = null;
+    private ?int $id = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $surname = null;
-
-    #[ORM\Column(length: 20)]
-    private ?string $phone = null;
-
-    #[ORM\Column(length: 20)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 40)]
-    private ?string $email = null;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $id_user = null;
 
     #[ORM\Column]
-    private ?bool $is_admin = null;
+    private array $roles = [];
 
-    #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Files::class)]
-    private Collection $userFiles;
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
-/*     #[JoinTable(name: 'EVENT')]
-    #[JoinColumn(referencedColumnName: 'id_event')]
-    // #[InverseJoinColumn(name: 'id_event', referencedColumnName: 'id_event')]
-    #[ORM\ManyToMany(targetEntity: EVENT::class)]
-    private Collection $eventList; */
- 
-    public function __construct()
+    public function getId(): ?int
     {
-        $this->userFiles = new ArrayCollection();
-/*         $this->eventList = new ArrayCollection(); */
+        return $this->id;
     }
 
-    public function getIdUser(): ?int
+    public function getIdUser(): ?string
     {
         return $this->id_user;
     }
 
-    public function setIdUser(int $id_user): self
+    public function setIdUser(string $id_user): self
     {
         $this->id_user = $id_user;
 
         return $this;
     }
 
-    public function getSurname(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->surname;
+        return (string) $this->id_user;
     }
 
-    public function setSurname(?string $surname): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->surname = $surname;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
 
-        return $this;
+        return array_unique($roles);
     }
 
-    public function getPhone(): ?string
+    public function setRoles(array $roles): self
     {
-        return $this->phone;
-    }
-
-    public function setPhone(string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function isIsAdmin(): ?bool
-    {
-        return $this->is_admin;
-    }
-
-    public function setIsAdmin(bool $is_admin): self
-    {
-        $this->is_admin = $is_admin;
+        $this->roles = $roles;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Files>
+     * @see PasswordAuthenticatedUserInterface
      */
-    public function getUserFiles(): Collection
+    public function getPassword(): string
     {
-        return $this->userFiles;
+        return $this->password;
     }
 
-    public function addUserFile(Files $userFile): self
+    public function setPassword(string $password): self
     {
-        if (!$this->userFiles->contains($userFile)) {
-            $this->userFiles->add($userFile);
-            $userFile->setIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUserFile(Files $userFile): self
-    {
-        if ($this->userFiles->removeElement($userFile)) {
-            // set the owning side to null (unless already changed)
-            if ($userFile->getIdUser() === $this) {
-                $userFile->setIdUser(null);
-            }
-        }
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, EVENT>
+     * @see UserInterface
      */
-/*     public function getEventList(): Collection
+    public function eraseCredentials()
     {
-        return $this->eventList;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
-
-    public function addEventList(EVENT $eventList): self
-    {
-        if (!$this->eventList->contains($eventList)) {
-            $this->eventList->add($eventList);
-            $eventList->addIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEventList(EVENT $eventList): self
-    {
-        if ($this->eventList->removeElement($eventList)) {
-            $eventList->removeIdUser($this);
-        }
-
-        return $this;
-    } */
 }

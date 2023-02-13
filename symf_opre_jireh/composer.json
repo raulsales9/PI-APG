@@ -39,7 +39,6 @@
         "symfony/twig-bundle": "6.2.*",
         "symfony/validator": "6.2.*",
         "symfony/web-link": "6.2.*",
-        "symfony/webapp-pack": "^1.1",
         "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
