@@ -1,6 +1,6 @@
 <header class="jumbotron jumbotron-fluid mb-5">
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-sm fixed-top">
+        <nav class="navbar navbar-expand-md fixed-top">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsibleNavbar">
@@ -9,7 +9,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                     <ul class="nav nav-pills">
                         <div *ngIf="home==1">
-                            <li class="nav-item">
+                            <li class="nav-item mb-3">
                                 <a class="nav-link active" (click)="onHome()" [routerLink]="['home']">Home</a>
                             </li>
                         </div>
@@ -18,22 +18,49 @@
                                 <a class="nav-link active" [ngStyle]="{'color':'red'}" [routerLink]="['home']">Home</a>
                             </li>
                         </div>
-                        <li class="nav-item ms-4">
+                        <li class="nav-item ms-3">
                             <a class="nav-link active" [routerLink]="['']">Quienes Somos</a>
                         </li>
                         <div *ngIf="contacto==1">
-                            <li class="nav-item ms-4">
-                                <a class="nav-link active" (click)="onContacto()" [routerLink]="['contacto']">Contacto</a>
+                            <li class="nav-item ms-3">
+                                <a class="nav-link active" (click)="onContacto()"
+                                    [routerLink]="['contacto']">Contacto</a>
                             </li>
                         </div>
                         <div *ngIf="contacto==2">
-                            <li class="nav-item ms-4">
-                                <a class="nav-link active" [ngStyle]="{'color':'red'}" [routerLink]="['contacto']">Contacto</a>
+                            <li class="nav-item ms-3">
+                                <a class="nav-link active"  [ngStyle]="{'color':'red'}"
+                                    [routerLink]="['contacto']">Contacto</a>
                             </li>
                         </div>
-                        <li class="nav-item ms-4 me-5">
+                        <li class="nav-item ms-3">
                             <a class="nav-link active" [routerLink]="['']">Novedades</a>
                         </li>
+
+                        <div *ngIf="perfil==1">
+                            <li class="nav-item ms-3 me-5">
+                                <a class="nav-link active" (click)="onPerfil()" [routerLink]="['login']">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </div>
+
+                        <div *ngIf="perfil==2">
+                            <li class="nav-item ms-3 me-5">
+                                <a class="nav-link active" [ngStyle]="{'color':'red'}" [routerLink]="['login']">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </div>
+
                     </ul>
                 </div>
             </div>
