@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoriasRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoriasRepository::class)]
@@ -10,19 +12,21 @@ class Categorias
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column]
+    #[ORM\Column(name: "Id_Categoria")]
     private ?int $idCategoria = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(name: "Name_Categoria",length: 50, nullable: true)]
     private ?string $nameCategoria = null;
 
-    public function getId(): ?int
+    #[ORM\OneToMany(mappedBy: 'Id_Categoria', targetEntity: Products::class)]
+    private Collection $products;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->products = new ArrayCollection();
     }
+
+
 
     public function getIdCategoria(): ?int
     {
@@ -47,4 +51,35 @@ class Categorias
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Products>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Products $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->setIdCategoria($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Products $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getIdCategoria() === $this) {
+                $product->setIdCategoria(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
