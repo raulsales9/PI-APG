@@ -32,9 +32,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'idUser', targetEntity: Files::class)]
     private Collection $files;
 
+    #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'idUser')]
+    #[ORM\JoinColumn(referencedColumnName:'id_event')]
+    private Collection $events;
+
+    #[ORM\Column(length: 12)]
+    private ?string $phone = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $surnames = null;
+
     public function __construct()
     {
         $this->files = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,6 +147,69 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $file->setIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events->add($event);
+            $event->addIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            $event->removeIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSurnames(): ?string
+    {
+        return $this->surnames;
+    }
+
+    public function setSurnames(?string $surnames): self
+    {
+        $this->surnames = $surnames;
 
         return $this;
     }
