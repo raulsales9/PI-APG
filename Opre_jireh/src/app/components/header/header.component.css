@@ -37,6 +37,6 @@ a.nav-link.active{
     width: 9em;
 }
 a:hover{
-   color: red !important;
+   color: #e10000 !important;
 ;
 }
