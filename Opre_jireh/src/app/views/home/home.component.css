@@ -19,10 +19,19 @@
     background: linear-gradient(220.55deg, #97E8B5 0%, #5CB67F 100%);
     padding: 0;
 }
-.ruedaCorta{
-position: absolute;
-width: 15.6%;
-
+@media (max-width: 1920px) {
+    .ruedaCorta{
+        position: absolute;
+        width: 15.6%;
+    
+    }
+}
+@media (max-width: 1199px) {
+    .ruedaCorta{
+        position: absolute;
+        width: 0%;
+    
+    }
 /* 1496 tamaño de pantalla para romper 
 962*/
 
