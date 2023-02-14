@@ -11,10 +11,15 @@
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<p>
-						{{ task.getName() }}, {{task.getSurnames() }} , {{task.getEmail()}}, {{task.getPassword()}},  {{task.getPhone()}} ,  {{task.getEvents()}} ,  {{task.getFiles()}}
+						{{ task["name"] }}, {{task["surnames"] }} , {{task["email"] }}, {{task["roles"] }},  {{task["phone"] }} ,
 					</p>
 				 {% endif %} 
 			{% endfor %}
+
+{# 			<details>
+				<summary>HOLA</summary>
+				<p>Hola buenas tardes</p>
+			</details> #}
 		</table>
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}

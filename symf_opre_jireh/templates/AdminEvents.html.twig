@@ -13,7 +13,7 @@
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<p>
-						{{ task.getId() }}, {{task.getName() }} , {{task.getPlace()}}, {{task.getEndDate()}},  {{task.getStartDate()}} ,  {{task.getDescription()}} ,  {{task.getIdUser()}}
+						{{ task.getId() }}, {{task.getName() }} , {{task.getPlace()}}, {{task.getEndDate()|date('d/m/Y') }},  {{task.getStartDate()|date('d/m/Y') }} ,  {{task.getDescription()}} ,
 					</p>
 				 {% endif %} 
 			{% endfor %}

@@ -15,9 +15,22 @@ class TwigController extends AbstractController
      #[Route('/listUser/{page?}', name: 'app_panel')]
     public function index(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        $panel = $entityManager->getRepository(User::class);
+        $panel = $entityManager->getRepository(User::class)->findAll();
+        $data = [];
+        for ($i=0; $i < count($panel); $i++) { 
+          $data[$i] = [
+            "name" => $panel[$i]->getName(),
+            "email" => $panel[$i]->getEmail(),
+            "roles" => ($panel[$i]->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
+            "phone" => $panel[$i]->getPhone(),
+            "surnames" => $panel[$i]->getSurnames()
+          ];
+
+        }
+
+        
         return $this->render('AdminPanel.html.twig', [
-            'data' => $panel->findAll(),
+            'data' => $data,
             'page' => $this->getLastPage($page, $session)
         ]);
     }
