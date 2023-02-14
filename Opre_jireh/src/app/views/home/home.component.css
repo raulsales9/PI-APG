@@ -23,13 +23,11 @@
     .ruedaCorta{
         position: absolute;
         width: 15.6%;
-    
     }
 }
 @media (max-width: 1199px) {
     .ruedaCorta{
-        position: absolute;
-        width: 0%;
+        visibility: hidden;
     
     }
 /* 1496 tamaño de pantalla para romper 

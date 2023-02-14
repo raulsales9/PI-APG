@@ -31,21 +31,55 @@
 </section>
 
 <section class="container-fluid    noticias">
+
+
   <div class="row justify-content-around">
     <article class="card col-lg-3 mt-5 mb-5 border-0 noticia">
-      <img class="card-img-top" src="../../../assets/stock1.jpeg" alt="" />
-      <h2 class="card-title p-2">Título de la noticia</h2>
-      <p class="card-text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius soluta quia
-        vitae nostrum impedit perferendis repudiandae ipsa illum nam iste modi
-        ducimus, inventore et deserunt consectetur temporibus aliquid, autem
-        ratione.
-      </p>
+
+      
+        <img class="card-img-top" src="../../../assets/stock1.jpeg" alt="Imagen del titular">
+        <div class="card-body">
+          <h2 class="card-title p-2 ">
+            <app-news [title]="title"></app-news>
+          </h2>
+           
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#new3">
+            <span><h2>+</h2></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="new3">
+            <div>
+              <p class="card-text">
+                <app-news [paragraph]="paragraph"></app-news>
+              </p>
+              <p class="card-text ms-3">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p> 
+            </div>
+          </div>
+        </div>
+
+
+
+      <!-- <img class="card-img-top" src="../../../assets/stock1.jpeg" alt="" />
+      <h2 class="card-title p-2">
+        <app-news [title]="title"></app-news>
+      </h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#new3">
+        <span>+</span>
+      </button>
+      <div class="collapse navbar-collapse" id="new3">
+        <div>
+          <p class="card-text">
+            <app-news [paragraph]="paragraph"></app-news>
+          </p>
+        </div>
+      </div>
       <p class="card-text ms-3">
         <small class="text-muted">Last updated 3 mins ago</small>
-      </p>
+      </p> -->
     </article>
-
+    <!-- 
     <article class="card col-lg-3 mt-5 mb-5 border-0 noticia">
       <img class="card-img-top" src="../../../assets/stock2.jpeg" alt="" />
       <h2 class="card-title p-2">Título de la noticia</h2>
@@ -72,6 +106,7 @@
       <p class="card-text ms-3">
         <small class="text-muted">Last updated 3 mins ago</small>
       </p>
-    </article>
+    </article>-->
   </div>
+
 </section>
