@@ -17,7 +17,6 @@ body {
 	z-index: 0;
 	margin: 4rem auto 0;
   	padding: 5rem 4rem 0 4rem;
-	width: 100%;
 	background-image: url("./../../../assets/carro gitano.jpeg");
 	box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.85);
 }
@@ -31,7 +30,7 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-image: radial-gradient(ellipse at left bottom, rgb(171, 81, 81) 0%,rgba(106, 38, 38, 0.9) 59%, rgba(17, 27, 75, .9) 100%);
+	background-image: radial-gradient(ellipse at left bottom,rgb(81, 90, 171) 0%,rgba(38, 79, 106, 0.9) 59%, rgba(17, 27, 75, .9) 100%);
 	box-shadow: 0 -20px 150px -20px rgba(0, 0, 0, 0.5);
 }
 
@@ -53,7 +52,7 @@ body {
 	display: inline-block;
 }
 
-.login-nav__item + .login-nav__item {
+.login-nav__item {
 	margin-left: 2.25rem;
 }
 
@@ -100,24 +99,13 @@ body {
 	padding-left: 1rem;
 }
 
-.login__label,
-.login__label--checkbox {
+.login__label{
 	color: rgba(255, 255, 255, 0.5);
 	text-transform: uppercase;
 	font-size: .75rem;
 	margin-bottom: 1rem;
 }
 
-.login__label--checkbox {
-	display: inline-block;
-	position: relative;
-	padding-left: 1.5rem;
-	margin-top: 2rem;
-	margin-left: 1rem;
-	color: #ffffff;
-	font-size: .75rem;
-	text-transform: inherit;
-}
 
 .login__input {
 	color: white;
@@ -142,12 +130,6 @@ body {
 	margin-top: 1.5rem;
 }
 
-.login__input--checkbox {
-	position: absolute;
-	top: .1rem;
-	left: 0;
-	margin: 0;
-}
 
 .login__submit {
 	color: #ffffff;
