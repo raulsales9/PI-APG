@@ -39,7 +39,7 @@
 
                         <div *ngIf="perfil==1">
                             <li class="nav-item ms-3 me-5 mt-3">
-                                <a class="nav-link active" (click)="onPerfil()" [routerLink]="['login']" style="width: 60px;">
+                                <a class="nav-link active" (click)="onPerfil()" [routerLink]="['login']">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                         class="bi bi-person-fill" viewBox="0 0 16 16">
                                         <path
@@ -51,7 +51,7 @@
 
                         <div *ngIf="perfil==2">
                             <li class="nav-item ms-3 me-5 mt-3">
-                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}" [routerLink]="['login']" style="width: 60px;">
+                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}" [routerLink]="['login']">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                         class="bi bi-person-fill" viewBox="0 0 16 16">
                                         <path
