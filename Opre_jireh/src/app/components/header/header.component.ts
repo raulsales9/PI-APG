@@ -10,24 +10,34 @@ export class HeaderComponent {
   public home: number = 1;
   public contacto: number = 1;
   public perfil: number = 1;
-  public novedades: number=1;
+  public eventos: number=1;
 
   public onHome(): void {
     this.home = 2;
     this.contacto = 1;
     this.perfil = 1;
+    this.eventos = 1;
   }
 
   public onContacto(): void {
     this.home = 1;
     this.contacto = 2;
     this.perfil = 1;
+    this.eventos = 1;
   }
 
   public onPerfil(): void {
     this.home = 1;
     this.contacto = 1;
     this.perfil = 2;
+    this.eventos = 1;
+  }
+
+  public onEventos(): void {
+    this.home = 1;
+    this.contacto = 1;
+    this.perfil = 1;
+    this.eventos = 2;
   }
 
 
