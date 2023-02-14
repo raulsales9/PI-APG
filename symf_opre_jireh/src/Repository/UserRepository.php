@@ -88,9 +88,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     public function updateAssistant($getEvent, $getUser)
     {
-        var_dump($getUser[0]->getPhone());
-        var_dump($getEvent[0]->getName());
         $getUser[0]->addEvent($getEvent[0]);
+        $this->doctrine->getManager()->persist($getUser[0]);
+        $this->doctrine->getManager()->flush();
     }
 
 //    /**

@@ -32,19 +32,6 @@ class TwigController extends AbstractController
         ]);
     }
 
-<<<<<<< HEAD
-  private function getLastPage($page, $session): int
-  {
-    if ($page != null) {
-      $session->set("page",$page);
-      return $page;
-    } elseif (!$session->has("page") || !is_numeric($session->get("page"))) {
-      $session->set("page",1);
-      return 1;
-    }
-    return $session->get("page");
-  }
-=======
             
  private function getLastPage($page, $session): int
 {
@@ -57,6 +44,5 @@ class TwigController extends AbstractController
   }
   return $session->get("page");
 } 
->>>>>>> 96f573bbec8734dc795d31f9d3b7300bf9ece018
 }
 

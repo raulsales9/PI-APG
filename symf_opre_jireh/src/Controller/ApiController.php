@@ -20,12 +20,18 @@ class ApiController extends AbstractController
     public function getUsers(ManagerRegistry $doctrine, $id): JsonResponse
     {
         $getUser = $doctrine->getRepository(User::class)->find($id);
+
         $data = [
             "name" => $getUser->getName(),
             "surname" => $getUser->getSurnames(),
             "Email" => $getUser->getEmail(),
-            "phone" => $getUser->getPhone()
+            "phone" => $getUser->getPhone(),
+            "events" => []
         ];
+
+        for ($i=0; $i < count($getUser->getEvents()); $i++) { 
+            $data["events"][$i] = "localhost:8000/api/events/" . $getUser->getEvents()[$i]->getId();
+        }
         return new JsonResponse($data, Response::HTTP_OK);
     }
 
@@ -58,7 +64,8 @@ class ApiController extends AbstractController
             "place" => $getEvent->getPlace(),
             "end_date" => $getEvent->getEndDate(),
             "start_date" => $getEvent->getStartDate(),
-            "description" => $getEvent->getDescription()
+            "description" => $getEvent->getDescription(),
+            "Users" => $getEvent->getIdUser()
         ];
         return new JsonResponse($data, Response::HTTP_OK);
     }

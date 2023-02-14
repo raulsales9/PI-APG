@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Event
 {
     #[ORM\Id]
-    #[ORM\Column(name:'id_event')]
+    #[ORM\Column(name:'id')]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
