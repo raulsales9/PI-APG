@@ -4,11 +4,13 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Event;
 use App\Entity\Noticias;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/api')]
 class ApiController extends AbstractController
@@ -89,7 +91,7 @@ class ApiController extends AbstractController
     }
 
     #[Route('/news', name:'getAllNews_api', methods:["GET"])]
-    public function getAllNews(ManagerRegistry $doctrine):JsonResponse{
+    public function getAllNews(ManagerRegistry $doctrine):JsonResponse {
         $getAllNews = $doctrine->getRepository(Noticias::class)->findAll();
         foreach ($getAllNews as $getNews){
             $data[] = [
@@ -99,5 +101,22 @@ class ApiController extends AbstractController
             ];
         }
         return new JsonResponse($data, Response::HTTP_OK);
+    }
+
+    #[Route('/update/users/{id}', name:'updateUser_api', methods:["PUT"])]
+    public function updateUser(ManagerRegistry $doctrine, UserRepository $repository, Request $request, $id): JsonResponse {
+        
+        $getUser = $doctrine->getRepository(User::class)->find($id);
+
+        $json = json_decode($request->getContent(), true);
+
+        empty($json["name"]) ? true : $getUser->setName($json["name"]);
+        empty($json["email"]) ? true : $getUser->setEmail($json["email"]);
+        empty($json["phone"]) ? true : $getUser->setPhone($json["phone"]);
+        empty($json["surname"]) ? true : $getUser->setSurnames($json["surname"]);
+
+        $repository->update($getUser);
+
+        return new JsonResponse(["status" => "User updated!"], Response::HTTP_OK);
     }
 }

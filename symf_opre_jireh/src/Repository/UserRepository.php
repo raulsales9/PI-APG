@@ -22,8 +22,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 {
 
     private $passwordHasher;
+    private $doctrine;
     public function __construct(ManagerRegistry $registry, UserPasswordHasherInterface $passwordHasher)
     {
+        $this->doctrine = $registry;
         $this->passwordHasher = $passwordHasher;
         parent::__construct($registry, User::class);
     }
@@ -76,6 +78,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setRoles(["USER"]);
 
         $this->save($User, true);
+    }
+
+    public function update($data)
+    {
+            $this->doctrine->getManager()->persist($data);
+            $this->doctrine->getManager()->flush();
     }
 
 //    /**
