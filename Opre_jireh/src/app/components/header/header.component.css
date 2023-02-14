@@ -34,7 +34,7 @@ h2{
 a.nav-link.active{
     padding-left: 1em;
     padding-right: 1em;
-    width: 9em;
+    width: fit-content;
 }
 a:hover{
    color: #e10000 !important;
