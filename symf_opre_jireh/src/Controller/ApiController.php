@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/api')]
 class ApiController extends AbstractController
@@ -109,6 +110,25 @@ class ApiController extends AbstractController
             ];
         }
         return new JsonResponse($data, Response::HTTP_OK);
+    }
+
+    #[Route('/login', name:'login_api', methods:["POST"])]
+    public function login(ManagerRegistry $doctrine, Request $request, UserRepository $repository, UserPasswordHasherInterface $passwordHasher) : JsonResponse {
+
+        $json = json_decode($request->getContent(), true);
+
+        $user = $doctrine->getRepository(User::class)->findBy(["email" => $json["email"]])[0];
+        
+        if ($user !== null) {
+            $password = $json["password"];
+            if ($passwordHasher->isPasswordValid($user, $password)) {
+                echo "works";
+            }else{ 
+                echo "not works";
+            }
+        }
+
+        return new JsonResponse(["status" => "User login!"], Response::HTTP_OK);
     }
 
     #[Route('/update/users/{id}', name:'updateUser_api', methods:["PUT"])]

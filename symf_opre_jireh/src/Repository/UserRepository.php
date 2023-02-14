@@ -65,10 +65,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function insert($data) : void {
 
         $User = new User;
-        $hashedPassword = $this->passwordHasher->hashPassword(
-            $User,
-            $data["password"]
-        );
+        $hashedPassword = $this->encrypt($User, $data["password"]);
         $User
             ->setName($data["name"])
             ->setEmail($data["email"])
@@ -80,6 +77,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($User, true);
     }
 
+    public function encrypt($User, $password) : string {
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $User,
+            $password
+        );
+
+        return $hashedPassword;
+    }
     public function update($data)
     {
             $this->doctrine->getManager()->persist($data);
