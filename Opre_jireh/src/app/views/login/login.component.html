@@ -1,6 +1,7 @@
 <section class="container">
     <div class="login-container mb-5 mt-5 col-xl-7 col-lg-7 col-md-10 col-sm-12 col-12">
-        <form action="" class="form-login">
+        <form action="" class="form-login" (ngSubmit)=
+        "onSubmit()">
             <div class="container">
                 <div class="row">
                     <ul class="login-nav">
@@ -16,7 +17,7 @@
                     <div class="col-xl-8 col-lg-8 col-md-11 col-sm-12">
                         <div class="mb-3">
                             <label for="nombre" class="login__label">Nombre:</label>
-                            <input type="text" class="login__input" id="input" name="nombre">
+                            <input type="text" class="login__input" id="input" name="nombre" [(ngModel)]="nombre">
                         </div>
                     </div>
                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
@@ -26,7 +27,7 @@
                         <label for="password" class="login__label">
                             Contraseña
                         </label>
-                        <input ID="txtPassword" type="Password" Class="login__input">
+                        <input [(ngModel)]="password" ID="txtPassword" type="Password" Class="login__input" name="password">
 
                     </div>
                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
@@ -38,7 +39,7 @@
                     </div>
 
                 </div>
-                <button class="login__submit mt-5" [routerLink]="['']">Log in</button>
+                <button type="submit" class="login__submit mt-5">Log in</button>
             </div>
         </form>
     </div>
