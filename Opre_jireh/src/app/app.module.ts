@@ -9,7 +9,8 @@ import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ContactoComponent } from './views/contacto/contacto.component';
 import { SigninComponent } from './views/signin/signin.component';
-
+import { NovedadesComponent } from './views/novedades/novedades.component';
+import { NewsComponent } from './views/home/news/news.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,10 @@ import { SigninComponent } from './views/signin/signin.component';
     HomeComponent,
     LoginComponent,
     ContactoComponent,
-    SigninComponent
+    SigninComponent,
+    NovedadesComponent,
+    NewsComponent
+    
   ],
   imports: [
     BrowserModule,
