@@ -119,4 +119,11 @@ class ApiController extends AbstractController
 
         return new JsonResponse(["status" => "User updated!"], Response::HTTP_OK);
     }
+
+    #[Route('/update/event/{id}/{idUser}', name:'updateEvent_api', methods:["PUT"])]
+    public function updateEvent(): JsonResponse {
+
+        
+        return new JsonResponse(["status" => "Event updated!"], Response::HTTP_OK);
+    }
 }
