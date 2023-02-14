@@ -9,7 +9,7 @@ import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ContactoComponent } from './views/contacto/contacto.component';
 import { SigninComponent } from './views/signin/signin.component';
-import { NovedadesComponent } from './views/novedades/novedades.component';
+import { EventosComponent } from './views/eventos/eventos.component';
 import { NewsComponent } from './views/home/news/news.component';
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { NewsComponent } from './views/home/news/news.component';
     LoginComponent,
     ContactoComponent,
     SigninComponent,
-    NovedadesComponent,
+    EventosComponent,
     NewsComponent
     
   ],

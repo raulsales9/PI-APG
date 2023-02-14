@@ -1,28 +1,45 @@
+<section class="container">
+    <div class="login-container mb-5 mt-5 col-xl-7 col-lg-7 col-md-10 col-sm-12 col-12">
+        <form action="" class="form-login">
+            <div class="container">
+                <div class="row">
+                    <ul class="login-nav">
+                            <li class="login-nav__item active mt-2">
+                                <a [routerLink]="['/login']" class="text-uppercase">Iniciar sesión</a>
+                            </li>
+                            <li class="login-nav__item mt-2">
+                                <a [routerLink]="['/signin']" class="text-uppercase">Crear cuenta</a>
+                            </li>
+                    </ul>
+                </div>
+                <div class="row justify-content-around mt-2">
+                    <div class="col-xl-8 col-lg-8 col-md-11 col-sm-12">
+                        <div class="mb-3">
+                            <label for="nombre" class="login__label">Nombre:</label>
+                            <input type="text" class="login__input" id="input" name="nombre">
+                        </div>
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-xl-8 col-lg-8 col-md-11 col-sm-11 col-10">
+                        <label for="password" class="login__label">
+                            Contraseña
+                        </label>
+                        <input ID="txtPassword" type="Password" Class="login__input">
 
-    <section class="container" style="margin-top: 5em;">
-        <div class="login-container mb-5 mt-5 col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-            <form action="" class="form-login">
-                <ul class="login-nav">
-                    <li class="login-nav__item active">
-                        <a [routerLink]="['/login']" class="text-uppercase">Iniciar Sesion</a>
-                    </li>
-                    <li class="login-nav__item">
-                        <a [routerLink]="['/signin']" class="text-uppercase">Crear Cuenta</a>
-                    </li>
-                </ul>
-                <label for="login-input-user" class="login__label">
-                    Nombre
-                </label>
-                <input id="login-input-user" class="login__input" type="text" />
-                <label for="login-input-password" class="login__label">
-                    Contraseña
-                </label>
-                <input id="login-input-password" class="login__input" type="password" />
-                <label for="login-sign-up" class="login__label--checkbox">
-                    <input id="login-sign-up" type="checkbox" class="login__input--checkbox" />
-                    Recuerdame
-                </label>
-                <button class="login__submit" disabled>Sign in</button>
-            </form>
-        </div>
-    </section>
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                        <div class="input-group-append" style="margin-top: 2.4em;">
+                            <button id="show_password" class="btn btn-primary" type="button"
+                                onclick="mostrarPassword('txtPassword')"> <span class="fa fa-eye-slash icon"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="login__submit mt-5" [routerLink]="['']">Log in</button>
+            </div>
+        </form>
+    </div>
+</section>
