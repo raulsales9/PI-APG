@@ -16,8 +16,7 @@ body {
 	position: relative;
 	z-index: 0;
 	margin: 4rem auto 0;
-  padding: 5rem 4rem 0 4rem;
-	width: 100%;
+  	padding: 5rem 4rem 0 4rem;
 	background-image: url("./../../../assets/carro gitano.jpeg");
 	box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.85);
 }
@@ -31,7 +30,7 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-image: radial-gradient(ellipse at left bottom, rgb(171, 81, 81) 0%,rgba(106, 38, 38, 0.9) 59%, rgba(17, 27, 75, .9) 100%);
+	background-image: radial-gradient(ellipse at left bottom, rgb(81, 90, 171) 0%,rgba(38, 79, 106, 0.9) 59%, rgba(17, 27, 75, .9) 100%);
 	box-shadow: 0 -20px 150px -20px rgba(0, 0, 0, 0.5);
 }
 
@@ -122,10 +121,9 @@ body {
 .signin__input {
 	color: white;
 	font-size: 1.15rem;
-	width: 100%;
 	padding: .5rem 1rem;
 	border: 2px solid transparent;
-	outline: none;
+	width: 100%;
 	border-radius: 1.5rem;
 	background-color: rgba(255, 255, 255, 0.25);
 	letter-spacing: 1px;
@@ -159,7 +157,6 @@ body {
 	padding: .75rem;
 	border-radius: 2rem;
 	display: block;
-	width: 100%;
 	background-color: rgba(237, 17, 17, 0.75);
 	border: none;
 	cursor: pointer;

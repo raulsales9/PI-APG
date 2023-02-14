@@ -40,3 +40,10 @@ a:hover{
    color: #e10000 !important;
 ;
 }
+ ul{
+    float: right;
+}
+.nav-item{
+    float: right;
+}
+ 

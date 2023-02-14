@@ -10,6 +10,7 @@ export class HeaderComponent {
   public home: number = 1;
   public contacto: number = 1;
   public perfil: number = 1;
+  public novedades: number=1;
 
   public onHome(): void {
     this.home = 2;

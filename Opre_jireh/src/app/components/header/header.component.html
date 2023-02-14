@@ -2,7 +2,8 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md fixed-top">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <a href=""></a>
+                <button class="navbar-toggler button" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -15,7 +16,8 @@
                         </div>
                         <div *ngIf="home==2">
                             <li class="nav-item ms-3 mb-3 mt-3">
-                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}" [routerLink]="['home']">Home</a>
+                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}"
+                                    [routerLink]="['home']">Home</a>
                             </li>
                         </div>
                         <li class="nav-item ms-3 mb-3 mt-3">
@@ -29,17 +31,18 @@
                         </div>
                         <div *ngIf="contacto==2">
                             <li class="nav-item ms-3 mb-3 mt-3">
-                                <a class="nav-link active"  [ngStyle]="{'color':'#e10000'}"
+                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}"
                                     [routerLink]="['contacto']">Contacto</a>
                             </li>
                         </div>
-                        <li class="nav-item ms-3 mb-3 mt-3">
-                            <a class="nav-link active" [routerLink]="['']">Novedades</a>
-                        </li>
-
+                        <div *ngIf="novedades==1">
+                            <li class="nav-item ms-3 mb-3 mt-3">
+                                <a class="nav-link active" [routerLink]="['']">Novedades</a>
+                            </li>
+                        </div>
                         <div *ngIf="perfil==1">
-                            <li class="nav-item ms-3 me-5 mt-3">
-                                <a class="nav-link active" (click)="onPerfil()" [routerLink]="['login']" style="width: 60px;">
+                            <li class="nav-item  ms-3 mb-3 mt-3">
+                                <a class="nav-link active" (click)="onPerfil()" [routerLink]="['login']">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                         class="bi bi-person-fill" viewBox="0 0 16 16">
                                         <path
@@ -51,7 +54,7 @@
 
                         <div *ngIf="perfil==2">
                             <li class="nav-item ms-3 me-5 mt-3">
-                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}" [routerLink]="['login']" style="width: 60px;">
+                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}" [routerLink]="['login']">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                         class="bi bi-person-fill" viewBox="0 0 16 16">
                                         <path

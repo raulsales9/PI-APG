@@ -1,13 +1,13 @@
 
-    <section class="container">
+    <section class="container" style="margin-top: 5em;">
         <div class="login-container mb-5 mt-5 col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
             <form action="" class="form-login">
                 <ul class="login-nav">
                     <li class="login-nav__item active">
-                        <a href="#" class="text-uppercase">Iniciar Sesion</a>
+                        <a [routerLink]="['/login']" class="text-uppercase">Iniciar Sesion</a>
                     </li>
                     <li class="login-nav__item">
-                        <a href="#" class="text-uppercase">Crear Cuenta</a>
+                        <a [routerLink]="['/signin']" class="text-uppercase">Crear Cuenta</a>
                     </li>
                 </ul>
                 <label for="login-input-user" class="login__label">
