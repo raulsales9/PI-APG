@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TwigController extends AbstractController
 {
-    #[Route('/twig/{page?}', name: 'app_panel')]
+     #[Route('/listUser/{page?}', name: 'app_panel')]
     public function index(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         $panel = $entityManager->getRepository(User::class);
@@ -20,9 +21,19 @@ class TwigController extends AbstractController
             "page" => $this->getLastPage($page, $session)
         ]);
     }
+ 
+    #[Route('/listEvent/{page?}', name: 'app_events')]
+    public function listEvents(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
+    {
+        $event = $entityManager->getRepository(Event::class);
+        return $this->render('AdminEvents.html.twig', [
+            'data' => $event->findAll(),
+            "page" => $this->getLastPage($page, $session)
+        ]);
+    }
 
-
-private function getLastPage($page, $session): int
+            
+ private function getLastPage($page, $session): int
 {
   if ($page != null) {
     $session->set("page",$page);
@@ -32,6 +43,6 @@ private function getLastPage($page, $session): int
     return 1;
   }
   return $session->get("page");
-}
+} 
 }
 

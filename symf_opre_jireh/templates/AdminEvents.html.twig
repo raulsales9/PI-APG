@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
+       
+  <section id="content">
     <div class="container">
 	<h1>FSAEHUUHIEWFUEWFUHIIHU</h1>
                 <div >
@@ -11,7 +13,7 @@
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<p>
-						{{ task.getName() }}, {{task.getSurnames() }} , {{task.getEmail()}}, {{task.getPassword()}},  {{task.getPhone()}} ,  {{task.getEvents()}} ,  {{task.getFiles()}}
+						{{ task.getId() }}, {{task.getName() }} , {{task.getPlace()}}, {{task.getEndDate()}},  {{task.getStartDate()}} ,  {{task.getDescription()}} ,  {{task.getIdUser()}}
 					</p>
 				 {% endif %} 
 			{% endfor %}
@@ -19,8 +21,8 @@
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}
-			<a href="{{ path('app_panel',{'page':1}) }}">&lt;&lt;</a>
-			<a href="{{ path('app_panel',{'page':page - 1}) }}">&lt;</a>
+			<a href="{{ path('app_events',{'page':1}) }}">&lt;&lt;</a>
+			<a href="{{ path('app_events',{'page':page - 1}) }}">&lt;</a>
 		{% else %}
 			<span>&lt;&lt;</span>
 			<span>&lt;</span>
@@ -29,12 +31,12 @@
 			{% if pageButton == page%}
 				<span>{{ pageButton }}</span>
 			{% else %}
-				<a href="{{ path('app_panel',{'page':pageButton}) }}">{{ pageButton }}</a>
+				<a href="{{ path('app_events',{'page':pageButton}) }}">{{ pageButton }}</a>
 			{% endif %}
 		{% endfor %}
 		{% if page < totalPages %}
-			<a href="{{ path('app_panel',{'page':page + 1}) }}">&gt;</a>
-			<a href="{{ path('app_panel',{'page':totalPages}) }}">&gt;&gt;</a>
+			<a href="{{ path('app_events',{'page':page + 1}) }}">&gt;</a>
+			<a href="{{ path('app_events',{'page':totalPages}) }}">&gt;&gt;</a>
 		{% else %}
 			<span>&gt;</span>
 			<span>&gt;&gt;</span>
@@ -42,4 +44,6 @@
              
       </div>
     </div>
+  </section>
+</div>
 {% endblock %}
