@@ -4,10 +4,10 @@
             <form action="" class="form-login">
                 <ul class="login-nav">
                     <li class="login-nav__item active">
-                        <a href="#" class="text-uppercase">Iniciar Sesion</a>
+                        <a [routerLink]="['/login']" class="text-uppercase">Iniciar Sesion</a>
                     </li>
                     <li class="login-nav__item">
-                        <a href="#" class="text-uppercase">Crear Cuenta</a>
+                        <a [routerLink]="['/signin']" class="text-uppercase">Crear Cuenta</a>
                     </li>
                 </ul>
                 <label for="login-input-user" class="login__label">
