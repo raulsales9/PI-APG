@@ -8,7 +8,7 @@ header::before{
     position: absolute;
     width: 100%;
     height: 70% ;
-    background: url("../../../assets/hoguera.jpeg");
+    background: url("./../assets/hoguera.jpeg");
     background-size: cover;
     background-position: bottom;
     filter: blur(2px);
