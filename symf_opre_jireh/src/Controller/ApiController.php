@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Event;
 use App\Entity\Noticias;
+use App\Repository\EventRepository;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -121,9 +122,11 @@ class ApiController extends AbstractController
     }
 
     #[Route('/update/event/{id}/{idUser}', name:'updateEvent_api', methods:["PUT"])]
-    public function updateEvent(): JsonResponse {
+    public function updateEvent(int $id, int $idUser, EventRepository $repository, ManagerRegistry $doctrine, UserRepository $userRepository): JsonResponse {
 
-        
+        $getUser = $doctrine->getRepository(User::class)->findBy(["id" => $idUser]);
+        $getEvent = $doctrine->getRepository(Event::class)->findBy(["id" => $id]);
+        $userRepository->updateAssistant($getEvent, $getUser);
         return new JsonResponse(["status" => "Event updated!"], Response::HTTP_OK);
     }
 }
