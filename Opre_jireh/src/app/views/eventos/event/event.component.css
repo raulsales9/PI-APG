@@ -5,3 +5,10 @@
     object-position: center;
 }
 
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(255, 127, 127, 0.445);
+}
