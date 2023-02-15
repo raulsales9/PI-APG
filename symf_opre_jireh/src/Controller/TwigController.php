@@ -51,11 +51,11 @@ class TwigController extends AbstractController
             "events" => []
           ];
 
-          for($i = 0; $i < count($User); $i++){
+          for($i = 0; $i < count($User->getEvents()); $i++){
             $data["events"][$i] = [
-                "id" => $User->getId(),
-                "name" => $User->getName(),
-                "place" => $User->getPlace()
+                "id" => $User->getEvents()[$i]->getId(),
+                "name" => $User->getEvents()[$i]->getName(),
+                "place" => $User->getEvents()[$i]->getPlace()
             ];
           }
         return $this->render('User/AdminDetailPanel.html.twig', [
