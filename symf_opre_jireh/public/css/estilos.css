@@ -8,22 +8,20 @@
 
 
 /*Header*/
-header{
-    height: 70%;
+header, header::before{
+    height: 36em;
 }
 
 header::before{
     content: '';
     position: absolute;
     width: 100%;
-    height: 70% ;
-    background: url("./../assets/hoguera.jpeg");
+    background: url("../../../assets/hoguera.jpeg");
     background-size: cover;
     background-position: bottom;
     filter: blur(2px);
     z-index: -10;
 }
-
 .logo{
     width: 40%;
     margin-top: 7%;
@@ -33,15 +31,15 @@ h2{
     margin-top: -2%;
 }
 
-/* .nav-pills .nav-link.active,
+.nav-pills .nav-link.active,
 .show>.nav-pills .nav-link{
     background: rgb(218, 218, 218) !important;
     color: black;
     border-radius: 20px;
-} */
+}
 
 .events{
-    background-image: url("/assets/Jireh_logo.png");
+    background-image: url("../assets/users.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 10em;
@@ -107,4 +105,10 @@ h1{
 footer{
     color: black;
     background-color: #80a5d6;
+}
+
+/* articulos */
+
+.articulos{
+    height: 300px;
 }
