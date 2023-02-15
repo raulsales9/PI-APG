@@ -12,8 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class StorageController extends AbstractController
 {
     
-    #[Route('/listCategories/{page?}', name: 'app_events')]
-    public function listEvents(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
+    #[Route('/listCategories/{page?}', name: 'app_categories')]
+    public function listCategories(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         $event = $entityManager->getRepository(Categorias::class);
         return $this->render('Storage/AdminCategories.html.twig', [

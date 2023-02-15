@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Service\FileUploader;
 
 /**
  * @extends ServiceEntityRepository<Event>
@@ -17,8 +18,10 @@ use Doctrine\Persistence\ManagerRegistry;
 class EventRepository extends ServiceEntityRepository
 {
     private $doctrine;
-    public function __construct(ManagerRegistry $registry)
+    private $uploader;
+    public function __construct(ManagerRegistry $registry,  FileUploader $uploader)
     {
+        $this->uploader = $uploader;
         $this->doctrine = $registry;
         parent::__construct($registry, Event::class);
     }
@@ -54,6 +57,23 @@ class EventRepository extends ServiceEntityRepository
             ->setPlace($data->request->get("place"));
             $this->doctrine->getManager()->persist($Event);
             $this->doctrine->getManager()->flush();
+    }
+
+    public function insert($data) : void
+    {
+        $Event = new Event;
+        $startDate = new \DateTime($data->request->get("startDate"));
+        $endDate = new \DateTime($data->request->get("endDate"));
+        var_dump($data->request->get("imagen")->getData());
+/*         $Event
+            ->setName($data->request->get("name"))
+            ->setPlace($data->request->get("place"))
+            ->setStartDate($startDate)
+            ->setEndDate($endDate)
+            ->setDescription($data->request->get("description"))
+            ->setImagen($data->request->get("imagen"));
+        $this->doctrine->getManager()->persist($Event);
+        $this->doctrine->getManager()->flush(); */
     }
 
 /*     public function updateAssistant($Event, $User)

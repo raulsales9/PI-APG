@@ -35,6 +35,15 @@ class EventController extends AbstractController
             'task' => $data
         ]);
     }
+
+    #[Route('/insertEvent', name: 'insert_event')]
+    public function insert(Request $request, EventRepository $repository) : Response {
+
+      if (count($request->request->all())){
+        $repository->insert($request);
+    }
+      return $this->render('/Events/insertEvent.html.twig', []);
+    }
     private function getLastPage($page, $session): int
     {
       if ($page != null) {
