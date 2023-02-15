@@ -12,6 +12,8 @@ import { SigninComponent } from './views/signin/signin.component';
 import { EventosComponent } from './views/eventos/eventos.component';
 import { NewsComponent } from './views/home/news/news.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

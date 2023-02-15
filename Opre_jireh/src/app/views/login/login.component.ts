@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiRequestService } from "../../services/api-request.service";
 
 @Component({
   selector: 'app-login',
@@ -7,13 +8,16 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  nombre : string = "";
+  email : string = "";
   password : string = "";
 
+  constructor(public service : ApiRequestService ) { }
 
   onSubmit()
   {
-    
+    this.service.getLoginResponse(this.email, this.password).subscribe(response =>{
+      alert(response);
+    })
   }
 
 
