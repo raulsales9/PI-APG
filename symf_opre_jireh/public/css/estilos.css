@@ -129,10 +129,17 @@ footer{
     font-weight: bold;
 }
 
+.card h2{
+    position: relative;
+    top: 50%;
+}
+
 .card a:hover{
     color: #e10000;
 }
 
 .card-img{
-    filter: blur(1px);
+    object-fit: cover;
+    height: 300px;
+    filter: blur(2px);
 }
