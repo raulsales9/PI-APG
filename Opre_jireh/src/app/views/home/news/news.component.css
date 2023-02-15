@@ -1,7 +1,8 @@
+
 @media (max-width: 2560px) {
     .arrow {
         align-self: flex-end;
-        width: 50px;
+        width: 10px;
         height: 10px;
 
         animation-duration: 1s;
