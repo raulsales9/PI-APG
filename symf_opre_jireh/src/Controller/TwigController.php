@@ -46,10 +46,18 @@ class TwigController extends AbstractController
             "surnames" => $User->getSurnames(),
             "email" => $User->getEmail(),
             "roles" => ($User->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
-/*             "files" => $User->getFiles(), */
+            "files" => [], 
             "phone" => $User->getPhone(),
             "events" => []
           ];
+
+          for($i = 0; $i < count($User->getFiles()); $i++){
+            $data["files"][$i] = [
+                "idFile" => $User->getFiles()[$i]->getIdFile(),
+                "name" => $User->getfiles()[$i]->getName(),
+                "type" => $User->getFiles()[$i]->getType()
+            ];
+          }
 
           for($i = 0; $i < count($User->getEvents()); $i++){
             $data["events"][$i] = [
