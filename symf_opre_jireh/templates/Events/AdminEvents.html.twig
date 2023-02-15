@@ -12,22 +12,21 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-					<div class="card text-center mt-5" id="opacity">
-						<div class="card-body">
-							<img src={{task.getImagen()}}>
-							<h3 class="card-title mt-3">{{task.getName()}}</h3>
-							<p class="card-text">{{task.getDescription()}}</p>
-							<a href="comprar.html" class="btn" id="boto">apuntar-se</a>
-						</div>
+					<article class="eventList ">
+					<div class="greenDot me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
+					<span class="text-muted">{{ task.getStartDate()|date('d/m/Y') }}</span> - 
+					<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
+					<span class="text-muted me-3">{{ task.getPlace() }}</span>
+					<div class="text-end">
+					<a class="btn btn-primary" href="">Detalles</a>
+					<a class="btn btn-warning" href="">Editar Evento</a>
+					<a class="btn btn-danger" href="">Borrar Evento</a>
 					</div>
+					</article>
 
 
 
-{# 						{{task.getName() }}
-						{{task.getPlace()}}
-						{{task.getEndDate()|date('d/m/Y') }}
-						{{task.getStartDate()|date('d/m/Y') }}
-						{{task.getDescription()}} #}
+{# {{task.getDescription()}} #}
 				 {% endif %} 
 			{% endfor %}
 		{# Navegador #}
