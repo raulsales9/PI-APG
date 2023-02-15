@@ -15,34 +15,44 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TwigController extends AbstractController
 {
-     #[Route('/listUser/{page?}', name: 'app_panel')]
+     #[Route('/listUser/{page?}', name: 'app_User')]
     public function listUser(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        $panel = $entityManager->getRepository(User::class)->findAll();
+        $User = $entityManager->getRepository(User::class)->findAll();
         $data = [];
-        for ($i=0; $i < count($panel); $i++) { 
+        for ($i=0; $i < count($User); $i++) { 
           $data[$i] = [
-            "id" => $panel[$i]->getId(),
-            "name" => $panel[$i]->getName(),
-            "email" => $panel[$i]->getEmail(),
-            "roles" => ($panel[$i]->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
-            "phone" => $panel[$i]->getPhone(),
-            "surnames" => $panel[$i]->getSurnames()
+            "id" => $User[$i]->getId(),
+            "name" => $User[$i]->getName(),
+            "email" => $User[$i]->getEmail(),
+            "roles" => ($User[$i]->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
+            "phone" => $User[$i]->getPhone(),
+            "surnames" => $User[$i]->getSurnames()
           ];
         }        
-        return $this->render('User/AdminPanel.html.twig', [
+        return $this->render('User/AdminUser.html.twig', [
             'data' => $data,
             'page' => $this->getLastPage($page, $session)
         ]);
     }
 
-    #[Route('/detailUser/{user?null}', name: 'app_detailUser')]
-    public function detailUser(EntityManagerInterface $gestor, int $usuario): Response
+    #[Route('/detailUser/{usuario?null}', name: 'app_detailUser')]
+    public function detailUser(EntityManagerInterface $gestor, string $usuario): Response
     {
-        $User = $gestor->getRepository(User::class);
-        $detailUser = $User->find($usuario);
-        return $this->render('detail.html.twig', [
-            'detalleClient' => $detailUser 
+        $User = $gestor->getRepository(User::class)->find($usuario);
+        $data = [];
+        for ($i=0; $i < count($User); $i++) { 
+          $data[$i] = [
+            "id" => $User[$i]->getId(),
+            "name" => $User[$i]->getName(),
+            "email" => $User[$i]->getEmail(),
+            "roles" => ($User[$i]->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
+            "phone" => $User[$i]->getPhone(),
+            "surnames" => $User[$i]->getSurnames()
+          ];
+        }    
+        return $this->render('User/AdminDetailUser.html.twig', [
+            'detalleClient' => $User 
         ]);
     }
 
@@ -56,29 +66,29 @@ class TwigController extends AbstractController
         } else {
             /* $clients = $gestor->getRepository(Clientes::class)->findAll(); */
            /*  $emps = $gestor->getRepository(Empresa::class)->findAll(); */
-            return $this->render('insert.html.twig', [
+            return $this->render('User/AdminPanelInsert.html.twig', [
                 /* "clients" => $clients, */
                 /* "emps" => $emps, */
             ]);
         }
     }
 
-    #[Route('/deleteUser/{user}', name: 'app_deleteUser')]
-    public function delete(EntityManagerInterface $gestor, int $user): Response
+    #[Route('/deleteUser/{usuario}', name: 'app_deleteUser')]
+    public function delete(EntityManagerInterface $gestor, int $usuario): Response
     {
-         $gestor->getRepository(User::class)->delete($user); 
+         $gestor->getRepository(User::class)->delete($usuario); 
         return $this->redirect($this->generateUrl('app_list'));
     }
 
-    #[Route('/updateUser/{user}', name: 'app_updateUser')]
-    public function update(EntityManagerInterface $gestor, Request $request, int $user): Response
+    #[Route('/updateUser/{usuario}', name: 'app_updateUser')]
+    public function update(EntityManagerInterface $gestor, Request $request, int $usuario): Response
     {
     $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(User::class)->update($request, $user); 
+             $gestor->getRepository(User::class)->update($request, $usuario); 
             return $this->redirect($this->generateUrl("app_list"));
         } else {
-            $clients = $gestor->getRepository(Clientes::class)->find($user);
+            $clients = $gestor->getRepository(Clientes::class)->find($usuario);
             $emps = $gestor->getRepository(Empresa::class)->findAll();
             return $this->render('update.html.twig', [
                 "clients" => $clients,
