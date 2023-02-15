@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TwigController extends AbstractController
 {
-     #[Route('/listUser/{page?}', name: 'app_User')]
+    #[Route('/listUser/{page?}', name: 'app_User')]
     public function listUser(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         $User = $entityManager->getRepository(User::class)->findAll();
@@ -30,29 +30,36 @@ class TwigController extends AbstractController
             "surnames" => $User[$i]->getSurnames()
           ];
         }        
-        return $this->render('User/AdminUser.html.twig', [
+        return $this->render('User/AdminPanel.html.twig', [
             'data' => $data,
             'page' => $this->getLastPage($page, $session)
         ]);
     }
 
     #[Route('/detailUser/{usuario?null}', name: 'app_detailUser')]
-    public function detailUser(EntityManagerInterface $gestor, string $usuario): Response
+    public function detailUser(EntityManagerInterface $entityManager, int $usuario): Response
     {
-        $User = $gestor->getRepository(User::class)->find($usuario);
-        $data = [];
-        for ($i=0; $i < count($User); $i++) { 
-          $data[$i] = [
-            "id" => $User[$i]->getId(),
-            "name" => $User[$i]->getName(),
-            "email" => $User[$i]->getEmail(),
-            "roles" => ($User[$i]->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
-            "phone" => $User[$i]->getPhone(),
-            "surnames" => $User[$i]->getSurnames()
+        $User = $entityManager->getRepository(User::class)->find($usuario);
+        $data = [
+            "id" => $User->getId(),
+            "name" => $User->getName(),
+            "surnames" => $User->getSurnames(),
+            "email" => $User->getEmail(),
+            "roles" => ($User->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
+            "files" => $User->getFiles(),
+            "phone" => $User->getPhone(),
+            "events" => []
           ];
-        }    
-        return $this->render('User/AdminDetailUser.html.twig', [
-            'detalleClient' => $User 
+
+          for($i = 0; $i < count($User); $i++){
+            $data["events"][$i] = [
+                "id" => $User->getId(),
+                "name" => $User->getName(),
+                "place" => $User->getPlace()
+            ];
+          }
+        return $this->render('User/AdminDetailPanel.html.twig', [
+            'detalleClient' => $data 
         ]);
     }
 
