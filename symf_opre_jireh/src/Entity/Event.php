@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Event
 {
     #[ORM\Id]
-    #[ORM\Column(name:'id_event')]
+    #[ORM\Column(name:'id')]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
@@ -33,6 +33,9 @@ class Event
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'events')]
     private Collection $idUser;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imagen = null;
+
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
@@ -43,9 +46,9 @@ class Event
         return $this->id;
     }
 
-    public function setIdEvent(int $idEvent): self
+    public function setId(int $id): self
     {
-        $this->id = $idEvent;
+        $this->id = $id;
 
         return $this;
     }
@@ -130,6 +133,18 @@ class Event
     public function removeIdUser(User $idUser): self
     {
         $this->idUser->removeElement($idUser);
+
+        return $this;
+    }
+
+    public function getImagen(): ?string
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen(?string $imagen): self
+    {
+        $this->imagen = $imagen;
 
         return $this;
     }

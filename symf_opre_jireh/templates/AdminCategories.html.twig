@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
+       
+  <section id="content">
     <div class="container">
 	<h1>FSAEHUUHIEWFUEWFUHIIHU</h1>
                 <div >
@@ -11,21 +13,16 @@
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<p>
-						{{ task["name"] }}, {{task["surnames"] }} , {{task["email"] }}, {{task["roles"] }},  {{task["phone"] }} ,
+						{{ task.getIdCategoria() }}, {{task.getNameCategoria() }} , {{task.getProducts()}}
 					</p>
 				 {% endif %} 
 			{% endfor %}
-
-{# 			<details>
-				<summary>HOLA</summary>
-				<p>Hola buenas tardes</p>
-			</details> #}
 		</table>
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}
-			<a href="{{ path('app_panel',{'page':1}) }}">&lt;&lt;</a>
-			<a href="{{ path('app_panel',{'page':page - 1}) }}">&lt;</a>
+			<a href="{{ path('app_categories',{'page':1}) }}">&lt;&lt;</a>
+			<a href="{{ path('app_categories',{'page':page - 1}) }}">&lt;</a>
 		{% else %}
 			<span>&lt;&lt;</span>
 			<span>&lt;</span>
@@ -34,12 +31,12 @@
 			{% if pageButton == page%}
 				<span>{{ pageButton }}</span>
 			{% else %}
-				<a href="{{ path('app_panel',{'page':pageButton}) }}">{{ pageButton }}</a>
+				<a href="{{ path('app_categories',{'page':pageButton}) }}">{{ pageButton }}</a>
 			{% endif %}
 		{% endfor %}
 		{% if page < totalPages %}
-			<a href="{{ path('app_panel',{'page':page + 1}) }}">&gt;</a>
-			<a href="{{ path('app_panel',{'page':totalPages}) }}">&gt;&gt;</a>
+			<a href="{{ path('app_categories',{'page':page + 1}) }}">&gt;</a>
+			<a href="{{ path('app_categories',{'page':totalPages}) }}">&gt;&gt;</a>
 		{% else %}
 			<span>&gt;</span>
 			<span>&gt;&gt;</span>
@@ -47,4 +44,6 @@
              
       </div>
     </div>
+  </section>
+</div>
 {% endblock %}
