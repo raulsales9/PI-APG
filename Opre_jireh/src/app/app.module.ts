@@ -11,6 +11,7 @@ import { ContactoComponent } from './views/contacto/contacto.component';
 import { SigninComponent } from './views/signin/signin.component';
 import { EventosComponent } from './views/eventos/eventos.component';
 import { NewsComponent } from './views/home/news/news.component';
+import { EventComponent } from './views/eventos/event/event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { NewsComponent } from './views/home/news/news.component';
     ContactoComponent,
     SigninComponent,
     EventosComponent,
-    NewsComponent
+    NewsComponent,
+    EventComponent
     
   ],
   imports: [

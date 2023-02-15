@@ -1,20 +1,16 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <h1 class="text-uppercase">¡NUESTROS EVENTOS!</h1>
-        </div>
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <h1 class="text-uppercase">¡NUESTROS EVENTOS!</h1>
     </div>
+</div>
+<div class="container">
 
     <div class="row mb-5">
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 mt-5 justify-content-center">
-            <div class="card text-center" id="opacity">
-              <div class="card-body">
-                <img src={{foto}}>
-                <h3 class="card-title mt-3">{{titulo}}</h3>
-                <p class="card-text">{{descripcion}}</p>
-                <a href="comprar.html" class="btn" id="boto">apuntar-se</a>
-              </div>
+        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 mt-5 justify-content-center row" style="display: flex;">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" *ngFor="let content of contents; let i = index">
+                <app-event [foto]="content.foto" [titulo]="content.titulo" [descripcion]="content.descripcion">
+                </app-event>
             </div>
-        </div>    
+        </div>
     </div>
 </div>
