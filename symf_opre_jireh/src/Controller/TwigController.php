@@ -46,7 +46,7 @@ class TwigController extends AbstractController
             "surnames" => $User->getSurnames(),
             "email" => $User->getEmail(),
             "roles" => ($User->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
-            "files" => $User->getFiles(),
+/*             "files" => $User->getFiles(), */
             "phone" => $User->getPhone(),
             "events" => []
           ];
