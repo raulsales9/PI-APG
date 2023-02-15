@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
+import { EventComponent } from './views/eventos/event/event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,14 +26,16 @@ import { HttpClientModule } from '@angular/common/http';
     ContactoComponent,
     SigninComponent,
     EventosComponent,
-    NewsComponent
+    NewsComponent,
+    EventComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

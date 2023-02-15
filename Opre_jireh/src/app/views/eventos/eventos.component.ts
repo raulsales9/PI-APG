@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component} from '@angular/core';
+import { contents } from './eventos.interface';
 
 @Component({
   selector: 'app-eventos',
@@ -6,8 +7,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./eventos.component.css']
 })
 export class EventosComponent {
-  @Input() foto: string = "";
-  @Input() titulo: string = "";
-  @Input() descripcion: string = "";
+  public number: number = 1;
+  public contents = contents;
+  public counter: number = 1;
 
 }
