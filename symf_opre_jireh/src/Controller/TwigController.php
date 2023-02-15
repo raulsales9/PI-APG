@@ -22,6 +22,7 @@ class TwigController extends AbstractController
         $data = [];
         for ($i=0; $i < count($panel); $i++) { 
           $data[$i] = [
+            "id" => $panel[$i]->getId(),
             "name" => $panel[$i]->getName(),
             "email" => $panel[$i]->getEmail(),
             "roles" => ($panel[$i]->getRoles()[0] === "USER") ? "Usuario" : "Administrador",

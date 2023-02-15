@@ -12,7 +12,7 @@
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<tr>
 						<td>
-							<a href="{{ path('app_detailUser', {usuario:task.getId()}) }}">{{ task["name"] }}</a>
+							<a href="{{ path('app_detailUser', {usuario:task["id"]}) }}">{{ task["name"] }}</a>
 						</td>
 						<td>
 							{{task["email"] }}
@@ -21,10 +21,10 @@
 							{{task["roles"] }}
 						</td>
 						<td>
- 							<a href="{{ path('app_deleteUser', {usuario:task.getId()}) }}"> [x] </a>  
+ 							<a href="{{ path('app_deleteUser', {usuario:task["id"]}) }}"> [x] </a>  
 						</td>
 						<td>
-							<a href=' {{ path('app_updateUser',{usuario:task.getId()}) }} '>[U]</a> 
+							<a href=' {{ path('app_updateUser',{usuario:task["id"]}) }} '>[U]</a> 
 						</td>
 					</tr>
 				 {% endif %} 
