@@ -1,11 +1,12 @@
-header, header::before{
-    height: 36em;
+header{
+    height: 26em;
 }
 
 header::before{
     content: '';
     position: absolute;
     width: 100%;
+    height: 70% ;
     background: url("../../../assets/hoguera.jpeg");
     background-size: cover;
     background-position: bottom;

@@ -1,12 +1,3 @@
-@font-face {
-    font-family: 'Josefin Sans';
-    src: url(./assets/fonts/JosefinSans-VariableFont_wght.ttf);
-  }
-*{
-    margin: 0;
-}
-
-
 /*Header*/
 header{
     height: 70%;
@@ -40,19 +31,6 @@ h2{
     border-radius: 20px;
 }
 
-.events{
-    background-image: url("/assets/Jireh_logo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 10em;
-}
-
-.users{
-    background-image: url("assets/");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 10em; 
-}
 /*home*/
 .separador{
     background-color:  #e10000;
@@ -106,6 +84,4 @@ h1{
 }
 footer{
     color: black;
-    background-color: #80a5d6;
 }
-

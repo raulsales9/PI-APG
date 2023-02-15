@@ -1,7 +1,22 @@
 {% extends "base.html.twig" %}
 {% block layout %}
     <div class="body-bg wrap">
- 
+  <header>
+    <div class="container">
+      <h1><a href="index.html">Brewery</a></h1>
+      <nav>
+        <ul>
+           <li class="current"><a href="{{ path('app_main')}}"><span>Home</span></a></li>
+          <li><a href="{{ path('app_panel')}}"><span>BREWERIES</span></a></li>
+        </ul>
+      </nav>
+      <div class="indent">
+        <p><strong>Egetac</strong> fring estas pellent sempus ametuer torta orci id justo scelerit. Adipisciniacongue ac semper fauctortortorta morbi urna lobortor loborta pulvinaretium eros platea.</p>
+        <p>Telluseger morbi consequam non sus masse dolorem tur in tor cursus. Pretiumdiam eu nulla ligula et mauristibulum sollis maurisque at pulvinaretium morbi.</p>
+      </div>
+    </div>
+  </header>
+  {% block content %}{% endblock %}
 </div>
 <header class="jumbotron jumbotron-fluid mb-5">
     <div class="container-fluid">
@@ -24,11 +39,6 @@
                                   PANEL
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ path('app_events')}}">
-                                  Events
-                                </a>
-                            </li>
                         </li>
                     </ul>
                 </div>
@@ -39,8 +49,7 @@
         <h2 class="text-white fs-1 ms-lg-5">Asociación Gitana de catarroja</h2>
     </div>
 </header>
-     {% block content %}{% endblock %}
-
+    
 
 <footer>
   <section class="">

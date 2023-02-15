@@ -7,14 +7,4 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  nombre : string = "";
-  password : string = "";
-
-
-  onSubmit()
-  {
-    
-  }
-
-
 }

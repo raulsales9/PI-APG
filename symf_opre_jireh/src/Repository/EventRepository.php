@@ -39,12 +39,6 @@ class EventRepository extends ServiceEntityRepository
         }
     }
 
-/*     public function updateAssistant($Event, $User)
-    {
-
-        $Event[0]->addIdUser($User[0]);
-    } */
-
 //    /**
 //     * @return Event[] Returns an array of Event objects
 //     */
