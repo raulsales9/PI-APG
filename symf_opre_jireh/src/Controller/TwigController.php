@@ -46,16 +46,16 @@ class TwigController extends AbstractController
             "surnames" => $User->getSurnames(),
             "email" => $User->getEmail(),
             "roles" => ($User->getRoles()[0] === "USER") ? "Usuario" : "Administrador",
-            "files" => $User->getFiles(),
+/*             "files" => $User->getFiles(), */
             "phone" => $User->getPhone(),
             "events" => []
           ];
 
-          for($i = 0; $i < count($User); $i++){
+          for($i = 0; $i < count($User->getEvents()); $i++){
             $data["events"][$i] = [
-                "id" => $User->getId(),
-                "name" => $User->getName(),
-                "place" => $User->getPlace()
+                "id" => $User->getEvents()[$i]->getId(),
+                "name" => $User->getEvents()[$i]->getName(),
+                "place" => $User->getEvents()[$i]->getPlace()
             ];
           }
         return $this->render('User/AdminDetailPanel.html.twig', [

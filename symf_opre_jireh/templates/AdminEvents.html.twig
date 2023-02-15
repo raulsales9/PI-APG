@@ -3,7 +3,7 @@
        
   <section id="content">
     <div class="container">
-	<h1>FSAEHUUHIEWFUEWFUHIIHU</h1>
+	<h1>Eventos</h1>
                 <div >
                  {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
@@ -12,12 +12,24 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-					<p>
-						{{ task.getId() }}, {{task.getName() }} , {{task.getPlace()}}, {{task.getEndDate()|date('d/m/Y') }},  {{task.getStartDate()|date('d/m/Y') }} ,  {{task.getDescription()}} ,
-					</p>
+					<div class="card text-center mt-5" id="opacity">
+						<div class="card-body">
+							<img src={{task.getImagen()}}>
+							<h3 class="card-title mt-3">{{task.getName()}}</h3>
+							<p class="card-text">{{task.getDescription()}}</p>
+							<a href="comprar.html" class="btn" id="boto">apuntar-se</a>
+						</div>
+					</div>
+
+
+
+{# 						{{task.getName() }}
+						{{task.getPlace()}}
+						{{task.getEndDate()|date('d/m/Y') }}
+						{{task.getStartDate()|date('d/m/Y') }}
+						{{task.getDescription()}} #}
 				 {% endif %} 
 			{% endfor %}
-		</table>
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}
