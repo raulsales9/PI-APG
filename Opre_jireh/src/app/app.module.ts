@@ -12,7 +12,10 @@ import { SigninComponent } from './views/signin/signin.component';
 import { EventosComponent } from './views/eventos/eventos.component';
 import { NewsComponent } from './views/home/news/news.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+
+import { EventComponent } from './views/eventos/event/event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +26,16 @@ import { FormsModule } from '@angular/forms';
     ContactoComponent,
     SigninComponent,
     EventosComponent,
-    NewsComponent
+    NewsComponent,
+    EventComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

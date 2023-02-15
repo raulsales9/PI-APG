@@ -116,19 +116,22 @@ class ApiController extends AbstractController
     public function login(ManagerRegistry $doctrine, Request $request, UserRepository $repository, UserPasswordHasherInterface $passwordHasher) : JsonResponse {
 
         $json = json_decode($request->getContent(), true);
-
         $user = $doctrine->getRepository(User::class)->findBy(["email" => $json["email"]])[0];
         
         if ($user !== null) {
             $password = $json["password"];
             if ($passwordHasher->isPasswordValid($user, $password)) {
-                echo "works";
+                $data = [
+                    "email" => $user->getEmail(),
+                    "user" => $user->getName(),
+                    "rol" => ($user->getRoles() === ["USER"]) ? "USER" : "ADMIN"
+                ];
             }else{ 
-                echo "not works";
+                $data = "";
             }
         }
 
-        return new JsonResponse(["status" => "User login!"], Response::HTTP_OK);
+        return new JsonResponse($data, Response::HTTP_OK);
     }
 
     #[Route('/update/users/{id}', name:'updateUser_api', methods:["PUT"])]

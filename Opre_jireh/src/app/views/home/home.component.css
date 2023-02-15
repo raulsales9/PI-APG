@@ -1,40 +1,78 @@
-.separador{
-    background-color:  #e10000;
+.separador {
+    background-color: #e10000;
     width: 100%;
     height: 3px;
 }
 
-.rueda{
+.rueda {
     width: 400px;
 }
 
-.card-img-top{
+.card-img-top {
     overflow: hidden;
     object-fit: cover;
     width: 100%;
     height: 150px;
 }
 
-.noticia{
+.noticia {
     background: linear-gradient(220.55deg, #97E8B5 0%, #5CB67F 100%);
     padding: 0;
 }
+
 @media (max-width: 1920px) {
-    .ruedaCorta{
+    .ruedaCorta {
         position: absolute;
         width: 15.6%;
-    
+    }
+
+
+    .arrow {
+        align-self: flex-end;
+        width: 50px;
+        height: 50px;
+
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        transform-origin: bottom;
+    }
+
+    .bounce:hover {
+        animation-name: bounce;
+        animation-timing-function: ease;
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
     }
 }
+
 @media (max-width: 1199px) {
-    .ruedaCorta{
-        position: absolute;
-        width: 0%;
-    
+    .ruedaCorta {
+        visibility: hidden;
+
     }
-/* 1496 tamaño de pantalla para romper 
-962*/
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
 
+        50% {
+            transform: translateY(0);
+        }
 
-
+        100% {
+            transform: translateY(0);
+        }
+    }
 }
