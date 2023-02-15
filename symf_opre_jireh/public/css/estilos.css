@@ -43,6 +43,12 @@ h2{
     background-repeat: no-repeat;
     background-size: cover;
     height: 10em;
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+.events:hover{
+    transform: scale(110%);
 }
 
 .users{
@@ -111,4 +117,6 @@ footer{
 
 .articulos{
     height: 300px;
+    line-height: 300px;
+    border-radius: 100%;
 }
