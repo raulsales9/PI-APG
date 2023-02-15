@@ -115,8 +115,24 @@ footer{
 
 /* articulos */
 
-.articulos{
-    height: 300px;
-    line-height: 300px;
-    border-radius: 100%;
+.card{
+    transition: all 1s ease;
+}
+
+.card:hover{
+    transform: scale(110%);
+}
+
+.card a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.card a:hover{
+    color: #e10000;
+}
+
+.card-img{
+    filter: blur(1px);
 }
