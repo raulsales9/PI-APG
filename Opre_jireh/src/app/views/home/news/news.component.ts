@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
 @Component({
   selector: 'app-news',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent {
-
+  @Input() title: string ="";
+  @Input() paragraph: string ="";
 }
