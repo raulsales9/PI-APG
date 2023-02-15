@@ -111,16 +111,6 @@ class TwigController extends AbstractController
             ]);
         }
     } 
- 
-    #[Route('/listEvent/{page?}', name: 'app_events')]
-    public function listEvents(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
-    {
-        $event = $entityManager->getRepository(Event::class);
-        return $this->render('AdminEvents.html.twig', [
-            'data' => $event->findAll(),
-            "page" => $this->getLastPage($page, $session)
-        ]);
-    }
 
     #[Route('/listProducts/{page?}', name: 'app_products')]
     public function listProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
