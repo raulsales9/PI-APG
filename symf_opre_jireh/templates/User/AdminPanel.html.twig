@@ -10,9 +10,23 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-					<p>
-						{{ task["name"] }}, {{task["surnames"] }} , {{task["email"] }}, {{task["roles"] }},  {{task["phone"] }} ,
-					</p>
+					<tr>
+						<td>
+							<a href="{{ path('app_detailUser', {usuario:task.getId()}) }}">{{ task["name"] }}</a>
+						</td>
+						<td>
+							{{task["email"] }}
+						</td>
+						<td>
+							{{task["roles"] }}
+						</td>
+						<td>
+ 							<a href="{{ path('app_deleteUser', {usuario:task.getId()}) }}"> [x] </a>  
+						</td>
+						<td>
+							<a href=' {{ path('app_updateUser',{usuario:task.getId()}) }} '>[U]</a> 
+						</td>
+					</tr>
 				 {% endif %} 
 			{% endfor %}
 

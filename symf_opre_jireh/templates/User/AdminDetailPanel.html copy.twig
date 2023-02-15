@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+    {% block content %}
+    	<div id="content">
+	<h3>Usuario SELECCIONADO:</h3>
+	<nav>
+		<ul>
+			<li>ID Usuario : {{detalleClient.getId()}}</li>
+			<li>Correo Electrónico : {{detalleClient.getEmail()}}</li>
+			<li>Rol  : {{detalleClient.getRoles()}}</li>
+			<li>Archivos : {{detalleClient.getFiles()}}</li>
+			<li>Eventos : {{detalleClient.getEvents()}}</li>
+			<li>Telefono : {{detalleClient.getPhone()}}</li>
+			<li>Nombre : {{detalleClient.getName()}}</li>
+			<li>Apellidos : {{detalleClient.getSurnames()}}</li>
+		</ul>
+	</nav>
+		
+	</div>
+{% endblock %}

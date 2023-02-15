@@ -6,6 +6,7 @@ use App\Entity\Categorias;
 use App\Entity\Event;
 use App\Entity\Products;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,11 +29,62 @@ class TwigController extends AbstractController
             "surnames" => $panel[$i]->getSurnames()
           ];
         }        
-        return $this->render('AdminPanel.html.twig', [
+        return $this->render('User/AdminPanel.html.twig', [
             'data' => $data,
             'page' => $this->getLastPage($page, $session)
         ]);
     }
+
+    #[Route('/detailUser/{user?null}', name: 'app_detailUser')]
+    public function detailUser(EntityManagerInterface $gestor, int $usuario): Response
+    {
+        $User = $gestor->getRepository(User::class);
+        $detailUser = $User->find($usuario);
+        return $this->render('detail.html.twig', [
+            'detalleClient' => $detailUser 
+        ]);
+    }
+
+    #[Route('/insertUser', name: 'app_insertUser')]
+    public function insert(EntityManagerInterface $gestor, Request $request): Response
+    {
+        $container = $request->request->all();
+        if (count($container) > 1) {
+             $gestor->getRepository(User::class)->insert($request); 
+            return $this->redirect($this->generateUrl("app_list"));
+        } else {
+            /* $clients = $gestor->getRepository(Clientes::class)->findAll(); */
+           /*  $emps = $gestor->getRepository(Empresa::class)->findAll(); */
+            return $this->render('insert.html.twig', [
+                /* "clients" => $clients, */
+                /* "emps" => $emps, */
+            ]);
+        }
+    }
+
+    #[Route('/deleteUser/{user}', name: 'app_deleteUser')]
+    public function delete(EntityManagerInterface $gestor, int $user): Response
+    {
+         $gestor->getRepository(User::class)->delete($user); 
+        return $this->redirect($this->generateUrl('app_list'));
+    }
+
+    #[Route('/updateUser/{user}', name: 'app_updateUser')]
+    public function update(EntityManagerInterface $gestor, Request $request, int $user): Response
+    {
+    $container = $request->request->all();
+        if (count($container) > 1) {
+             $gestor->getRepository(User::class)->update($request, $user); 
+            return $this->redirect($this->generateUrl("app_list"));
+        } else {
+            $clients = $gestor->getRepository(Clientes::class)->find($user);
+            $emps = $gestor->getRepository(Empresa::class)->findAll();
+            return $this->render('update.html.twig', [
+                "clients" => $clients,
+                "emps" => $emps 
+            ]);
+        }
+    } 
  
     #[Route('/listEvent/{page?}', name: 'app_events')]
     public function listEvents(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
