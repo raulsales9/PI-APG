@@ -43,6 +43,12 @@ h2{
     background-repeat: no-repeat;
     background-size: cover;
     height: 10em;
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+.events:hover{
+    transform: scale(110%);
 }
 
 .users{
@@ -109,6 +115,24 @@ footer{
 
 /* articulos */
 
-.articulos{
-    height: 300px;
+.card{
+    transition: all 1s ease;
+}
+
+.card:hover{
+    transform: scale(110%);
+}
+
+.card a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.card a:hover{
+    color: #e10000;
+}
+
+.card-img{
+    filter: blur(1px);
 }
