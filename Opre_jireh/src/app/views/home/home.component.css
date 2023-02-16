@@ -4,18 +4,13 @@
     height: 3px;
 }
 
-.rueda {
-    width: 400px;
-}
-
-
-
-
 
 @media (max-width: 2560px) {
     .ruedaCorta {
         position: absolute;
-        width: 15.6%;
+        width: 14%;
+        margin-left: 1.8%;
+        
     }
     
 }
