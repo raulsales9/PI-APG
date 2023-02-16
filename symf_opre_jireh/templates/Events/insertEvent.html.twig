@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+    {% block content %}
+       
+  <section id="content">
+    <div class="container">
+	<h1>Evento</h1>
+					<article class="eventList ">
+					<form method="post" action="" class="row" enctype="multipart/form-data">
+					<label class="form-label" for="name"> Nombre: </label>
+					<div class="mb-3 col-lg-8">
+						<input class="form-control" name="name" type="text" value="">
+					</div>
+					<label class="form-label" for="description"> Descripción: </label>
+					<div class="mb-3 col-lg-8">
+						<textarea name="description" class="form-control"></textarea>
+					</div>
+
+					<label class="form-label" for="startDate"> fecha de comienzo: </label>
+					<div class="mb-3 col-lg-8">
+						<input class="form-control" name="startDate" type="date" value="">
+					</div>
+
+					<label class="form-label" for="endDate"> fecha de finalización: </label>
+					<div class="mb-3 col-lg-8">
+						<input class="form-control" name="endDate" type="date" value="">
+					</div>
+
+					<label class="form-label" for="place"> Localización: </label>
+					<div class="mb-3 col-lg-8">
+						<input class="form-control" name="place" type="text" value="">
+					</div>
+
+					<label for="imagen"> Imagen: </label>
+					<div class="mb-3 col-lg-8">
+						<input class="form-control" type="file" name="imagen">
+					</div>
+
+					<div class="col-lg-12">
+						<button type="submit" class="btn btn-primary mb-3 col-lg-3">Crear</button>
+					</div>
+					</article>
+
+
+             
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

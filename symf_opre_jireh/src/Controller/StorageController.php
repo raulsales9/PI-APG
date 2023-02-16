@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class StorageController extends AbstractController
 {
-    //Este lista las categorias
+    
     #[Route('/listCategories/{page?}', name: 'app_categories')]
     public function listCategories(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
