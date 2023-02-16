@@ -65,21 +65,38 @@ class EventRepository extends ServiceEntityRepository
         $startDate = new \DateTime($data->request->get("startDate"));
         $endDate = new \DateTime($data->request->get("endDate"));
         $file = $data->files->get('imagen');
-        $type = $file->getOriginalName();
-        echo $type;
-        if ($type === "") {
-            
+        $type = $file->getMimeType();
+        if ($type === "image/png") {
+            $extension = ".png";
+        }else if($type === "image/jpg"){
+            $extension = ".jpg";
+        }else if($type === "image/jpeg"){
+            $extension = ".jpeg";
         }
-        $file->move('assets/img/', $file . ".png");
-/*         $Event
+
+
+        $file->move('assets/img/', $file . $extension);
+
+        $getIds = $this->doctrine->getRepository(Event::class)->findAll();
+        $maxId = 0;
+        for ($i=0; $i < count($getIds); $i++) { 
+            if ($getIds[$i]->getId() > $maxId) {
+                $maxId = $getIds[$i]->getId(); 
+            }
+        }
+        $maxId++;
+       $newId = $maxId;
+
+        $Event
+            ->setId($newId)
             ->setName($data->request->get("name"))
             ->setPlace($data->request->get("place"))
             ->setStartDate($startDate)
             ->setEndDate($endDate)
             ->setDescription($data->request->get("description"))
-            ->setImagen($data->request->get("imagen"));
+            ->setImagen($file . $extension);
         $this->doctrine->getManager()->persist($Event);
-        $this->doctrine->getManager()->flush(); */
+        $this->doctrine->getManager()->flush();
     }
 
 /*     public function updateAssistant($Event, $User)
