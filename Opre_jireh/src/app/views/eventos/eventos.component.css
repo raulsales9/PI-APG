@@ -3,14 +3,6 @@ h1{
     font-weight: bold;
 }
 
-@media (max-width: 2560px) {
-    .arrow {
-        width: 10px;
-        height: 10px;
-
-    }
-
-}
 
 button{
     background-color: #f44336;
