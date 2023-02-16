@@ -3,6 +3,10 @@ h1{
     font-weight: bold;
 }
 
+#overflow{
+    overflow: hidden;
+}
+
 
 button{
     background-color: #f44336;
