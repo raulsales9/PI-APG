@@ -9,7 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
+/* use Symfony\Component\Form\FormBuilderInterface; */
 
 class EventController extends AbstractController
 {
@@ -21,6 +23,22 @@ class EventController extends AbstractController
             'data' => $event->findAll(),
             "page" => $this->getLastPage($page, $session)
         ]);
+    }
+
+    #[Route('/detailEvent/{id}', name: 'detail_events')]
+    public function detail(EntityManagerInterface $entityManager, $id) : Response {
+      $event = $entityManager->getRepository(Event::class)->find($id);
+      return $this->render('/Events/detailEvent.html.twig', [
+        'task' => $event,
+        'cantPeople' => count($event->getIdUser()),
+        'people' => $event->getIdUser()
+    ]);
+    }
+    #[Route('/tmp/{img}', name: 'image')]
+    public function showImg($img) : Response{
+      return $this->render('/image.html.twig', [
+        'img' => $img,
+      ]);
     }
 
     #[Route('/updateEvent/{id}', name: 'update_events')]
@@ -40,10 +58,20 @@ class EventController extends AbstractController
     public function insert(Request $request, EventRepository $repository) : Response {
 
       if (count($request->request->all())){
+
         $repository->insert($request);
-    }
+      }
       return $this->render('/Events/insertEvent.html.twig', []);
     }
+
+    #[Route('/deleteEvent/{id}', name: 'delete_event')]
+    public function delete($id, EventRepository $repository, EntityManagerInterface $doctrine) : Response {
+      $Event = $doctrine->getRepository(Event::class)->find($id);
+      $repository->remove($Event, true);
+      return $this->redirectToRoute('app_events');
+    }
+
+
     private function getLastPage($page, $session): int
     {
       if ($page != null) {

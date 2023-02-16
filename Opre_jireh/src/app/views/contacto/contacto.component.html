@@ -1,1 +1,84 @@
-<p>contacto works!</p>
+<!-- MEJORA A IMPLEMENTAR EN EL FUTURO -->
+
+
+<div class="container">
+    <div class="row justify-content-center mt-5 mb-5">
+        <div class="col-xl-9 col-lg-9 col-md-10 col-sm-10 vertical">
+
+            <h2 class="mb-5 mt-5">FORMULARIO DE CONTACTO</h2>
+
+            <form>
+
+                <div class="container">
+                    <div class="row justify-content-between">
+
+                        <div class="col-xl-5 col-lg-5 col-md-8 col-sm-12">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="input" name="nombre">
+                            </div>
+                        </div>
+
+                        <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12">
+                            <div class="mb-3">
+                                <label for="apellidos" class="form-label">Apellidos:</label>
+                                <input type="text" class="form-control" id="input" name="apellidos">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row justify-content-around">
+                        <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="input" name="email">
+                            </div>
+                        </div>
+
+                        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                            <div class="mb-3">
+                                <label for="ciudad" class="form-label">Ciudad:</label>
+                                <input type="text" class="form-control" id="input" name="ciudad">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-around">
+                        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Teléfono:</label>
+                                <input type="tel" class="form-control" id="input" name="telefono">
+                            </div>
+                        </div>
+
+                        <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+
+                            <label for="control1" class="form-label">Asunto</label>
+                            <select class="form-select" id="input" name="control1">
+                                <option selected>-Seleccione una opción- </option>
+                                <option>Preguntar sobre algun evento ya existente</option>
+                                <option>Quiero proponer un evento</option>
+                                <option>Problemas con mi cuenta</option>
+                                <option>Quiero hablar con el encargado</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-3">
+                            <label for="comentarios" class="form-label">Desarrolle el asunto</label>
+                            <textarea class="form-control" rows="5" id="input" name="comentarios"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <button type="submit" id="formbutton" value="Enviar">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

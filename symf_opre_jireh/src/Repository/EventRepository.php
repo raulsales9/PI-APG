@@ -19,9 +19,9 @@ class EventRepository extends ServiceEntityRepository
 {
     private $doctrine;
     private $uploader;
-    public function __construct(ManagerRegistry $registry,  FileUploader $uploader)
+    public function __construct(ManagerRegistry $registry,  /* FileUploader $uploader */)
     {
-        $this->uploader = $uploader;
+/*         $this->uploader = $uploader; */
         $this->doctrine = $registry;
         parent::__construct($registry, Event::class);
     }
@@ -64,16 +64,39 @@ class EventRepository extends ServiceEntityRepository
         $Event = new Event;
         $startDate = new \DateTime($data->request->get("startDate"));
         $endDate = new \DateTime($data->request->get("endDate"));
-        var_dump($data->request->get("imagen")->getData());
-/*         $Event
+        $file = $data->files->get('imagen');
+        $type = $file->getMimeType();
+        if ($type === "image/png") {
+            $extension = ".png";
+        }else if($type === "image/jpg"){
+            $extension = ".jpg";
+        }else if($type === "image/jpeg"){
+            $extension = ".jpeg";
+        }
+
+
+        $file->move('assets/img/tmp/', $file . $extension);
+
+        $getIds = $this->doctrine->getRepository(Event::class)->findAll();
+        $maxId = 0;
+        for ($i=0; $i < count($getIds); $i++) { 
+            if ($getIds[$i]->getId() > $maxId) {
+                $maxId = $getIds[$i]->getId(); 
+            }
+        }
+        $maxId++;
+       $newId = $maxId;
+
+        $Event
+            ->setId($newId)
             ->setName($data->request->get("name"))
             ->setPlace($data->request->get("place"))
             ->setStartDate($startDate)
             ->setEndDate($endDate)
             ->setDescription($data->request->get("description"))
-            ->setImagen($data->request->get("imagen"));
+            ->setImagen($file . $extension);
         $this->doctrine->getManager()->persist($Event);
-        $this->doctrine->getManager()->flush(); */
+        $this->doctrine->getManager()->flush();
     }
 
 /*     public function updateAssistant($Event, $User)

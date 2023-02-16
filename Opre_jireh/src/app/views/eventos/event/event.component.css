@@ -12,3 +12,27 @@
     justify-content: space-between;
     background-color: rgba(255, 127, 127, 0.445);
 }
+
+button{
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+button:hover{
+    background-color: #f32718;
+}
+
+
