@@ -25,6 +25,20 @@ class EventController extends AbstractController
         ]);
     }
 
+    #[Route('/detailEvent/{id}', name: 'detail_events')]
+    public function detail(EntityManagerInterface $entityManager, $id) : Response {
+      $event = $entityManager->getRepository(Event::class)->find($id);
+      return $this->render('/Events/detailEvent.html.twig', [
+        'task' => $event,
+    ]);
+    }
+    #[Route('/tmp/{img}', name: 'image')]
+    public function showImg($img) : Response{
+      return $this->render('/image.html.twig', [
+        'img' => $img,
+      ]);
+    }
+
     #[Route('/updateEvent/{id}', name: 'update_events')]
     public function detailEvent(int $id, EntityManagerInterface $doctrine, Request $request, EventRepository $repository) : Response {
         $data = $doctrine->getRepository(Event::class)->find($id);
@@ -54,6 +68,8 @@ class EventController extends AbstractController
       $repository->remove($Event, true);
       return $this->redirectToRoute('app_events');
     }
+
+
     private function getLastPage($page, $session): int
     {
       if ($page != null) {

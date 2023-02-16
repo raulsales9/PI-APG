@@ -75,7 +75,7 @@ class EventRepository extends ServiceEntityRepository
         }
 
 
-        $file->move('assets/img/', $file . $extension);
+        $file->move('assets/img/tmp/', $file . $extension);
 
         $getIds = $this->doctrine->getRepository(Event::class)->findAll();
         $maxId = 0;
