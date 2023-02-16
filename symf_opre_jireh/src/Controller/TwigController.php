@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Categorias;
 use App\Entity\Event;
-use App\Entity\Products;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -112,26 +110,7 @@ class TwigController extends AbstractController
         }
     } 
 
-    #[Route('/listProducts/{page?}', name: 'app_products')]
-    public function listProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
-    {
-        $event = $entityManager->getRepository(Products::class);
-        return $this->render('AdminProducts.html.twig', [
-            'data' => $event->findAll(),
-            "page" => $this->getLastPage($page, $session)
-        ]);
-    }
-
-    #[Route('/listCategories/{page?}', name: 'app_categories')]
-    public function listCategories(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
-    {
-        $event = $entityManager->getRepository(Categorias::class);
-        return $this->render('AdminCategories.html.twig', [
-            'data' => $event->findAll(),
-            "page" => $this->getLastPage($page, $session)
-        ]);
-    }
-
+  
     #[Route('/listEvent/{page?}', name: 'app_notices')]
     public function listNotices(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
