@@ -20,9 +20,18 @@
                                     [routerLink]="['home']">Home</a>
                             </li>
                         </div>
+                        <div *ngIf="quienessomos==1">
+                            <li class="nav-item ms-3 mb-3 mt-3">
+                                <a class="nav-link active" (click)="onQuienessomos()" [routerLink]="['quienessomos']">Quienes somos </a>
+                            </li>
+                        </div>
+                      <div *ngIf="quienessomos==2">
                         <li class="nav-item ms-3 mb-3 mt-3">
-                            <a class="nav-link active" [routerLink]="['']">Quienes Somos</a>
+                            <a class="nav-link active" [ngStyle]="{'color':'#e10000'}"
+                            [routerLink]="['quienessomos']">Quienes somos</a>
                         </li>
+                      </div>
+                      
                         <div *ngIf="contacto==1">
                             <li class="nav-item ms-3 mb-3 mt-3">
                                 <a class="nav-link active" (click)="onContacto()"
@@ -31,8 +40,7 @@
                         </div>
                         <div *ngIf="contacto==2">
                             <li class="nav-item ms-3 mb-3 mt-3">
-                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}"
-                                    [routerLink]="['contacto']">Contacto</a>
+                                <a class="nav-link active" [routerLink]="['contacto']" [ngStyle]="{'color':'#e10000'}">Contacto</a>
                             </li>
                         </div>
                         <div *ngIf="eventos==1">
