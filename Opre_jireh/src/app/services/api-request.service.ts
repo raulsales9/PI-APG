@@ -13,7 +13,7 @@ export class ApiRequestService {
 
   login = "http://localhost:8001/api/login"
 
-  public getLoginResponse($email : string, $password : string) : Observable<LoginResponse[]> {
-    return this.http.post<LoginResponse[]>(this.login, { "email" : $email, "password" : $password })
+  public getLoginResponse($email : string, $password : string) : Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.login, { "email" : $email, "password" : $password })
   }
 }

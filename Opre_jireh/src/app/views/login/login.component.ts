@@ -16,7 +16,7 @@ export class LoginComponent {
   onSubmit()
   {
     this.service.getLoginResponse(this.email, this.password).subscribe(response =>{
-      alert(response);
+      alert(response.user);
     })
   }
 
