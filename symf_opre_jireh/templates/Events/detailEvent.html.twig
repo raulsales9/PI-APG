@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+    {% block content %}
+       
+  <section id="content">
+    <div class="container">
+	<a class="btn btn-primary" href="/">⇦</a>
+	<h1>Eventos <a class="btn btn-success" href="/insertEvent">Crear</a></h1> 
+                <div >
+					<article class="eventList ">
+					<div class="greenDot me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
+					<span class="text-muted">{{ task.getStartDate()|date('d/m/Y') }}</span> - 
+					<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
+					<span class="text-muted me-3">{{ task.getPlace() }}</span>
+					<a href="{{task.getImagen()}}"> Imagen </a>
+					<div class="text-end">
+					<a class="btn btn-warning" href="/updateEvent/{{task.getId()}}">Editar Evento</a>
+					<a class="btn btn-danger" href="/deleteEvent/{{task.getId()}}">Borrar Evento</a>
+					</div>
+					<p> {{task.getDescription()}} </p>
+					</article>
+             
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

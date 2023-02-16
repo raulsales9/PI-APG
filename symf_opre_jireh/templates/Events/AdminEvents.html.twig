@@ -3,6 +3,7 @@
        
   <section id="content">
     <div class="container">
+	<a class="btn btn-primary" href="/">⇦</a>
 	<h1>Eventos <a class="btn btn-success" href="/insertEvent">Crear</a></h1> 
                 <div >
                  {# Cálculo de valores para la paginación #}
@@ -18,7 +19,7 @@
 					<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
 					<span class="text-muted me-3">{{ task.getPlace() }}</span>
 					<div class="text-end">
-					<a class="btn btn-primary" href="">Detalles</a>
+					<a class="btn btn-primary" href="/detailEvent/{{task.getId()}}">Detalles</a>
 					<a class="btn btn-warning" href="/updateEvent/{{task.getId()}}">Editar Evento</a>
 					<a class="btn btn-danger" href="/deleteEvent/{{task.getId()}}">Borrar Evento</a>
 					</div>
