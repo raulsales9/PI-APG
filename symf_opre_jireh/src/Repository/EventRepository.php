@@ -19,9 +19,9 @@ class EventRepository extends ServiceEntityRepository
 {
     private $doctrine;
     private $uploader;
-    public function __construct(ManagerRegistry $registry,  FileUploader $uploader)
+    public function __construct(ManagerRegistry $registry,  /* FileUploader $uploader */)
     {
-        $this->uploader = $uploader;
+/*         $this->uploader = $uploader; */
         $this->doctrine = $registry;
         parent::__construct($registry, Event::class);
     }
@@ -64,7 +64,13 @@ class EventRepository extends ServiceEntityRepository
         $Event = new Event;
         $startDate = new \DateTime($data->request->get("startDate"));
         $endDate = new \DateTime($data->request->get("endDate"));
-        var_dump($data->request->get("imagen")->getData());
+        $file = $data->files->get('imagen');
+        $type = $file->getOriginalName();
+        echo $type;
+        if ($type === "") {
+            
+        }
+        $file->move('assets/img/', $file . ".png");
 /*         $Event
             ->setName($data->request->get("name"))
             ->setPlace($data->request->get("place"))
