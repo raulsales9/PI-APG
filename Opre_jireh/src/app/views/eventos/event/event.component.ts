@@ -10,5 +10,8 @@ export class EventComponent {
   @Input() foto: string = "";
   @Input() titulo: string = "";
   @Input() descripcion: string = "";
+  @Input() horario: string = "";
+  @Input() lugar: string = "";
+  @Input() id: number = 0;
 
 }
