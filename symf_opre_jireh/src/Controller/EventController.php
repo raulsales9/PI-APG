@@ -44,8 +44,15 @@ class EventController extends AbstractController
       if (count($request->request->all())){
 
         $repository->insert($request);
-    }
+      }
       return $this->render('/Events/insertEvent.html.twig', []);
+    }
+
+    #[Route('/deleteEvent/{id}', name: 'delete_event')]
+    public function delete($id, EventRepository $repository, EntityManagerInterface $doctrine) : Response {
+      $Event = $doctrine->getRepository(Event::class)->find($id);
+      $repository->remove($Event, true);
+      return $this->redirectToRoute('app_events');
     }
     private function getLastPage($page, $session): int
     {
