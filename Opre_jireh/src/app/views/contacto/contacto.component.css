@@ -1,0 +1,38 @@
+h2 {
+    color: black;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+
+#input {
+    border: 1px solid #e10000c2;
+}
+
+#input:focus {
+    border-color: #e10000;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #e100009d;
+}
+
+#formbutton {
+    width: 20%;
+    border-radius: 0.8em;
+    border: 1px solid #e10000;
+    background-color: #e10000;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#formbutton:hover {
+    background-color: white;
+    color: #e10000;
+}
+
+.vertical {
+    border-left: 5px solid #e10000;
+    border-bottom: 5px solid #e10000;
+    border-radius: 2%;
+    padding: 5em;
+    background-color: #e1000023;
+}
