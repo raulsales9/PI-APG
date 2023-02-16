@@ -11,11 +11,11 @@
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<article class="eventList">
-						<div class="greenDot me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
-							<a href="{{ path('app_detailCategoria', {usuario:task["idCategoria"]}) }}" class="text-muted me-3">{{ task["name"] }}</a>
+						<div class="greenDot me-3"></div> <span class="fs-3 me-3">{{ task.getIdCategoria() }}</span>	
+							<a href="{{ path('app_detailCategoria', {categoria:task["idCategoria"]}) }}" class="text-muted me-3">{{ task["nameCategoria"] }}</a>
 							<a class="text-muted">{{task["nameCategoria"] }}</a>
- 							<a href="{{ path('app_deleteCategoria', {usuario:task["idCategoria"]}) }}" class="btn btn-danger"> [x] </a>  
-							<a href=' {{ path('app_updateCategoria',{usuario:task["idCategoria"]}) }} ' class="btn btn-warning">[U]</a> 
+ 							<a href="{{ path('app_deleteCategoria', {categoria:task["idCategoria"]}) }}" class="btn btn-danger"> [x] </a>  
+							<a href=' {{ path('app_updateCategoria',{categoria:task["idCategoria"]}) }} ' class="btn btn-warning">[U]</a> 
 						</div>
 					</article>
 					<br>
@@ -30,8 +30,8 @@
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}
-			<a href="{{ path('app_panel',{'page':1}) }}">&lt;&lt;</a>
-			<a href="{{ path('app_panel',{'page':page - 1}) }}">&lt;</a>
+			<a href="{{ path('app_listCategories',{'page':1}) }}">&lt;&lt;</a>
+			<a href="{{ path('app_listCategories',{'page':page - 1}) }}">&lt;</a>
 		{% else %}
 			<span>&lt;&lt;</span>
 			<span>&lt;</span>
@@ -40,12 +40,12 @@
 			{% if pageButton == page%}
 				<span>{{ pageButton }}</span>
 			{% else %}
-				<a href="{{ path('app_panel',{'page':pageButton}) }}">{{ pageButton }}</a>
+				<a href="{{ path('app_listCategories',{'page':pageButton}) }}">{{ pageButton }}</a>
 			{% endif %}
 		{% endfor %}
 		{% if page < totalPages %}
-			<a href="{{ path('app_panel',{'page':page + 1}) }}">&gt;</a>
-			<a href="{{ path('app_panel',{'page':totalPages}) }}">&gt;&gt;</a>
+			<a href="{{ path('app_listCategories',{'page':page + 1}) }}">&gt;</a>
+			<a href="{{ path('app_listCategories',{'page':totalPages}) }}">&gt;&gt;</a>
 		{% else %}
 			<span>&gt;</span>
 			<span>&gt;&gt;</span>
