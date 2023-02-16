@@ -1,3 +1,19 @@
+.pru{
+    background-color: #80a5d6;
+    opacity: 0.9
+}
+.blu{
+    background-color: #97E8B5;
+    opacity: 0.9
+}
+summary{
+    list-style: none;
+}
+.card-text{
+    padding: 30px;
+    
+}
+
 .separador {
     background-color: #e10000;
     width: 100%;
@@ -13,6 +29,6 @@ h1,p{
   
     background-image: url("../../../assets/ruedagitana.svg");
     background-size: 60% auto;
-    background-position: center 30%;
+    background-position: center 100%;
     background-repeat: no-repeat;
 }
