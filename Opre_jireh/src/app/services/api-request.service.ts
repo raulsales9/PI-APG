@@ -12,7 +12,7 @@ export class ApiRequestService {
 
   constructor(public http : HttpClient) { }
 
-  login = "http://localhost:8001/api/login"
+  login = "http://localhost:8000/api/login"
   events = "http://localhost:8000/api/events"
 
   public getLoginResponse($email : string, $password : string) : Observable<LoginResponse> {
