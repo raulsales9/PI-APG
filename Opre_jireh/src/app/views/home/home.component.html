@@ -30,11 +30,11 @@
   </div>
 </section>
 
-<section class="container-fluid    noticias">
+<section class="container-fluid noticias">
 
 
   <div class="row justify-content-around mb-5" style="display: flex;">
-    <article class="card noticia col-lg-3 mt-5 mb-5 border-0 " *ngFor="let content of contents; let i = index">
+    <article class="card noticia ms-1 col-lg-3  mt-5 mb-5 border-0 " *ngFor="let content of contents; let i = index">
  
           <app-news  [picture]="content.picture" [title]="content.title"  [description]="content.description"></app-news>
    

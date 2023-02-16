@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { EventComponent } from './views/eventos/event/event.component';
+import { QuieneSomosComponent } from './views/quiene-somos/quiene-somos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { EventComponent } from './views/eventos/event/event.component';
     SigninComponent,
     EventosComponent,
     NewsComponent,
-    EventComponent
+    EventComponent,
+    QuieneSomosComponent
     
   ],
   imports: [
