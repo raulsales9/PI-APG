@@ -17,6 +17,14 @@
 					<a class="btn btn-danger" href="/deleteEvent/{{task.getId()}}">Borrar Evento</a>
 					</div>
 					<p> {{task.getDescription()}} </p>
+					<details> <summary> Asistentes: {{cantPeople}} </summary>
+					<ul>
+						{% for person in people %}
+							<li>{{ person.getName() }}</li>
+							
+						{% endfor %}
+					</ul>
+					</detail>
 					</article>
              
       </div>

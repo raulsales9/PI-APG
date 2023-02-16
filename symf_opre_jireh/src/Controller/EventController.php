@@ -30,6 +30,8 @@ class EventController extends AbstractController
       $event = $entityManager->getRepository(Event::class)->find($id);
       return $this->render('/Events/detailEvent.html.twig', [
         'task' => $event,
+        'cantPeople' => count($event->getIdUser()),
+        'people' => $event->getIdUser()
     ]);
     }
     #[Route('/tmp/{img}', name: 'image')]
