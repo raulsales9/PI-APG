@@ -1,9 +1,16 @@
+.noticia {
+    background: linear-gradient(220.55deg, #97E8B5 0%, #5CB67F 100%);
+    border-radius: 3%;
+    
+}
+.card-text{
+    padding: 30px;
+}
 
 @media (max-width: 2560px) {
     .arrow {
         align-self: flex-end;
-        width: 10px;
-        height: 10px;
+       
 
         animation-duration: 1s;
         animation-iteration-count: infinite;
