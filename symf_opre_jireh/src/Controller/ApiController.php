@@ -83,7 +83,9 @@ class ApiController extends AbstractController
                 "place" => $getEvent->getPlace(),
                 "end_date" => $getEvent->getEndDate(),
                 "start_date" => $getEvent->getStartDate(),
-                "description" => $getEvent->getDescription()
+                "description" => $getEvent->getDescription(),
+                "imagen" => $getEvent->getImagen(),
+                "id" => $getEvent->getId()
             ];
         }
         return new JsonResponse($data, Response::HTTP_OK);

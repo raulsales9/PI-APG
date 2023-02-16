@@ -25,10 +25,90 @@ h1,p{
     color: black;
     
 }
-.body{
+
+
+   
+
+@media (max-width: 2560px) {
+    .body{
   
-    background-image: url("../../../assets/ruedagitana.svg");
-    background-size: 60% auto;
-    background-position: center 100%;
-    background-repeat: no-repeat;
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 45% 150%;
+        background-repeat: no-repeat;
+    }  
+}
+@media (max-width: 1920px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 45% 100%;
+        background-repeat: no-repeat;
+    }  
+}
+
+@media (max-width: 1440px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 37% 64%;
+        background-repeat: no-repeat;
+    }  
+}
+@media (max-width: 	1280px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 12% 62%;
+        background-repeat: no-repeat;
+    }  
+}
+@media (max-width: 1024px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 12% 64%;
+        background-repeat: no-repeat;
+    }  
+}
+@media (max-width: 960px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 50% 61%;
+        background-repeat: no-repeat;
+    }  
+}
+
+@media (max-width: 768px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 60% 59%;
+        background-repeat: no-repeat;
+    }  
+}
+@media (max-width: 425px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 50% 56%;
+        background-repeat: no-repeat;
+    }  
+}
+@media (max-width: 375px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 55% 55%;
+        background-repeat: no-repeat;
+    }  
 }
