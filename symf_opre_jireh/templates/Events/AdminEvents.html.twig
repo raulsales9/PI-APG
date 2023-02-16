@@ -4,7 +4,7 @@
   <section id="content">
     <div class="container">
 	<a class="btn btn-primary" href="/">⇦</a>
-	<h1>Eventos <a class="btn btn-success" href="/insertEvent">Crear</a></h1> 
+	<h1>Eventos <a class="btn btn-success" href="/twig/insertEvent">Crear</a></h1> 
                 <div >
                  {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
@@ -13,15 +13,15 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-					<article class="eventList ">
+					<article class="eventList mb-3">
 					<div class="greenDot me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
 					<span class="text-muted">{{ task.getStartDate()|date('d/m/Y') }}</span> - 
 					<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
 					<span class="text-muted me-3">{{ task.getPlace() }}</span>
 					<div class="text-end">
-					<a class="btn btn-primary" href="/detailEvent/{{task.getId()}}">Detalles</a>
-					<a class="btn btn-warning" href="/updateEvent/{{task.getId()}}">Editar Evento</a>
-					<a class="btn btn-danger" href="/deleteEvent/{{task.getId()}}">Borrar Evento</a>
+					<a class="btn btn-primary" href="/twig/detailEvent/{{task.getId()}}">Detalles</a>
+					<a class="btn btn-warning" href="/twig/updateEvent/{{task.getId()}}">Editar Evento</a>
+					<a class="btn btn-danger" href="/twig/deleteEvent/{{task.getId()}}">Borrar Evento</a>
 					</div>
 					</article>
 

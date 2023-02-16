@@ -1,8 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
-
-{% block body %}
+{% block content %}
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -10,14 +8,14 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Estás dado de alta como: {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Cerrar Sesión</a>
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputId_user">Id_user</label>
+    <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
+    <label for="inputId_user">Correo electrónico: </label>
     <input type="text" value="{{ last_username }}" name="id_user" id="inputId_user" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
+    <label for="inputPassword">Contraseña: </label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
@@ -36,7 +34,7 @@
     #}
 
     <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+        Iniciar sesión
     </button>
 </form>
 {% endblock %}

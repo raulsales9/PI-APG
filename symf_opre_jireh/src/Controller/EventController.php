@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
 /* use Symfony\Component\Form\FormBuilderInterface; */
-
+#[Route('/twig')]
 class EventController extends AbstractController
 {
     #[Route('/listEvent/{page?}', name: 'app_events')]
