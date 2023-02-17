@@ -57,7 +57,7 @@ class TwigController extends AbstractController
                 "idFile" => $User->getFiles()[$i]->getIdFile(),
                 "name" => $User->getfiles()[$i]->getName(),
                 "type" => $User->getFiles()[$i]->getType(),
-                "isSubmited" => ($User->getFiles()[$i]->isIsSubmited()) ? "checked" : ""
+                "isSubmited" => html_entity_decode(($User->getFiles()[$i]->isIsSubmited()) ? '&#x2713;' : "")
             ];
           }
 
@@ -98,6 +98,18 @@ class TwigController extends AbstractController
         }
         return $this->render('Files/insertFiles.html.twig', [
             'user' => $user
+        ]);
+    }
+    #[Route('/updateFiles/{idUser}', name: 'insertUser')]
+    public function updateFiles(int $idUser, EntityManagerInterface $doctrine, Request $request, FilesRepository $repository): Response{
+        $user = $doctrine->getRepository(User::class)->find($idUser);
+        $userFiles = $user->getFiles();
+        if (count($request->request->all())) {
+            $repository->updateFiles($request, $idUser);
+        }
+        return $this->render('Files/updateFiles.html.twig', [
+            'user' => $user,
+            'userFiles' => $userFiles
         ]);
     }
 

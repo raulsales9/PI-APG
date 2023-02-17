@@ -60,6 +60,20 @@ class FilesRepository extends ServiceEntityRepository
         
     }
 
+    public function updateFiles($request, $idUser)
+    {
+        $files = $this->doctrine->getRepository(User::class)->find($idUser)->getFiles();
+
+        for ($i=0; $i < count($files); $i++) { 
+            $files[$i]->setName($request->request->get('name' . $files[$i]->getIdFile()));
+            $files[$i]->setType($request->request->get('type' . $files[$i]->getIdFile()));
+            $files[$i]->setIsSubmited($request->request->get('isSubmited' . $files[$i]->getIdFile()) === "on" ? true : false);
+            $files[$i]->setIdUser($this->doctrine->getRepository(User::class)->find($idUser));
+            $this->doctrine->getManager()->persist($files[$i]);
+            $this->doctrine->getManager()->flush();
+        }
+    }
+
 //    /**
 //     * @return Files[] Returns an array of Files objects
 //     */

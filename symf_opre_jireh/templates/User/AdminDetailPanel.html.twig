@@ -16,16 +16,12 @@
 			<form method="post" action="">
 				{% for task in detalleClient["files"] %}
 				 	
-					<div class="ms-3 mb-3">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1" name="{{task["idFile"]}}" {{task["isSubmited"]}}>
-					{{task["name"]}}, {{task["type"]}}
-					
-					{# <label class="form-check-label" for="exampleCheck1">Entregado</label> #}
+					<div class="ms-3">
+						{{task["name"]}}, <span class="text-muted"> {{task["type"]}} </span> <span>{{task["isSubmited"]}}</span>
 					</div> 
-					<br>
 				{% endfor %}
-
-				<a class="text-decoration-none text-success" href="/twig/insertFiles/{{ detalleClient["id"] }}">Nuevo fichero</a>
+				<a class="btn btn-warning mt-3 mb-3" href="/twig/updateFiles/{{ detalleClient["id"] }}">Editar ficheros</a>
+				<a class="btn btn-success" href="/twig/insertFiles/{{ detalleClient["id"] }}">Nuevo fichero</a>
 			</form>
 			</detail>
 
