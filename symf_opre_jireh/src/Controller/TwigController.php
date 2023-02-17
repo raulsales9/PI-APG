@@ -123,7 +123,7 @@ class TwigController extends AbstractController
     #[Route('/updateUser/{usuario}', name: 'updateUser')]
     public function update(EntityManagerInterface $gestor, Request $request, int $usuario): Response
     {
-    $container = $request->request->all();
+        $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(User::class)->updateUser($request, $usuario); 
             return $this->redirect($this->generateUrl("User"));
@@ -156,16 +156,16 @@ class TwigController extends AbstractController
         ]);
     }
             
- private function getLastPage($page, $session): int
-{
-  if ($page != null) {
-    $session->set("page",$page);
-    return $page;
-  } elseif (!$session->has("page") || !is_numeric($session->get("page"))) {
-    $session->set("page",1);
-    return 1;
-  }
-  return $session->get("page");
-} 
+    private function getLastPage($page, $session): int
+    {
+    if ($page != null) {
+        $session->set("page",$page);
+        return $page;
+    } elseif (!$session->has("page") || !is_numeric($session->get("page"))) {
+        $session->set("page",1);
+        return 1;
+    }
+    return $session->get("page");
+    } 
 }
 
