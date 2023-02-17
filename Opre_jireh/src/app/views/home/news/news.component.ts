@@ -6,7 +6,7 @@ import { Component,Input } from '@angular/core';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent {
-  @Input() picture: string="";
-  @Input() title: string ="";
-  @Input() description: string ="";
+  @Input() imagen: string="";
+  @Input() Titulo: string ="";
+  @Input() texto: string ="";
 }
