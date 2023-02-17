@@ -98,16 +98,13 @@ class StorageController extends AbstractController
             "idProduct" => $idProduct->getIdProduct(),
             "nameProduct" => $idProduct->getNameProduct(),
             "price" => $idProduct->getPrice(),
-            "IdCategoria" => []
+            "IdCategoria" => [
+               "id" => $idProduct->getIdCategoria()->getIdCategoria(),
+                "name" => $idProduct->getIdCategoria()->getNameCategoria()
+            ]
         ];
 
-        for($i = 0; $i < count($idProduct); $i++){
-            $data["IdCategoria"][$i] = [
-                "IdCategoria" => $idProduct->getIdCategoria()[$i]->getIdCategoria(),
-                "nameCategoria" => $idProduct->getIdCategoria()[$i]->getNameCategoria()
-            ];
-          }
-        return $this->render('Storage/AdminProductsDetail.html.twig', [
+        return $this->render('Storage/AdminDetailProducts.html.twig', [
             'data' => $data,
         ]);
     }
