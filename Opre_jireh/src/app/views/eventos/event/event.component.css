@@ -5,10 +5,33 @@
     object-position: center;
 }
 .noticia {
-    background: linear-gradient(220.55deg, #97E8B5 0%, #5CB67F 100%);
+    background: rgba(255, 127, 127, 0.445);
     border-radius: 3%;
-    
+    padding: 1em;
 }
+
+button{
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    font-weight: bold;
+    height: 3.5em;
+}
+
+button:hover{
+    background-color: #f01000;
+    color: white
+}
+
 
 summary{
     list-style: none;
