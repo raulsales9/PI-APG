@@ -11,12 +11,12 @@
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<article class="eventList">
-						<div class="greenDot me-3"></div> <span class="fs-3 me-3">{{ task.getIdCategoria() }}</span>	
-							<a href="{{ path('app_detailCategoria', {categoria:task["idCategoria"]}) }}" class="text-muted me-3">{{ task["nameCategoria"] }}</a>
-							<a class="text-muted">{{task["nameCategoria"] }}</a>
- 							<a href="{{ path('app_deleteCategoria', {categoria:task["idCategoria"]}) }}" class="btn btn-danger"> [x] </a>  
-							<a href=' {{ path('app_updateCategoria',{categoria:task["idCategoria"]}) }} ' class="btn btn-warning">[U]</a> 
-						</div>
+						
+							{# <a href="{{ path('app_detailCategoria', {categoria:task["idCategoria"]}) }}" class="text-muted me-3">{{ task["nameCategoria"] }}</a> #}
+							<a class="text-muted text-decoration-none">{{task.getNameCategoria() }}</a>
+ 							{# <a href="{{ path('app_deleteCategoria', {categoria:task["idCategoria"]}) }}" class="btn btn-danger"> [x] </a>  
+							<a href=' {{ path('app_updateCategoria',{categoria:task["idCategoria"]}) }} ' class="btn btn-warning">[U]</a>  #}
+				
 					</article>
 					<br>
 				 {% endif %} 

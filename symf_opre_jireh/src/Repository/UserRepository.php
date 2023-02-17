@@ -78,7 +78,23 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setPassword($hashedPassword)
             ->setPhone($data["phone"])
             ->setSurnames($data["surnames"])
-            ->setRoles($data["user"]);
+            ->setRoles(["USER"]);
+
+        $this->save($User, true);
+    }
+
+    public function insertUser($usuario) : void {
+
+        $User = new User;
+        $roles = $usuario["roles"] ? '["USER"]' : '["ADMIN"]';
+        $hashedPassword = $this->encrypt($User, $usuario["password"]);
+        $User
+            ->setName($usuario["name"])
+            ->setEmail($usuario["email"])
+            ->setPassword($hashedPassword)
+            ->setPhone($usuario["phone"])
+            ->setSurnames($usuario["surnames"])
+            ->setRoles($roles);
 
         $this->save($User, true);
     }

@@ -42,8 +42,8 @@
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}
-			<a href="{{ path('app_panel',{'page':1}) }}">&lt;&lt;</a>
-			<a href="{{ path('app_panel',{'page':page - 1}) }}">&lt;</a>
+			<a href="{{ path('app_User',{'page':1}) }}">&lt;&lt;</a>
+			<a href="{{ path('app_User',{'page':page - 1}) }}">&lt;</a>
 		{% else %}
 			<span>&lt;&lt;</span>
 			<span>&lt;</span>
@@ -52,12 +52,12 @@
 			{% if pageButton == page%}
 				<span>{{ pageButton }}</span>
 			{% else %}
-				<a href="{{ path('app_panel',{'page':pageButton}) }}">{{ pageButton }}</a>
+				<a href="{{ path('app_User',{'page':pageButton}) }}">{{ pageButton }}</a>
 			{% endif %}
 		{% endfor %}
 		{% if page < totalPages %}
-			<a href="{{ path('app_panel',{'page':page + 1}) }}">&gt;</a>
-			<a href="{{ path('app_panel',{'page':totalPages}) }}">&gt;&gt;</a>
+			<a href="{{ path('app_User',{'page':page + 1}) }}">&gt;</a>
+			<a href="{{ path('app_User',{'page':totalPages}) }}">&gt;&gt;</a>
 		{% else %}
 			<span>&gt;</span>
 			<span>&gt;&gt;</span>

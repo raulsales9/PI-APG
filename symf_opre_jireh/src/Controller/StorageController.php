@@ -11,10 +11,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/twig', name: 'app_')]
 class StorageController extends AbstractController
 {
     
-    #[Route('/listCategories/{page?}', name: 'app_listCategories')]
+    #[Route('/listCategories/{page?}', name: 'listCategories')]
     public function listCategories(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         $event = $entityManager->getRepository(Categorias::class);
@@ -24,37 +25,34 @@ class StorageController extends AbstractController
         ]);
     }
     
-    #[Route('/insertCategories', name: 'app_insertCategories')]
+/*     #[Route('/insertCategories', name: 'insertCategories')]
     public function insert(EntityManagerInterface $gestor, Request $request): Response
     {
         $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(User::class)->insert($request); 
-            return $this->redirect($this->generateUrl("app_listCategories"));
+            return $this->redirect($this->generateUrl("listCategories"));
         } else {
-            /* $clients = $gestor->getRepository(Clientes::class)->findAll(); */
-           /*  $emps = $gestor->getRepository(Empresa::class)->findAll(); */
             return $this->render('User/AdminPanelInsert.html.twig', [
-                /* "clients" => $clients, */
-                /* "emps" => $emps, */
+              
             ]);
         }
     }
 
-    #[Route('/deleteCategories/{categories}', name: 'app_deleteCategories')]
+    #[Route('/deleteCategories/{categories}', name: 'deleteCategories')]
     public function delete(EntityManagerInterface $gestor, string $categorias): Response
     {
          $gestor->getRepository(User::class)->delete($categorias); 
-        return $this->redirect($this->generateUrl('app_listCategories'));
+        return $this->redirect($this->generateUrl('listCategories'));
     }
 
-    #[Route('/updateCategories/{categories}', name: 'app_updateCategories')]
+    #[Route('/updateCategories/{categories}', name: 'updateCategories')]
     public function update(EntityManagerInterface $gestor, Request $request, string $categorias): Response
     {
     $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(Categorias::class)->update($request, $categorias); 
-            return $this->redirect($this->generateUrl("app_listCategories"));
+            return $this->redirect($this->generateUrl("listCategories"));
         } else {
             $clients = $gestor->getRepository(Clientes::class)->find($categorias);
             $emps = $gestor->getRepository(Empresa::class)->findAll();
@@ -67,7 +65,7 @@ class StorageController extends AbstractController
 
     
     //Este lista los products con esa categoria
-    #[Route('/listProducts/{page?}', name: 'app_Listproducts')]
+    #[Route('/listProducts/{page?}', name: 'ListProducts')]
     public function listProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session,int $categories): Response
     {
         $event = $entityManager->getRepository(Products::class);
@@ -79,7 +77,7 @@ class StorageController extends AbstractController
         ]);
     }
 
-    #[Route('/listProductos/{page?}', name: 'app_ListProducts')]
+    #[Route('/listProductos/{page?}', name: 'ListProducts')]
     public function DetailProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         $event = $entityManager->getRepository(Products::class);
@@ -89,37 +87,34 @@ class StorageController extends AbstractController
         ]);
     }
 
-    #[Route('/insertProducts', name: 'app_insertProducts')]
+    #[Route('/insertProducts', name: 'insertProducts')]
     public function insertProducts(EntityManagerInterface $gestor, Request $request): Response
     {
         $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(User::class)->insert($request); 
-            return $this->redirect($this->generateUrl("app_list"));
+            return $this->redirect($this->generateUrl("list"));
         } else {
-            /* $clients = $gestor->getRepository(Clientes::class)->findAll(); */
-           /*  $emps = $gestor->getRepository(Empresa::class)->findAll(); */
             return $this->render('User/AdminPanelInsert.html.twig', [
-                /* "clients" => $clients, */
-                /* "emps" => $emps, */
+                
             ]);
         }
     }
 
-    #[Route('/deleteProducts/{product}', name: 'app_deleteCategories')]
+    #[Route('/deleteProducts/{product}', name: 'deleteCategories')]
     public function deleteProducts(EntityManagerInterface $gestor, int $usuario): Response
     {
          $gestor->getRepository(User::class)->delete($usuario); 
-        return $this->redirect($this->generateUrl('app_list'));
+        return $this->redirect($this->generateUrl('list'));
     }
 
-    #[Route('/updateProducts/{product}', name: 'app_updateCategories')]
+    #[Route('/updateProducts/{product}', name: 'updateCategories')]
     public function updateProducts(EntityManagerInterface $gestor, Request $request, string $product): Response
     {
     $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(User::class)->update($request, $product); 
-            return $this->redirect($this->generateUrl("app_list"));
+            return $this->redirect($this->generateUrl("list"));
         } else {
             $clients = $gestor->getRepository(Clientes::class)->find($product);
             $emps = $gestor->getRepository(Empresa::class)->findAll();
@@ -128,7 +123,7 @@ class StorageController extends AbstractController
                 "emps" => $emps 
             ]);
         }
-    } 
+    }  */
 
 
     //Este detalla el producto en si
