@@ -11,7 +11,7 @@
 					<span class="text-muted">{{ task.getStartDate()|date('d/m/Y') }}</span> - 
 					<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
 					<span class="text-muted me-3">{{ task.getPlace() }}</span>
-					<div class="text-end">
+					<div class="float-end">
 					<a class="btn btn-warning" href="/twig/updateEvent/{{task.getId()}}">Editar Evento</a>
 					<a class="btn btn-danger" href="/twig/deleteEvent/{{task.getId()}}">Borrar Evento</a>
 					</div>

@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
     <div class="container">
-	<h1>FSAEHUUHIEWFUEWFUHIIHU</h1>
+	<h1>Usuarios</h1>
                 <div >
                  {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
@@ -10,27 +10,16 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-					<tr>
-						<td>
-							<a href="{{ path('app_insertUser', {usuario:task["id"]}) }}">Insert</a>
-						</td>
-						<td>
-							<a href="{{ path('app_detailUser', {usuario:task["id"]}) }}">{{ task["name"] }}</a>
-						</td>
-						<td>
-							{{task["email"] }}
-						</td>
-						<td>
-							{{task["roles"] }}
-						</td>
-						<td>
- 							<a href="{{ path('app_deleteUser', {usuario:task["id"]}) }}"> [x] </a>  
-						</td>
-						<td>
-							<a href=' {{ path('app_updateUser',{usuario:task["id"]}) }} '>[U]</a> 
-						</td>
-					</tr>
-					<br>
+				<article class="eventList mb-3">
+					<a class="text-decoration-none nameUser" href="{{ path('app_detailUser', {usuario:task["id"]}) }}">{{ task["name"] }} {{task["surnames"]}}</a>
+					<span class="text-muted ms-3">{{task["email"] }}</span>
+					<span class="text-muted ms-3">{{task["phone"] }}</span>
+					<span class="text-muted ms-3">- {{task["roles"] }} -</span>
+					<div class="float-end">
+						<a class="btn btn-warning" href="/twig/updateUser/{{task["id"]}}">Editar Evento</a>
+						<a class="btn btn-danger" href="/twig/deleteUser/{{task["id"]}}">Borrar Evento</a>
+					</div>
+				</article>
 				 {% endif %} 
 			{% endfor %}
 
@@ -38,7 +27,6 @@
 				<summary>HOLA</summary>
 				<p>Hola buenas tardes</p>
 			</details> #}
-		</table>
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}

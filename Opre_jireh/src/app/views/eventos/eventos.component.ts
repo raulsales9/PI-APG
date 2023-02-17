@@ -16,6 +16,7 @@ export class EventosComponent {
 
   ngOnInit()
   {
+    
     this.service.getEventsResponse().subscribe(response =>{
       console.log(response);
       for (let i = 0; i < this.contents.length; i++) {
@@ -34,5 +35,8 @@ export class EventosComponent {
 
     });
   }
+
+
+
 
 }
