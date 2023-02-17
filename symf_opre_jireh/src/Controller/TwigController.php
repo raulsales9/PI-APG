@@ -54,7 +54,8 @@ class TwigController extends AbstractController
             $data["files"][$i] = [
                 "idFile" => $User->getFiles()[$i]->getIdFile(),
                 "name" => $User->getfiles()[$i]->getName(),
-                "type" => $User->getFiles()[$i]->getType()
+                "type" => $User->getFiles()[$i]->getType(),
+                "isSubmited" => ($User->getFiles()[$i]->isIsSubmited()) ? "checked" : ""
             ];
           }
 
