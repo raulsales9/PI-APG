@@ -39,6 +39,12 @@ class CategoriasRepository extends ServiceEntityRepository
         }
     }
 
+    public function deleteCategoria(int $id): void
+    {
+        $product = $this->find($id);
+        //la funcion remove es creada al modelar, y esta ejerce el borrado
+        $this->remove($product, true);
+    }
 //    /**
 //     * @return Categorias[] Returns an array of Categorias objects
 //     */
