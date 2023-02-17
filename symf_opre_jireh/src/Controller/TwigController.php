@@ -79,7 +79,7 @@ class TwigController extends AbstractController
         } else {
             /* $clients = $gestor->getRepository(Clientes::class)->findAll(); */
            /*  $emps = $gestor->getRepository(Empresa::class)->findAll(); */
-            return $this->render('User/AdminPanelInsert.html.twig', [
+            return $this->render('User/AdminInsertPanel.html.twig', [
                 /* "clients" => $clients, */
                 /* "emps" => $emps, */
             ]);
@@ -90,7 +90,7 @@ class TwigController extends AbstractController
     public function delete(EntityManagerInterface $gestor, int $usuario): Response
     {
          $gestor->getRepository(User::class)->delete($usuario); 
-        return $this->redirect($this->generateUrl('app_list'));
+        return $this->redirect($this->generateUrl('app_User'));
     }
 
     #[Route('/updateUser/{usuario}', name: 'app_updateUser')]
@@ -98,14 +98,12 @@ class TwigController extends AbstractController
     {
     $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(User::class)->update($request, $usuario); 
-            return $this->redirect($this->generateUrl("app_list"));
+             $gestor->getRepository(User::class)->updateUser($request, $usuario); 
+            return $this->redirect($this->generateUrl("app_User"));
         } else {
-            $clients = $gestor->getRepository(Clientes::class)->find($usuario);
-            $emps = $gestor->getRepository(Empresa::class)->findAll();
-            return $this->render('update.html.twig', [
-                "clients" => $clients,
-                "emps" => $emps 
+            $clients = $gestor->getRepository(User::class)->find($usuario);
+            return $this->render('User/AdminUpdatePanel.html.twig', [
+                "clients" => $clients
             ]);
         }
     } 

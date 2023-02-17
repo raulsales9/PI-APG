@@ -48,6 +48,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
+    public function delete(int $id): void
+    {
+        $usuario = $this->find($id);
+        //la funcion remove es creada al modelar, y esta ejerce el borrado
+        $this->remove($usuario, true);
+    }
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
@@ -72,10 +78,25 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setPassword($hashedPassword)
             ->setPhone($data["phone"])
             ->setSurnames($data["surnames"])
-            ->setRoles(["USER"]);
+            ->setRoles($data["user"]);
 
         $this->save($User, true);
     }
+
+    
+    public function updateUser(int $id, array $data): void
+    {
+        $result = $this->find($id);
+        $hashedPassword = $this->encrypt($result, $data["password"]);;
+        $result
+        ->setName($data["name"])
+        ->setEmail($data["email"])
+        ->setPassword($hashedPassword)
+        ->setPhone($data["phone"])
+        ->setSurnames($data["surnames"])
+        ->setRoles($data["user"]);
+        $this->save($result, true);
+    } 
 
     public function encrypt($User, $password) : string {
         $hashedPassword = $this->passwordHasher->hashPassword(

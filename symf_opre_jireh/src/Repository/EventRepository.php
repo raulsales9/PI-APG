@@ -18,10 +18,8 @@ use App\Service\FileUploader;
 class EventRepository extends ServiceEntityRepository
 {
     private $doctrine;
-    private $uploader;
-    public function __construct(ManagerRegistry $registry,  /* FileUploader $uploader */)
+    public function __construct(ManagerRegistry $registry)
     {
-/*         $this->uploader = $uploader; */
         $this->doctrine = $registry;
         parent::__construct($registry, Event::class);
     }
@@ -66,6 +64,7 @@ class EventRepository extends ServiceEntityRepository
         $endDate = new \DateTime($data->request->get("endDate"));
         $file = $data->files->get('imagen');
         $type = $file->getMimeType();
+        // los .jpg hacen que el servidor explote
         if ($type === "image/png") {
             $extension = ".png";
         }else if($type === "image/jpg"){

@@ -12,6 +12,9 @@
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<tr>
 						<td>
+							<a href="{{ path('app_insertUser', {usuario:task["id"]}) }}">Insert</a>
+						</td>
+						<td>
 							<a href="{{ path('app_detailUser', {usuario:task["id"]}) }}">{{ task["name"] }}</a>
 						</td>
 						<td>
