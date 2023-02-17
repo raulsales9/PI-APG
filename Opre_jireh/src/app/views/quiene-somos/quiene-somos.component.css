@@ -34,7 +34,7 @@ h1,p{
   
         background-image: url("../../../assets/ruedagitana.svg");
         background-size: 57em auto;
-        background-position: 45% 150%;
+        background-position: 47.5% 150%;
         background-repeat: no-repeat;
     }  
 }
@@ -54,6 +54,15 @@ h1,p{
         background-image: url("../../../assets/ruedagitana.svg");
         background-size: 57em auto;
         background-position: 37% 64%;
+        background-repeat: no-repeat;
+    }  
+}
+@media (max-width: 1366px) {
+    .body{
+  
+        background-image: url("../../../assets/ruedagitana.svg");
+        background-size: 57em auto;
+        background-position: 34% 64%;
         background-repeat: no-repeat;
     }  
 }

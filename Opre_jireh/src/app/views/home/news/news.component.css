@@ -3,6 +3,14 @@
     border-radius: 3%;
     
 }
+
+.noticia img{
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+    object-position: center;
+}
+
 summary{
     list-style: none;
 }
