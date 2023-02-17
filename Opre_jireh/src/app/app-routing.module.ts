@@ -7,6 +7,7 @@ import { ContactoComponent } from './views/contacto/contacto.component';
 import { EventosComponent } from './views/eventos/eventos.component';
 import { QuieneSomosComponent } from './views/quiene-somos/quiene-somos.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,8 +16,10 @@ const routes: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'quienessomos', component: QuieneSomosComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'eventos', component: EventosComponent },
+  { path: 'eventos', component: EventosComponent },  
+  { path: 'perfil', component: ProfileComponent },
   { path: '**', component: PagenotfoundComponent }
+
 ];
 
 @NgModule({
