@@ -4,28 +4,89 @@
             <h1>PERFIL</h1>
         </div>
     </div>
-    <div class="row justify-content-center mt-5">
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+    <div *ngIf="perfil==1" class="row justify-content-center mt-5">
+        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
             <div class="container">
                 <div class="row justify-content-around">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 ">
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6 mt-2">
                         <p><strong>NOMBRE:</strong></p>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 gris mt-2">
+                        <p>Hola</p> <!-- Así va la variable que traurà el nom -->
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6 mt-2">
                         <p><strong>APELLIDOS:</strong></p>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 mt-2 gris">
+                        <p>Martinez Hernandez</p> <!-- Así va la variable que traurà els apellidos -->
                     </div>
                 </div>
                 <div class="row justify-content-around">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6 mt-2">
                         <p><strong>TELÉFONO:</strong></p>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6 col-6 gris">
+                        <p>123456789</p> <!-- Así va la variable que traurà el telèfon -->
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
                         <p><strong>EMAIL:</strong></p>
+                    </div>
+                    <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6 col-6 gris">
+                        <p>Hola.martinez@gmail.com</p> <!-- Así va la variable que traurà el email -->
+                    </div>
+                </div>
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <button type="button" (click)="onClic()" class="btn btn-primary">EDITAR PERFIL</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div *ngIf="perfil==2" class="row justify-content-center mt-5">
+        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
+            <div class="container">
+                <form>
+                    <div class="row justify-content-around">
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6 mt-2">
+                            <label for="nombre">NOMBRE:</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mt-2">
+                            <input type="text" class="form-control" id="nombre" name="nombre">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6 mt-2">
+                            <label for="apellidos">APELLIDOS:</label>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 mt-2">
+                            <input type="text" class="form-control" id="apellidos" name="apellidos">
+                        </div>
+                    </div>
+                    <div class="row justify-content-around mt-3">
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6 mt-2">
+                            <label for="telefono">TELÉFONO:</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6 col-6">
+                            <input type="text" class="form-control" id="telefono" name="telefono">
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
+                            <label for="email">EMAIL:</label>
+                        </div>
+                        <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6 col-6">
+                            <input type="text" class="form-control" id="email" name="email">
+                        </div>
+                    </div>
+                    <div class="row mt-5 justify-content-center">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <button type="submit" class="btn btn-primary">GUARDAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row mb-5 mt-5">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <h1>EVENTOS</h1>
