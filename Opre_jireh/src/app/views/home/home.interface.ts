@@ -7,24 +7,10 @@ export interface News {
 
 export const contents: News[] = [
     {
-        imagen:  '../../../assets/stock1.jpeg',
-        Titulo: 'Hombre gitano inventa el latin',
-        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod",
+        imagen:  '../../../assets/DefNews.png',
+        Titulo: 'No hay ninguna noticia ahora, vuelve más tarde',
+        texto: "Ahora no hay ninguna noticia o nuestros carteros se han perdido, disculpé las molestias",
        
-    },
-    {
-        imagen:  '../../../assets/stock2.jpeg',
-        Titulo: 'image-container',
-        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod",
-
-       
-    },
-    {
-        imagen:   '../../../assets/stock3.jpeg',
-        Titulo: 'image-container',
-        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquam massa, eget aliquam nisl nisl eu nisl. Sed euismod",
-
-  
     }
     
 
