@@ -8,8 +8,8 @@ export interface News {
 export const contents: News[] = [
     {
         imagen:  '../../../assets/DefNews.png',
-        Titulo: 'No hay ninguna noticia ahora, vuelve más tarde',
-        texto: "Ahora no hay ninguna noticia o nuestros carteros se han perdido, disculpé las molestias",
+        Titulo: 'No hay noticias o se estan cargando',
+        texto: "Ahora no hay ninguna noticia o nuestros carteros se han perdido trayéndolas, disculpé las molestias",
        
     }
     
