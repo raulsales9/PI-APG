@@ -2,62 +2,12 @@
 		<div id="form_container">
 			<form method="post" action="">
 				<div>
-					<h2>Nuevo Usuario</h2>
+					<h2>Cambiando categoria {{data.getIdCategoria()}}</h2>
 				</div>
-				<label for="id">Id Usuario</label>
+				<label for="id">Name categoria</label>
 				<div>
-					<input name="id" type="number" size="5" value=""/>
+					<input name="id" type="number" size="5" value="{{data.getNameCategoria()}}"/>
 				</div>
-
-				<label for="email">Email Usuario</label>
-				<div>
-					<input name="email" type="text" maxlength="45" size="45" value=""/>
-				</div>
-
-				<label for="roles">Roles Usuario</label>
-				<div>
-					<input name="roles" type="text" maxlength="40" size="40" value=""/>
-				</div>
-
-				<label for="files">Archivos Usuario</label>
-				<div>
-					<input name="files" type="text" maxlength="30" size="30" value=""/>
-				</div>
-
-				<label for="events">Eventos Usuario </label>
-				<div>
-					<input name="events" type="text" maxlength="2" size="2" value=""/>
-				</div>
-
-				<label for="phone">Telefono Usuario</label>
-				<div>
-					<input name="phone" type="text" maxlength="9" size="9" value=""/>
-				</div>
-
-				<label for="name">Nombre Usuario : </label>
-				<div>
-					<input name="name" type="number" maxlength="5" size="5" value=""/>
-				</div>
-
-				<label for="surnames">Apellidos Usuario :</label>
-				<div>
-					<input name="surnames" type="text" maxlength="9" size="9" value=""/>
-				</div>
-
-				<label for="reprCod">Contact
-				</label>
-			
-
-				<label for="limiteCredito">Credit Limit</label>
-				<div>
-					<input name="limiteCredito" type="number" max="9999999.99" min="0" step=".01" value=""/>
-				</div>
-
-				<label for="observaciones">Comments</label>
-				<div>
-					<textarea name="observaciones" cols="50" rows="5"></textarea>
-				</div>
-
-				<input type="submit" name="submit" value="Insert"/>
+				<input type="submit" name="submit" value="Update"/>
 		</form>
 	</div>

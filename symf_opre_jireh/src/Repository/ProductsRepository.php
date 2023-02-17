@@ -47,6 +47,26 @@ class ProductsRepository extends ServiceEntityRepository
         $this->remove($usuario, true);
     }
 
+        
+    public function updateUser(int $id, array $data): void
+    {
+        $result = $this->find($id);
+        $result
+        ->setNameProduct($data["nameProduct"])
+        ->setIdProduct($data["idProduct"])
+        ->setPrice($data["price"]);
+        $this->save($result, true);
+    } 
+           
+    public function insertProducts(int $id, array $data): void
+    {
+        $result = new Products;
+        $result
+        ->setNameProduct($data["nameProduct"])
+        ->setIdProduct($data["idProduct"])
+        ->setPrice($data["price"]);
+        $this->save($result, true);
+    } 
 //    /**
 //     * @return Products[] Returns an array of Products objects
 //     */
