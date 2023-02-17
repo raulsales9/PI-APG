@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventComponent } from './views/eventos/event/event.component';
 import { QuieneSomosComponent } from './views/quiene-somos/quiene-somos.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { ProfileComponent } from './views/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     NewsComponent,
     EventComponent,
     QuieneSomosComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ProfileComponent
     
   ],
   imports: [
