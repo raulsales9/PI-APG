@@ -71,6 +71,8 @@ class EventRepository extends ServiceEntityRepository
             $extension = ".jpg";
         }else if($type === "image/jpeg"){
             $extension = ".jpeg";
+        }else if($type === "image/webp"){
+            $extension = ".webp";
         }
 
 
