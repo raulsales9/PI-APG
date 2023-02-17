@@ -1,7 +1,21 @@
 @font-face {
-    font-family: 'Josefin Sans';
-    src: url(./assets/fonts/JosefinSans-VariableFont_wght.ttf);
-  }
+  font-family: Alice-Regular;
+
+  src: url(./assets/fonts/Alice-Regular.ttf) format("opentype") ;
+}
+@font-face {
+  font-family: JosefinSans;
+ 
+  src: url(./assets/fonts/Josefin_Sans/static/JosefinSans-Medium.ttf) format("opentype");
+
+}
 *{
     margin: 0;
+}
+h1{
+  font-family:'JosefinSans' ;
+
+}
+p{
+  font-family:'Alice-Regular' ;
 }
