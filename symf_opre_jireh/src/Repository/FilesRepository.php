@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Files;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use PHPUnit\TextUI\XmlConfiguration\File;
 
 /**
  * @extends ServiceEntityRepository<Files>
@@ -16,8 +18,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FilesRepository extends ServiceEntityRepository
 {
+    private $doctrine;
     public function __construct(ManagerRegistry $registry)
     {
+        $this->doctrine = $registry;
         parent::__construct($registry, Files::class);
     }
 
@@ -37,6 +41,23 @@ class FilesRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function insert($request, $idUser)
+    {
+        //request = Array ( [name] => asd [type] => asd [isSubmited] => on )
+        $File = new Files;
+        
+        $File
+            ->setName($request->request->get('name'))
+            ->setType($request->request->get('type'))
+            ->setIsSubmited($request->request->get('isSubmited') === "on" ? true : false)
+            ->setDate(new \DateTime('now'))
+            ->setIdUser($this->doctrine->getRepository(User::class)->find($idUser));
+        
+            $this->doctrine->getManager()->persist($File);
+            $this->doctrine->getManager()->flush();
+        
     }
 
 //    /**

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Entity\User;
+use App\Repository\FilesRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -86,6 +88,17 @@ class TwigController extends AbstractController
                 /* "emps" => $emps, */
             ]);
         }
+    }
+    #[Route('/insertFiles/{idUser}', name: 'insertUser')]
+    public function insertFile(int $idUser, EntityManagerInterface $doctrine, Request $request, FilesRepository $repository): Response{
+        $user = $doctrine->getRepository(User::class)->find($idUser);
+
+        if (count($request->request->all())) {
+            $repository->insert($request, $idUser);
+        }
+        return $this->render('Files/insertFiles.html.twig', [
+            'user' => $user
+        ]);
     }
 
     #[Route('/deleteUser/{usuario}', name: 'deleteUser')]
