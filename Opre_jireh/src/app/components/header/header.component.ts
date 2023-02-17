@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,17 @@ export class HeaderComponent {
   public perfil: number = 1;
   public eventos: number=1;
   public quienessomos:number=1;
+
+  public userName : string | null = "Iniciar sesión";
+
+  constructor (service : AuthService) { }
+
+  ngOnInit()
+  {
+    if (localStorage.getItem('isUserLoggedIn') === "true") {
+      this.userName = localStorage.getItem('userName');
+    }
+  }
 
   public onHome(): void {
     this.home = 2;
@@ -53,6 +65,4 @@ export class HeaderComponent {
     this.quienessomos = 2;
 
   }
-
-
 }
