@@ -1,25 +1,24 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
-    	<div id="content">
-	<h3>Usuario SELECCIONADO:</h3>
-	<nav>
-		<ul>
-			<li>ID Usuario : {{detalleClient["id"]}}</li>
-			<li>Nombre : {{detalleClient["name"]}}</li>
-			<li>Apellidos : {{detalleClient["surnames"]}}</li>
-			<li>Correo Electrónico : {{detalleClient["email"]}}</li>
-			<li>Rol  : {{detalleClient["roles"]}}</li>
- 			
-			{% for task in detalleClient["files"] %}
-				<li>Archivos : {{task["idFile"]}}, {{task["name"]}}, {{task["type"]}}</li> 
-			{% endfor %}	 
-			<li>Telefono : {{detalleClient["phone"]}}</li>
-			{% for events in detalleClient["events"] %}
- 				<li>Eventos : {{task["id"]}},  {{task["name"]}},  {{task["place"]}}</li> 
-			{% endfor %}
-			
-		</ul>
-	</nav>
-		
-	</div>
+       
+  <section id="content">
+    <div class="container">
+	<a class="btn btn-primary" href="/twig/listEvent">⇦</a>
+	<h1>Eventos <a class="btn btn-success" href="/twig/insertEvent">Crear</a></h1> 
+               {% for task in data %}
+					<article class="eventList ">
+					
+					<span class="text-muted">{{ task.getIdProduct() }}</span> - 
+					<span class="text-muted me-3">{{ task["nameProduct"] }}</span>
+					<div class="float-end">
+					<a class="btn btn-warning" href="/twig/updateProducts/{{task["idProduct"]}}">Editar Producto</a>
+					<a class="btn btn-danger" href="/twig/deleteProducts/{{task["idProduct"]}}">Borrar Producto</a>
+					</detail>
+					</article>
+				{% endfor %}
+             
+      </div>
+    </div>
+  </section>
+</div>
 {% endblock %}
