@@ -39,6 +39,14 @@ class ProductsRepository extends ServiceEntityRepository
         }
     }
 
+    
+    public function deleteProducts(int $id): void
+    {
+        $usuario = $this->find($id);
+        //la funcion remove es creada al modelar, y esta ejerce el borrado
+        $this->remove($usuario, true);
+    }
+
 //    /**
 //     * @return Products[] Returns an array of Products objects
 //     */

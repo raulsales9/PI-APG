@@ -18,9 +18,17 @@ class StorageController extends AbstractController
     #[Route('/listCategories/{page?}', name: 'listCategories')]
     public function listCategories(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        $event = $entityManager->getRepository(Categorias::class);
+        
+        $categoria = $entityManager->getRepository(Categorias::class)->findAll();
+        $data = [];
+        for ($i=0; $i < count($categoria); $i++) { 
+            $data[$i] = [
+              "idCategoria" => $categoria[$i]->getIdCategoria(),
+              "nameCategoria" => $categoria[$i]->getNameCategoria(),
+            ];
+          } 
         return $this->render('Storage/AdminCategories.html.twig', [
-            'data' => $event->findAll(),
+            'data' => $data,
             "page" => $this->getLastPage($page, $session)
         ]);
     }
@@ -30,7 +38,7 @@ class StorageController extends AbstractController
     {
         $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(User::class)->insert($request); 
+             $gestor->getRepository(Categorias::class)->insert($request); 
             return $this->redirect($this->generateUrl("listCategories"));
         } else {
             return $this->render('User/AdminPanelInsert.html.twig', [
@@ -38,14 +46,14 @@ class StorageController extends AbstractController
             ]);
         }
     }
-
-    #[Route('/deleteCategories/{categories}', name: 'deleteCategories')]
-    public function delete(EntityManagerInterface $gestor, string $categorias): Response
+*/
+    #[Route('/deleteCategories/{categoria}', name: 'deleteCategoria')]
+    public function delete(EntityManagerInterface $gestor, string $categoria): Response
     {
-         $gestor->getRepository(User::class)->delete($categorias); 
-        return $this->redirect($this->generateUrl('listCategories'));
+         $gestor->getRepository(Categorias::class)->deleteCategoria($categoria); 
+        return $this->redirect($this->generateUrl('app_listCategories'));
     }
-
+/*
     #[Route('/updateCategories/{categories}', name: 'updateCategories')]
     public function update(EntityManagerInterface $gestor, Request $request, string $categorias): Response
     {
@@ -54,39 +62,56 @@ class StorageController extends AbstractController
              $gestor->getRepository(Categorias::class)->update($request, $categorias); 
             return $this->redirect($this->generateUrl("listCategories"));
         } else {
-            $clients = $gestor->getRepository(Clientes::class)->find($categorias);
-            $emps = $gestor->getRepository(Empresa::class)->findAll();
+            $categoria = $gestor->getRepository(Categorias::class)->find($categorias);
             return $this->render('Storage/AdminUpdateCategories.html.twig', [
-                "clients" => $clients,
-                "emps" => $emps 
+                "clients" => $categoria,
             ]);
         }
     } 
-
+*/
     
     //Este lista los products con esa categoria
-    #[Route('/listProducts/{page?}', name: 'ListProducts')]
-    public function listProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session,int $categories): Response
+    #[Route('/listProducts/{categoria}', name: 'ListProducts')]
+    public function listProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session,int $categoria): Response
     {
-        $event = $entityManager->getRepository(Products::class);
-        $category = $entityManager->getRepository(Categorias::class)->findBy($categories);
+        $product = $entityManager->getRepository(Products::class)->findAll();
+        $data = [];
+        for ($i=0; $i < count($product); $i++) { 
+            $data[$i] = [
+              "idProduct" => $product[$i]->getIdProduct(),
+              "nameProduct" => $product[$i]->getNameProduct(),
+              "price" => $product[$i]->getPrice(),
+              "IdCategoria" =>$product[$i]->getIdCategoria()->getIdCategoria()
+            ];
+          } 
         return $this->render('Storage/AdminProducts.html.twig', [
-            'data' => $event->findAll(),
-            'categories' => $categories,
+            'data' => $data,
             "page" => $this->getLastPage($page, $session)
         ]);
     }
 
-    #[Route('/listProductos/{page?}', name: 'ListProducts')]
-    public function DetailProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
+    #[Route('/DetailProducts/{product?}', name: 'DetailProducts')]
+    public function DetailProducts(int $product, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        $event = $entityManager->getRepository(Products::class);
+        $idProduct = $entityManager->getRepository(Products::class)->find($product);
+        $data = [
+            "idProduct" => $idProduct->getIdProduct(),
+            "nameProduct" => $idProduct->getNameProduct(),
+            "price" => $idProduct->getPrice(),
+            "IdCategoria" => []
+        ];
+
+        for($i = 0; $i < count($idProduct); $i++){
+            $data["IdCategoria"][$i] = [
+                "IdCategoria" => $idProduct->getIdCategoria()[$i]->getIdCategoria(),
+                "nameCategoria" => $idProduct->getIdCategoria()[$i]->getNameCategoria()
+            ];
+          }
         return $this->render('Storage/AdminProductsDetail.html.twig', [
-            'data' => $event->findBy(),
-            "page" => $this->getLastPage($page, $session)
+            'data' => $data,
         ]);
     }
-
+/*
     #[Route('/insertProducts', name: 'insertProducts')]
     public function insertProducts(EntityManagerInterface $gestor, Request $request): Response
     {
@@ -100,13 +125,15 @@ class StorageController extends AbstractController
             ]);
         }
     }
+    */
 
     #[Route('/deleteProducts/{product}', name: 'deleteCategories')]
     public function deleteProducts(EntityManagerInterface $gestor, int $usuario): Response
     {
-         $gestor->getRepository(User::class)->delete($usuario); 
-        return $this->redirect($this->generateUrl('list'));
+         $gestor->getRepository(User::class)->deleteProducts($usuario); 
+        return $this->redirect($this->generateUrl('ListProducts'));
     }
+    /*
 
     #[Route('/updateProducts/{product}', name: 'updateCategories')]
     public function updateProducts(EntityManagerInterface $gestor, Request $request, string $product): Response

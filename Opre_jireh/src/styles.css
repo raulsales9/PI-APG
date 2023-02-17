@@ -9,13 +9,22 @@
   src: url(./assets/fonts/Josefin_Sans/static/JosefinSans-Medium.ttf) format("opentype");
 
 }
+ @font-face {
+  font-family:OpenDyslexic;
+ 
+  src: url(./assets/fonts/OpenDyslexic-Regular.otf) format("opentype");
+
+}
 *{
+  
+  /* font-family:'OpenDyslexic' ; */
     margin: 0;
 }
-h1{
+
+h1,h2,h3{
   font-family:'JosefinSans' ;
 
 }
-p{
+p,a{
   font-family:'Alice-Regular' ;
-}
+} 
