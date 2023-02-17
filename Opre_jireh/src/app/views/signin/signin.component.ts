@@ -15,7 +15,7 @@ export class SigninComponent {
  surnames : string = "";
  password : string = "";
  confirmPassword : string = "";
- phone : string = "6666666";
+ phone : string = "";
 
   constructor(public service : ApiRequestService, private router: Router ) { }
 

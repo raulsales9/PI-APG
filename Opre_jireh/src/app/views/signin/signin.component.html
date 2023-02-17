@@ -14,13 +14,20 @@
                     </ul>
                 </div>
                 <div class="row justify-content-around">
-                    <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                         <label for="email" class="signin__label">
                             Email
                         </label>
                         <input class="signin__input" type="email" name="email" [(ngModel)]="email" />
                     </div>
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+                        <label for="telefono" class="signin__label">
+                            Teléfono
+                        </label>
+                        <input class="signin__input" type="telefono" name="telefono" [(ngModel)]="phone" />
+                    </div>
 
+                </div>
                     <div class="row justify-content-around mt-2">
 
                         <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
@@ -72,7 +79,6 @@
                     </div>
                     <button type="submit" class="signin__submit mt-5">Sign in</button>
 
-                </div>
             </div>
         </form>
     </div>
