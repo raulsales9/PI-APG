@@ -63,17 +63,7 @@ class EventRepository extends ServiceEntityRepository
         $startDate = new \DateTime($data->request->get("startDate"));
         $endDate = new \DateTime($data->request->get("endDate"));
         $file = $data->files->get('imagen');
-        $type = $file->getMimeType();
-        // los .jpg hacen que el servidor explote
-        if ($type === "image/png") {
-            $extension = ".png";
-        }else if($type === "image/jpg"){
-            $extension = ".jpg";
-        }else if($type === "image/jpeg"){
-            $extension = ".jpeg";
-        }else if($type === "image/webp"){
-            $extension = ".webp";
-        }
+        $extension = "." . $file->getClientOriginalExtension();
 
 
         $file->move('assets/img/tmp/', $file . $extension);
