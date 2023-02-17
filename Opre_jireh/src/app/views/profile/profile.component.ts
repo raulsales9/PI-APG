@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+  public perfil: number = 1;
+
+  ngOnInit() {
+    this.perfil = 1;
+  }
+
+  public onClic() {
+    this.perfil = 2;
+  }
+
 }
