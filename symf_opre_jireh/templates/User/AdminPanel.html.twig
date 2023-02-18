@@ -23,11 +23,6 @@
 				</article>
 				 {% endif %} 
 			{% endfor %}
-
-{# 			<details>
-				<summary>HOLA</summary>
-				<p>Hola buenas tardes</p>
-			</details> #}
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}

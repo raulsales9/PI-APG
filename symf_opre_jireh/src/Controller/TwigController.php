@@ -120,14 +120,13 @@ class TwigController extends AbstractController
     {
         $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(User::class)->updateUser($request, $usuario); 
-            return $this->redirect($this->generateUrl("User"));
-        } else {
-            $clients = $gestor->getRepository(User::class)->find($usuario);
-            return $this->render('User/AdminUpdatePanel.html.twig', [
-                "clients" => $clients
-            ]);
+             $gestor->getRepository(User::class)->updateUser($usuario, $request); 
         }
+
+        $user = $gestor->getRepository(User::class)->find($usuario);
+        return $this->render('User/AdminUpdatePanel.html.twig', [
+            "user" => $user
+        ]);
     } 
 
   
