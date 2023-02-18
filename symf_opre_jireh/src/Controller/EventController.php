@@ -28,10 +28,12 @@ class EventController extends AbstractController
     #[Route('/detailEvent/{id}', name: 'detail_events')]
     public function detail(EntityManagerInterface $entityManager, $id) : Response {
       $event = $entityManager->getRepository(Event::class)->find($id);
+      $curDate = new \DateTime('now');
       return $this->render('/Events/detailEvent.html.twig', [
         'task' => $event,
         'cantPeople' => count($event->getIdUser()),
-        'people' => $event->getIdUser()
+        'people' => $event->getIdUser(),
+        'curDate' => $curDate
     ]);
     }
     #[Route('/tmp/{img}', name: 'image')]
