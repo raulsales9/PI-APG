@@ -13,6 +13,7 @@ export class ProfileComponent {
 
   public perfil: number = 1;
   public contents : User = contents;
+  public id : any = localStorage.getItem('id');
 
   public peticio(){
     this.service.getUser(1).subscribe(response => {
