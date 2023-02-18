@@ -21,6 +21,7 @@ export class ApiRequestService {
   register = "http://localhost:8000/api/insert/user"
   news = "http://localhost:8000/api/news"
   user = "http://localhost:8000/api/users/"
+  update = "http://localhost:8000/api/update/users/"
 
   public getLoginResponse($email : string, $password : string) : Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.login, { "email" : $email, "password" : $password })
@@ -46,5 +47,14 @@ export class ApiRequestService {
 
   public getUser(id : number) : Observable<User> {
     return this.http.get<User>(this.user + id)
+  }
+
+  public updateUser(id : number, name : string, surnames : string, email : string, phone : string) : Observable<User> {
+    return this.http.put<User>(this.update + id, {
+      "name" : name,
+      "surnames" : surnames,
+      "email" : email,
+      "phone" : phone
+    })
   }
 }
