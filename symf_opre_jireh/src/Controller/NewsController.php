@@ -35,6 +35,14 @@ class NewsController extends AbstractController
       return $this->render('news/insertNews.html.twig', []);
     }
 
+    #[Route('/deleteNews/{id}', name: 'delete_news')]
+    public function deleteNews($id, NoticiasRepository $repository, EntityManagerInterface $doctrine): Response
+    {
+      $news = $doctrine->getRepository(Noticias::class)->find($id);
+      $repository->remove($news, true);
+      return $this->redirectToRoute('list_news');
+    }
+
     private function getLastPage($page, $session): int
     {
       if ($page != null) {
