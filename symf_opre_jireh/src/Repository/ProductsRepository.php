@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Categorias;
 use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -16,8 +17,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductsRepository extends ServiceEntityRepository
 {
+    private $doctrine;
     public function __construct(ManagerRegistry $registry)
     {
+        $this->doctrine = $registry;
         parent::__construct($registry, Products::class);
     }
 
@@ -58,13 +61,15 @@ class ProductsRepository extends ServiceEntityRepository
         $this->save($result, true);
     } 
            
-    public function insertProducts(int $id, array $data): void
+    public function insertProducts( $idCatgeoria, array $container): void
     {
         $result = new Products;
+
         $result
-        ->setNameProduct($data["nameProduct"])
-        ->setIdProduct($data["idProduct"])
-        ->setPrice($data["price"]);
+        ->setNameProduct($container["nameProduct"])
+        ->setIdProduct($container["idProduct"])
+        ->setPrice($container["price"])
+        ->setIdCategoria($container["idCategoria"]);
         $this->save($result, true);
     } 
 //    /**

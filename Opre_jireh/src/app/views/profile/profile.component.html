@@ -53,13 +53,13 @@
                             <label for="nombre">NOMBRE:</label>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mt-2 ">
-                            <input type="text" class="form-control" id="nombre" name="nombre">
+                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ contents.name }}">
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6 mt-2 ">
                             <label for="apellidos">APELLIDOS:</label>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 mt-2 ">
-                            <input type="text" class="form-control" id="apellidos" name="apellidos">
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{ contents.surname }}">
                         </div>
                     </div>
                     <div class="row justify-content-around mt-3">
@@ -67,18 +67,18 @@
                             <label for="telefono">TELÉFONO:</label>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6">
-                            <input type="text" class="form-control" id="telefono" name="telefono">
+                            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ contents.phone }}">
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 col-6">
                             <label for="email">EMAIL:</label>
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6">
-                            <input type="text" class="form-control" id="email" name="email">
+                            <input type="text" class="form-control" id="email" name="email" value="{{ contents.Email }}">
                         </div>
                     </div>
                     <div class="row mt-5 justify-content-center">
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                            <button type="submit" class="btn btn-primary">GUARDAR</button>
+                            <button type="submit" (click)="onSubmit()" class="btn btn-primary">GUARDAR</button>
                         </div>
                     </div>
                 </form>
@@ -101,8 +101,8 @@
                     </div>
                 </div>
                 <div class="row justify-content-start mb-5">
-                    <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6 col-6 evento">
-                        <p>{{ contents.events }}</p> <!-- Así va la variable que traurà el nom del evento -->
+                    <div *ngFor="let event of contents.events" style="margin-right: 2em;" class="col-xl-3 col-lg-2 col-md-6 col-sm-6 col-6 evento">
+                        <p>{{ event.name }}</p>
                     </div>
                 </div>
             </div>

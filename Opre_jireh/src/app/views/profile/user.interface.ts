@@ -13,3 +13,6 @@ export const contents: User = {
     phone:   "",
     events:  [],
 };
+
+
+

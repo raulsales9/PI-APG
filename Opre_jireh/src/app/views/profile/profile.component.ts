@@ -33,4 +33,11 @@ export class ProfileComponent {
     this.perfil = 2;
   }
 
+  public onSubmit(){
+    this.service.updateUser(1, this.contents.name, this.contents.surname, this.contents.Email, this.contents.phone).subscribe(response => {});
+    this.perfil = 1;
+  }
+
+  
+
 }
