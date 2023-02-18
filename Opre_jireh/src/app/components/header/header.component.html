@@ -68,10 +68,22 @@
                                 </a>
                             </li>
                         </div>
-
                         <div *ngIf="perfil==2">
                             <li class="nav-item  ms-3 mb-3 mt-3">
                                 <a class="nav-link active" [ngStyle]="{'color':'#e10000'}" [routerLink]="['login']">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <title>{{ userName }}</title>
+                                        <path
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </div>
+
+                        <div *ngIf="perfil==3">
+                            <li class="nav-item  ms-3 mb-3 mt-3">
+                                <a class="nav-link active" [ngStyle]="{'color':'#e10000'}" [routerLink]="['perfil']">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                         class="bi bi-person-fill" viewBox="0 0 16 16">
                                         <title>{{ userName }}</title>
