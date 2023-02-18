@@ -16,8 +16,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class NoticiasRepository extends ServiceEntityRepository
 {
+    private $doctrine;
     public function __construct(ManagerRegistry $registry)
     {
+        $this->doctrine = $registry;
         parent::__construct($registry, Noticias::class);
     }
 
@@ -37,6 +39,26 @@ class NoticiasRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function insert($request): void
+    {
+
+        $file = $request->files->get('imagen');
+        $extension = "." . $file->getClientOriginalExtension();
+
+
+        $file->move('assets/img/tmp/', $file . $extension);
+
+        $noticia = new Noticias;
+
+        $noticia
+                ->setTitulo($request->request->get('titulo'))
+                ->setTexto($request->request->get('texto'))
+                ->setDate(new \DateTime('now'))
+                ->setImagen($file . $extension);
+        $this->doctrine->getManager()->persist($noticia);
+        $this->doctrine->getManager()->flush();
     }
 
 //    /**
