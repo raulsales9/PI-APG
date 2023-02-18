@@ -14,9 +14,7 @@ export class ProfileComponent {
   public perfil: number = 1;
   public contents : User = contents;
 
-
-  ngOnInit() {
-    this.perfil = 1;
+  public peticio(){
     this.service.getUser(1).subscribe(response => {
       this.contents = {
         name: response.name,
@@ -29,6 +27,11 @@ export class ProfileComponent {
     });
   }
 
+  ngOnInit() {
+    this.perfil = 1;
+    this.peticio();
+  }
+
   public onClic() {
     this.perfil = 2;
   }
@@ -36,6 +39,7 @@ export class ProfileComponent {
   public onSubmit(){
     this.service.updateUser(1, this.contents.name, this.contents.surname, this.contents.Email, this.contents.phone).subscribe(response => {});
     this.perfil = 1;
+    this.peticio();
   }
 
   
