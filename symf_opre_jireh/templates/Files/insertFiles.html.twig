@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
   <div class="container">
+  	<a class="btn btn-primary" href="/twig/detailUser/{{user.getId()}}">⇦</a>
     <h1>Nuevo fichero para <strong> {{ user.getName() }} {{ user.getSurnames() }} </strong></h1>
     <div class="contenedor mb-3">
 
