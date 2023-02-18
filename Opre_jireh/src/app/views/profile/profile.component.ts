@@ -38,4 +38,6 @@ export class ProfileComponent {
     this.perfil = 1;
   }
 
+  
+
 }
