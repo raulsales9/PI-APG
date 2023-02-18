@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { contents } from './home.interface';
 import { ApiRequestService } from "../../services/api-request.service";
+import { News } from './home.interface';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,13 +10,13 @@ import { ApiRequestService } from "../../services/api-request.service";
 })
 export class HomeComponent {
   public number: number = 1;
-  public contents = contents;
+  public contents : News[] = contents;
   public counter: number = 1;
 
   constructor (public service : ApiRequestService){}
   ngOnInit(){
     this.service.getNews().subscribe(response=>{
-      console.log(response);
+
       for (let i = 0; i < this.contents.length; i++) {
 
         this.contents[i] = {
@@ -23,7 +24,6 @@ export class HomeComponent {
           Titulo: response[i].Titulo,
           texto: response[i].texto
         };
-        console.log(contents[i]);
         
       }
 
