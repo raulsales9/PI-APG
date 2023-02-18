@@ -5,18 +5,17 @@
     <div class="container">
 	<a class="btn btn-primary" href="/twig/listEvent">⇦</a>
 	<h1>Eventos <a class="btn btn-success" href="/twig/insertEvent">Crear</a></h1> 
-               {% for task in data %}
+              
 					<article class="eventList ">
 					
-					<span class="text-muted">{{ task.getIdProduct() }}</span> - 
-					<span class="text-muted me-3">{{ task["nameProduct"] }}</span>
+					<span class="text-muted">{{ data.getIdProduct() }}</span> - 
+					<span class="text-muted me-3">{{ data.getNameProduct() }}</span>
 					<div class="float-end">
-					<a class="btn btn-warning" href="/twig/updateProducts/{{task["idProduct"]}}">Editar Producto</a>
-					<a class="btn btn-danger" href="/twig/deleteProducts/{{task["idProduct"]}}">Borrar Producto</a>
+					<a class="btn btn-warning" href="/twig/updateProducts/{{data.getIdProduct()}}">Editar Producto</a>
+					<a class="btn btn-danger" href="/twig/deleteProducts/{{data.getIdProduct()}}">Borrar Producto</a>
 					</detail>
 					</article>
-				{% endfor %}
-             
+
       </div>
     </div>
   </section>

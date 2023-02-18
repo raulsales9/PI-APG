@@ -1,29 +1,41 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<section>
-	<div id="content">
-		<div id="form_container">
-			<form>
-					<h2>Edit Client {{data.getNameProduct()}}</h2>
+<section id="content">
+	<div class="container">
+			<form >
+				<fieldset class="fieldset">
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+						<h2>Edit Client {{data.getNameProduct()}}</h2>
+					</div>
 				</div>
-				<label for="idProduct">Id Producto</label>
-				<div>
-					<input name="idProduct" type="number" size="5" value="{{data.getIdProduct()}}"/>
-				</div>
-
-				<label for="nameProduct">Nombre del producto</label>
-				<div>
-					<input name="nameProduct" type="text" maxlength="45" size="45" value="{{data.getNameProduct()}}"/>
-				</div>
-
-				<label for="price">Precio del producto</label>
-				<div>
-					<input name="price" type="text" maxlength="40" size="40" value="{{data.getPrice()}}"/>
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+						<label for="idProduct">Id Producto</label>
+						<input name="idProduct" type="number" size="5" value="{{data.getIdProduct()}}"/>
+					</div>
 				</div>
 
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+						<label for="nameProduct">Nombre del producto</label>
+						<input name="nameProduct" type="text" maxlength="45" size="45" value="{{data.getNameProduct()}}"/>
+					</div>
+				</div>
 
-				<input type="submit" name="submit" value="Update"/>
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+						<label for="price">Precio del producto</label>
+						<input name="price" type="text" maxlength="40" size="40" value="{{data.getPrice()}}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+						<input type="submit" name="submit" value="Update"/>
+					</div>
+				</div>
+				<fieldset class="fieldset">
 		</form>
 	</div>
 </section>
