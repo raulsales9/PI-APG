@@ -6,6 +6,9 @@ import { LoginResponse } from '../models/login-api';
 import { Response } from '../models/events';
 import { RegisterResponse } from '../models/register';
 import { News } from '../models/news';
+import { User } from '../models/user';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +20,7 @@ export class ApiRequestService {
   events = "http://localhost:8000/api/events"
   register = "http://localhost:8000/api/insert/user"
   news = "http://localhost:8000/api/news"
+  user = "http://localhost:8000/api/users/"
 
   public getLoginResponse($email : string, $password : string) : Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.login, { "email" : $email, "password" : $password })
@@ -38,5 +42,9 @@ export class ApiRequestService {
       "surnames" : surnames,
       "password" : password
     });
+  }
+
+  public getUser(id : number) : Observable<User> {
+    return this.http.get<User>(this.user + id)
   }
 }
