@@ -3,7 +3,8 @@
        
   <section id="content">
     <div class="container">
-	<h1>FSAEHUUHIEWFUEWFUHIIHU</h1>
+	<a class="btn btn-primary" href="/">⇦</a>
+	<h1>Noticias <a class="btn btn-success" href="/twig/insertNews">Crear</a></h1> 
                 <div >
                  {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
@@ -12,12 +13,18 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-					<p>
-						{{ task.getId() }}, {{task.getName() }} , {{task.getPlace()}}, {{task.getEndDate()|date('d/m/Y') }},  {{task.getStartDate()|date('d/m/Y') }} ,  {{task.getDescription()}} ,
-					</p>
+					<article class="eventList mb-3">
+						 <span class="fs-3 me-3">{{ task.getTitulo() }}</span>	
+						<span class="text-muted">{{ task.getDate()|date('d/m/Y') }}</span> 
+						<div class="float-end">
+						<a class="btn btn-primary" href="/twig/detailsNews/{{task.getId()}}">Detalles</a>
+						<a class="btn btn-warning" href="/twig/updateNews/{{task.getId()}}">Editar Noticia</a>
+						<a class="btn btn-danger" href="/twig/deleteNews/{{task.getId()}}">Borrar Noticia</a>
+						</div>
+					</article>
+
 				 {% endif %} 
 			{% endfor %}
-		</table>
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}

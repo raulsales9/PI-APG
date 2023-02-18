@@ -41,7 +41,7 @@ class StorageController extends AbstractController
              $gestor->getRepository(Categorias::class)->insertCategorias($request); 
             return $this->redirect($this->generateUrl("listCategories"));
         } else {
-            return $this->render('User/AdminInsertPanel.html.twig', [
+            return $this->render('User/AdminInsertCategories.html.twig', [
               
             ]);
         }
@@ -54,20 +54,21 @@ class StorageController extends AbstractController
         return $this->redirect($this->generateUrl('app_listCategories'));
     }
 
-    #[Route('/updateCategories/{categories}', name: 'updateCategories')]
-    public function update(EntityManagerInterface $gestor, Request $request, string $categorias): Response
+    #[Route('/updateCategories/{categoria}', name: 'updateCategories')]
+    public function updateCategoria(EntityManagerInterface $gestor, Request $request, string $categoria): Response
     {
     $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(Categorias::class)->updateCategorias($request, $categorias); 
+             $gestor->getRepository(Categorias::class)->updateCategoria($request, $categoria); 
             return $this->redirect($this->generateUrl("listCategories"));
         } else {
-            $categoria = $gestor->getRepository(Categorias::class)->find($categorias);
+            $data = $gestor->getRepository(Categorias::class)->find($categoria);
             return $this->render('Storage/AdminUpdateCategories.html.twig', [
-                "clients" => $categoria,
+                'data' => $data
             ]);
         }
-    } 
+    }  
+
 
     
     //Este lista los products con esa categoria
@@ -90,38 +91,27 @@ class StorageController extends AbstractController
         ]);
     }
 
-   /*  #[Route('/DetailProducts/{product?}', name: 'DetailProducts')]
+    #[Route('/DetailProducts/{product?}', name: 'DetailProducts')]
     public function DetailProducts(int $product, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
-        $idProduct = $entityManager->getRepository(Products::class)->find($product);
-        $data = [
-            "idProduct" => $idProduct->getIdProduct(),
-            "nameProduct" => $idProduct->getNameProduct(),
-            "price" => $idProduct->getPrice(),
-            "IdCategoria" => [
-                "id" => $idProduct->getIdCategoria()->getIdCategoria(),
-                "name" => $idProduct->getIdCategoria()->getNameCategoria()
-            ]
-        ];
-
-
+        $idProduct = $entityManager->getRepository(Products::class);
+        $data= $idProduct->find($product);
         return $this->render('Storage/AdminDetailProducts.html.twig', [
-            'data' => $data,
+            'data'=>$data
         ]);
-    } */
+    } 
 
     #[Route('/insertProducts', name: 'insertProducts')]
-    public function insertProducts(EntityManagerInterface $gestor, Request $request): Response
+    public function insertProducts(EntityManagerInterface $gestor, Request $request, int $id): Response
     {
         $container = $request->request->all();
+        $idCategoria = $gestor->getRepository(Categorias::class)->find($id);
         if (count($container) > 1) {
-             $gestor->getRepository(Products::class)->insertProducts($request); 
-            return $this->redirect($this->generateUrl("list"));
-        } else {
-            return $this->render('Storage/AdminInsertProducts.html.twig', [
-                
-            ]);
+            $gestor->getRepository(Products::class)->insertProducts($container, $idCategoria); 
+            return $this->redirectToRoute('app_ListProducts', []);
         }
+            return $this->render('Storage/AdminInsertProducts.html.twig', [
+            ]);
     }
     
 

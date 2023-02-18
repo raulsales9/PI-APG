@@ -4,31 +4,49 @@
 <section id="content">
 	<div class="container">
 		<div id="form_container">
-			<form method="post" action="">
+			<form method="post" action="" class="bg-light">
 				<div>
 					<h2>Nuevo Producto</h2>
 				</div>
-				<label for="idProduct">Id Producto</label>
-				<div>
-					<input name="idProduct" type="number" size="5" value=""/>
+				
+				<div class="row mt-5 mb-3">
+					<label for="idProduct" class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col 12 text-center">Id Producto</label>
+					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+						<input name="idProduct" type="number" size="5" value="" class="form-control "/>
+					</div>
 				</div>
 
-				<label for="nameProduct">Nombre del producto</label>
-				<div>
-					<input name="nameProduct" type="text" maxlength="45" size="45" value=""/>
+				
+				<div class="row mt-5 mb-3">
+					<label for="nameProduct" class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col 12 text-center">Nombre del producto</label>
+					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+						<input name="nameProduct" type="text" maxlength="45" size="45" value="" class="form-control"/>
+					</div>
+					
 				</div>
 
-				<label for="price">Precio del producto</label>
-				<div>
-					<input name="price" type="text" maxlength="40" size="40" value=""/>
+				<div class="row mt-5 mb-3">
+					
+					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+						<label for="price" class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 form-label">Precio del producto</label>
+						<input name="price" type="text" maxlength="40" size="40" value="" class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12"/>
+					</div>
 				</div>
+				<div class="row">
+					<label for="IdCategoria" class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 form-label">Id de Categoria que pertenece</label>
+					<div class="col-xl-6 col-lg-6 col-md-10 col-sm-12 col-12">
+						<input name="idCategoria" class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 ">
 
-				<label for="IdCategoria">Id de Categoria que pertenece</label>
-				<div>
-					<input name="IdCategoria" type="text" maxlength="30" size="30" value=""/>
+						</input>
+					</div>
 				</div>
-
-				<input type="submit" name="submit" value="Insert"/>
+			 	
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+						<input type="submit" name="submit" class="btn btn-primary submit"  value="Insert"/>		
+					</div>
+				</div>
+				
 		</form>
 	</div>
 </section>
