@@ -130,7 +130,8 @@ class ApiController extends AbstractController
                 $data = [
                     "email" => $user->getEmail(),
                     "user" => $user->getName(),
-                    "rol" => ($user->getRoles() === ["USER"]) ? "USER" : "ADMIN"
+                    "rol" => ($user->getRoles() === ["USER"]) ? "USER" : "ADMIN",
+                    "id" => $user->getId()
                 ];
             } else {
                 $data = "";

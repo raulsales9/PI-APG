@@ -7,7 +7,7 @@
 	<h1>Eventos <a class="btn btn-success" href="/twig/insertEvent">Crear</a></h1> 
                 <div >
 					<article class="eventList ">
-					<div class="greenDot me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
+					<div class="{% if (curDate < task.getEndDate()) and (curDate > task.getStartDate()) %} greenDot {% elseif curDate < task.getStartDate() %} yellowDot {% elseif curDate > task.getEndDate() %} redDot {% endif %} me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
 					<span class="text-muted">{{ task.getStartDate()|date('d/m/Y') }}</span> - 
 					<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
 					<span class="text-muted me-3">{{ task.getPlace() }}</span>

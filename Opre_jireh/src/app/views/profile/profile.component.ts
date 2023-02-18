@@ -9,15 +9,14 @@ import { User, contents } from './user.interface';
 })
 export class ProfileComponent {
 
-  constructor (public service : ApiRequestService) { }
+  constructor(public service: ApiRequestService) { }
 
   public perfil: number = 1;
-  public contents : User = contents;
+  public contents: User = contents;
+  public id: any = localStorage.getItem('id');
 
-
-  ngOnInit() {
-    this.perfil = 1;
-    this.service.getUser(1).subscribe(response => {
+  public peticio() {
+    this.service.getUser(this.id).subscribe(response => {
       this.contents = {
         name: response.name,
         surname: response.surname,
@@ -27,17 +26,24 @@ export class ProfileComponent {
       };
       console.log(this.contents);
     });
+
+  }
+
+  ngOnInit() {
+    this.perfil = 1;
+    this.peticio();
   }
 
   public onClic() {
     this.perfil = 2;
   }
 
-  public onSubmit(){
-    this.service.updateUser(1, this.contents.name, this.contents.surname, this.contents.Email, this.contents.phone).subscribe(response => {});
+  public onSubmit() {
+    this.service.updateUser(this.id, this.contents.name, this.contents.surname, this.contents.Email, this.contents.phone).subscribe(response => { });
     this.perfil = 1;
+    this.peticio();
   }
 
-  
+
 
 }
