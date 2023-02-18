@@ -11,6 +11,7 @@ export interface LoginResponse {
     email: string;
     user:  string;
     rol:   string;
+    id:    string;
 }
 
 // Converts JSON strings to/from your types
