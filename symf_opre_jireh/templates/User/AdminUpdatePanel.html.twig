@@ -1,57 +1,44 @@
 {% extends 'layout.html.twig' %}
+
 {% block content %}
-<section id="content">
+	<section id="content">	
 	<div class="container">
-		<div id="form_container">
-			<form method="post" action="">
-				<div>
-					<h2>Nuevo Usuario</h2>
-				</div>
-				<label for="id">Id Usuario</label>
-				<div>
-					<input name="id" type="number" size="5" value=""/>
-				</div>
-
-				<label for="email">Email Usuario</label>
-				<div>
-					<input name="email" type="text" maxlength="45" size="45" value=""/>
+	<a class="btn btn-primary" href="/twig/listUser/">⇦</a>
+		<h2>Actualizar usuario {{user.getName()}} {{user.getSurNames()}}</h2>
+		<div class="eventList ">
+			<form method="post" action="" class="row">
+				<label for="email" class="form-label">Email del usuario</label>
+				<div class="col-lg-8">
+					<input name="email" type="text" class="form-control" value="{{user.getEmail()}}"/>
 				</div>
 
-				<label for="roles">Roles Usuario</label>
-				 <select name="roles" id="roles">
-        			<option value="user">ADMIN</option>
-        			<option value="admin">USER</option>
-      			</select>
-      			<input type="submit" value="Enviar" />
-
-				<label for="files">Archivos Usuario</label>
-				<div>
-					<input name="files" type="text" maxlength="30" size="30" value=""/>
+				<label for="name" class="form-label">Nombre del usuario </label>
+				<div class="col-lg-8">
+					<input name="name" type="text" class="form-control" value="{{user.getName()}}"/>
 				</div>
 
-				<label for="events">Eventos Usuario </label>
-				<div>
-					<input name="events" type="text" maxlength="2" size="2" value=""/>
+				<label for="surnames" class="form-label">Apellidos usuario</label>
+				<div class="col-lg-8">
+					<input name="surnames" type="text" class="form-control" value="{{user.getSurNames()}}"/>
 				</div>
 
-				<label for="phone">Telefono Usuario</label>
-				<div>
-					<input name="phone" type="text" maxlength="9" size="9" value=""/>
+				<label for="roles" class="form-label">Rol del usuario</label>
+				<div class="col-lg-8">
+					<select class="form-select" aria-label="Default select example" name="roles">
+						<option value='["USER"]' {% if user.getRoles()[0] == "USER" %} selected {% endif %} >Usuario</option>
+						<option value='["ADMIN"]'{% if user.getRoles()[0] == "ADMIN" %} selected {% endif %}>Administrador</option>
+					</select>
 				</div>
 
-				<label for="name">Nombre Usuario : </label>
-				<div>
-					<input name="name" type="text"  value=""/>
+				<label for="phone" class="form-label">Telefono del usuario</label>
+				<div class="col-lg-8 mb-3">
+					<input name="phone" type="text" class="form-control" value="{{user.getPhone()}}"/>
 				</div>
 
-				<label for="surnames">Apellidos Usuario :</label>
-				<div>
-					<input name="surnames" type="text" value=""/>
+				<div class="col-lg-8 mb-3">
+					<input type="submit" class="btn btn-primary mb-3 col-lg-3" name="submit" value="Actualizar usuario"/>
 				</div>
-
-				<input type="submit" name="submit" value="Insert"/>
 		</form>
-	</div>
-</section>
+	</div>	
+	</section>
 {% endblock %}
-

@@ -1,7 +1,8 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
     <div class="container">
-	<h1>Usuarios</h1>
+	<a class="btn btn-primary" href="/">⇦</a>
+	<h1>Usuarios <a class="btn btn-success" href="/twig/insertUser">Crear</a></h1>
                 <div >
                  {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
@@ -22,11 +23,6 @@
 				</article>
 				 {% endif %} 
 			{% endfor %}
-
-{# 			<details>
-				<summary>HOLA</summary>
-				<p>Hola buenas tardes</p>
-			</details> #}
 		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}

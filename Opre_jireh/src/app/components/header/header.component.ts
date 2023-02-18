@@ -8,11 +8,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent {
 
+  
+
   public home: number = 1;
   public contacto: number = 1;
   public perfil: number = 1;
   public eventos: number=1;
   public quienessomos:number=1;
+
+  public Dixleoff:number=2;
+  public Dixleon:number=1;
 
   public userName : string | null = "Iniciar sesión";
 
@@ -64,5 +69,13 @@ export class HeaderComponent {
     this.eventos = 1;
     this.quienessomos = 2;
 
+  }
+  public onDixleon():void{
+    this.Dixleoff = 1;
+    this.Dixleon = 2;
+  }
+  public onDixleoff():void{
+    this.Dixleoff = 2;
+    this.Dixleon = 1;
   }
 }

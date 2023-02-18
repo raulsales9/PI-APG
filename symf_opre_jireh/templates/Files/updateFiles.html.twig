@@ -1,19 +1,20 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
   <div class="container">
+  	<a class="btn btn-primary" href="/twig/detailUser/{{user.getId()}}">⇦</a>
     <h1>Actualizar ficheros para <strong> {{ user.getName() }} {{ user.getSurnames() }} </strong></h1>
     <div class="contenedor mb-3">
 
       <form method="post" action="" class="row ms-3">
 
       {% for file in userFiles %}
-      <div class="mb-3 col-lg-4">
+      <div class="mb-3 col-lg-4 mt-3">
 						<input class="form-control" name="name{{file.getIdFile()}}" type="text" value="{{file.getName()}}">
 			</div>
-      <div class="mb-3 col-lg-4">
+      <div class="mb-3 col-lg-4 mt-3">
 						<input class="form-control" name="type{{file.getIdFile()}}" type="text" value="{{file.getType()}}">
 			</div>
-      <div class="mb-3 col-lg-4">
+      <div class="mb-3 col-lg-4 mt-3">
         <input class="form-check-input" type="checkbox" id="isSubmited" name="isSubmited{{file.getIdFile()}}"{% if file.isIsSubmited() == true %} checked {% endif %}>
          <label class="form-check-label" for="isSubmited">El fichero ha sido entregado por el usuario?</label>
       </div>

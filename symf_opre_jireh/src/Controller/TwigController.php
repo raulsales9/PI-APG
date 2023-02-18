@@ -79,17 +79,11 @@ class TwigController extends AbstractController
         $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(User::class)->insertUser($request); 
-            return $this->redirect($this->generateUrl("User"));
-        } else {
-            /* $clients = $gestor->getRepository(Clientes::class)->findAll(); */
-           /*  $emps = $gestor->getRepository(Empresa::class)->findAll(); */
-            return $this->render('User/AdminInsertPanel.html.twig', [
-                /* "clients" => $clients, */
-                /* "emps" => $emps, */
-            ]);
         }
+        return $this->render('User/AdminInsertPanel.html.twig', []);
+
     }
-    #[Route('/insertFiles/{idUser}', name: 'insertUser')]
+    #[Route('/insertFiles/{idUser}', name: 'insertFiles')]
     public function insertFile(int $idUser, EntityManagerInterface $doctrine, Request $request, FilesRepository $repository): Response{
         $user = $doctrine->getRepository(User::class)->find($idUser);
 
@@ -100,7 +94,7 @@ class TwigController extends AbstractController
             'user' => $user
         ]);
     }
-    #[Route('/updateFiles/{idUser}', name: 'insertUser')]
+    #[Route('/updateFiles/{idUser}', name: 'updateFiles')]
     public function updateFiles(int $idUser, EntityManagerInterface $doctrine, Request $request, FilesRepository $repository): Response{
         $user = $doctrine->getRepository(User::class)->find($idUser);
         $userFiles = $user->getFiles();
@@ -116,8 +110,9 @@ class TwigController extends AbstractController
     #[Route('/deleteUser/{usuario}', name: 'deleteUser')]
     public function delete(EntityManagerInterface $gestor, int $usuario): Response
     {
-         $gestor->getRepository(User::class)->delete($usuario); 
-        return $this->redirect($this->generateUrl('User'));
+        $user = $gestor->getRepository(User::class)->find($usuario);
+        $gestor->getRepository(User::class)->remove($user, true); 
+        return $this->redirect('/twig/listUser');
     }
 
     #[Route('/updateUser/{usuario}', name: 'updateUser')]
@@ -125,14 +120,13 @@ class TwigController extends AbstractController
     {
         $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(User::class)->updateUser($request, $usuario); 
-            return $this->redirect($this->generateUrl("User"));
-        } else {
-            $clients = $gestor->getRepository(User::class)->find($usuario);
-            return $this->render('User/AdminUpdatePanel.html.twig', [
-                "clients" => $clients
-            ]);
+             $gestor->getRepository(User::class)->updateUser($usuario, $request); 
         }
+
+        $user = $gestor->getRepository(User::class)->find($usuario);
+        return $this->render('User/AdminUpdatePanel.html.twig', [
+            "user" => $user
+        ]);
     } 
 
   

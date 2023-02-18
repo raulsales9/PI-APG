@@ -83,34 +83,33 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($User, true);
     }
 
-    public function insertUser($usuario) : void {
+    public function insertUser($request) : void {
 
         $User = new User;
-        $roles = $usuario["roles"] ? '["USER"]' : '["ADMIN"]';
-        $hashedPassword = $this->encrypt($User, $usuario["password"]);
+        $roles = ($request->request->get("roles") === '["USER"]') ? ["USER"] : ["ADMIN"];
+        $hashedPassword = $this->encrypt($User, $request->request->get("password"));
         $User
-            ->setName($usuario["name"])
-            ->setEmail($usuario["email"])
+            ->setName($request->request->get("name"))
+            ->setEmail($request->request->get("email"))
             ->setPassword($hashedPassword)
-            ->setPhone($usuario["phone"])
-            ->setSurnames($usuario["surnames"])
-            ->setRoles($roles);
+            ->setPhone($request->request->get("phone"))
+            ->setSurnames($request->request->get("surnames"))
+            ->setRoles($roles); 
 
         $this->save($User, true);
     }
 
     
-    public function updateUser(int $id, array $data): void
+    public function updateUser(int $id, $request): void
     {
         $result = $this->find($id);
-        $hashedPassword = $this->encrypt($result, $data["password"]);;
+        $roles = ($request->request->get("roles") === '["USER"]') ? ["USER"] : ["ADMIN"];
         $result
-        ->setName($data["name"])
-        ->setEmail($data["email"])
-        ->setPassword($hashedPassword)
-        ->setPhone($data["phone"])
-        ->setSurnames($data["surnames"])
-        ->setRoles($data["user"]);
+        ->setName($request->request->get('name'))
+        ->setEmail($request->request->get('email'))
+        ->setPhone($request->request->get('phone'))
+        ->setSurnames($request->request->get('surnames'))
+        ->setRoles($roles);
         $this->save($result, true);
     } 
 
