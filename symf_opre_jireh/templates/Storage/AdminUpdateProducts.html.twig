@@ -1,6 +1,10 @@
-<div id="content">
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<section>
+	<div id="content">
 		<div id="form_container">
-			<div>
+			<form>
 					<h2>Edit Client {{data.getNameProduct()}}</h2>
 				</div>
 				<label for="idProduct">Id Producto</label>
@@ -22,3 +26,5 @@
 				<input type="submit" name="submit" value="Update"/>
 		</form>
 	</div>
+</section>
+{% endblock %}
