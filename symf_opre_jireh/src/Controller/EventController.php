@@ -17,9 +17,11 @@ class EventController extends AbstractController
     public function listEvents(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         $event = $entityManager->getRepository(Event::class);
+        $curDate = new \DateTime('now');
         return $this->render('/Events/AdminEvents.html.twig', [
             'data' => $event->findAll(),
-            "page" => $this->getLastPage($page, $session)
+            "page" => $this->getLastPage($page, $session),
+            'curDate' => $curDate
         ]);
     }
 
