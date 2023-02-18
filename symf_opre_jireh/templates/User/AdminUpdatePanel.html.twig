@@ -1,4 +1,7 @@
-<div id="content">
+{% extends 'layout.html.twig' %}
+{% block content %}
+<section id="content">
+	<div class="container">
 		<div id="form_container">
 			<form method="post" action="">
 				<div>
@@ -49,3 +52,6 @@
 				<input type="submit" name="submit" value="Insert"/>
 		</form>
 	</div>
+</section>
+{% endblock %}
+

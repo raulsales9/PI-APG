@@ -45,6 +45,26 @@ class CategoriasRepository extends ServiceEntityRepository
         //la funcion remove es creada al modelar, y esta ejerce el borrado
         $this->remove($product, true);
     }
+
+    public function insertCategorias($usuario) : void {
+
+        $User = new Categorias;
+        $User
+            ->setIdCategoria($usuario["idCategoria"])
+            ->setNameCategoria($usuario["nameCategoria"]);
+        $this->save($User, true);
+    }
+
+    
+    public function updateUser(int $id, array $data): void
+    {
+        $result = $this->find($id);
+        $result
+        ->setIdCategoria($data["idCategoria"])
+        ->setNameCategoria($data["nameCategoria"]);
+        $this->save($result, true);
+    } 
+
 //    /**
 //     * @return Categorias[] Returns an array of Categorias objects
 //     */

@@ -33,33 +33,33 @@ class StorageController extends AbstractController
         ]);
     }
     
-/*     #[Route('/insertCategories', name: 'insertCategories')]
+     #[Route('/insertCategories', name: 'insertCategories')]
     public function insert(EntityManagerInterface $gestor, Request $request): Response
     {
         $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(Categorias::class)->insert($request); 
+             $gestor->getRepository(Categorias::class)->insertCategorias($request); 
             return $this->redirect($this->generateUrl("listCategories"));
         } else {
-            return $this->render('User/AdminPanelInsert.html.twig', [
+            return $this->render('User/AdminInsertPanel.html.twig', [
               
             ]);
         }
     }
-*/
+
     #[Route('/deleteCategories/{categoria}', name: 'deleteCategoria')]
     public function delete(EntityManagerInterface $gestor, string $categoria): Response
     {
-         $gestor->getRepository(Categorias::class)->deleteCategoria($categoria); 
+         $gestor->getRepository(Categorias::class)->deleteCategorias($categoria); 
         return $this->redirect($this->generateUrl('app_listCategories'));
     }
-/*
+
     #[Route('/updateCategories/{categories}', name: 'updateCategories')]
     public function update(EntityManagerInterface $gestor, Request $request, string $categorias): Response
     {
     $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(Categorias::class)->update($request, $categorias); 
+             $gestor->getRepository(Categorias::class)->updateCategorias($request, $categorias); 
             return $this->redirect($this->generateUrl("listCategories"));
         } else {
             $categoria = $gestor->getRepository(Categorias::class)->find($categorias);
@@ -68,7 +68,7 @@ class StorageController extends AbstractController
             ]);
         }
     } 
-*/
+
     
     //Este lista los products con esa categoria
     #[Route('/listProducts/{categoria}', name: 'ListProducts')]
