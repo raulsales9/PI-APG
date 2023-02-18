@@ -43,6 +43,30 @@ class NewsController extends AbstractController
       return $this->redirectToRoute('list_news');
     }
 
+    #[Route('/detailsNews/{id}', name: 'details_news')]
+    public function detailsNews($id, EntityManagerInterface $doctrine): Response
+    {
+      $news = $doctrine->getRepository(Noticias::class)->find($id);
+      return $this->render('news/detailsNews.html.twig', [
+        'task' => $news
+      ]);
+    }
+
+    #[Route('/updateNews/{id}', name: 'update_news')]
+    public function updateNews($id, Request $request, NoticiasRepository $repository, EntityManagerInterface $doctrine): Response
+    {
+      $news = $doctrine->getRepository(Noticias::class)->find($id);
+
+      if (count($request->request->all())){
+
+        $repository->update($request, $id);
+      }
+
+      return $this->render('news/updateNews.html.twig', [
+        'task' => $news
+      ]);
+    }
+
     private function getLastPage($page, $session): int
     {
       if ($page != null) {

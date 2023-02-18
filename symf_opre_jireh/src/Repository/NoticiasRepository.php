@@ -61,6 +61,17 @@ class NoticiasRepository extends ServiceEntityRepository
         $this->doctrine->getManager()->flush();
     }
 
+    public function update($request, $id)
+    {
+        $noticia = $this->find($id);
+        $noticia
+                ->setTitulo($request->request->get('titulo'))
+                ->setTexto($request->request->get('texto'));
+                
+        $this->doctrine->getManager()->persist($noticia);
+        $this->doctrine->getManager()->flush();
+    }
+
 //    /**
 //     * @return Noticias[] Returns an array of Noticias objects
 //     */
