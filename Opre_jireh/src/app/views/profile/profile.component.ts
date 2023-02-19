@@ -56,6 +56,8 @@ export class ProfileComponent {
     this.peticio();
   }
 
+  public cerrarSesion() {}
+
 
 
 }
