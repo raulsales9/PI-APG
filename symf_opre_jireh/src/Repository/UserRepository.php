@@ -48,10 +48,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         }
     }
 
-    public function delete(int $id): void
+    public function delete(User $usuario, $filesRepository): void
     {
-        $usuario = $this->find($id);
-        //la funcion remove es creada al modelar, y esta ejerce el borrado
+        $files = $usuario->getFiles();
+        $countFiles = count($files);
+            for ($i=0; $i < $countFiles; $i++) {
+                
+                $filesRepository->remove($files[$i], true);
+            }
         $this->remove($usuario, true);
     }
     /**
@@ -133,6 +137,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->doctrine->getManager()->persist($getUser[0]);
         $this->doctrine->getManager()->flush();
     }
+
 
 //    /**
 //     * @return User[] Returns an array of User objects
