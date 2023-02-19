@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Products;
 use App\Entity\Categorias;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -16,8 +17,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CategoriasRepository extends ServiceEntityRepository
 {
+    private $doctrine;
     public function __construct(ManagerRegistry $registry)
     {
+        $this->doctrine = $registry;
         parent::__construct($registry, Categorias::class);
     }
 
@@ -39,12 +42,16 @@ class CategoriasRepository extends ServiceEntityRepository
         }
     }
 
-    public function deleteCategoria(int $Categoria, int $product): void
+    public function deleteCategoria(int $Categoria, $productsRepository): void
     {
-        $product = $this->find($product);
-        $this->remove($product, true);
-        $Categoria = $this->find($Categoria);
-        $this->remove($Categoria, true);
+        $categoria = $this->find($Categoria);
+        $products = $this->doctrine->getRepository(Products::class)->findBy(["IdCategoria" => $Categoria]);
+        $countProducts = count($products);
+
+        for ($i=0; $i < $countProducts; $i++) { 
+            $productsRepository->remove($products[$i], true);
+        }
+        $this->remove($categoria, true);
     }
 
     public function insertCategorias( $request) : void {
