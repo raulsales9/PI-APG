@@ -148,11 +148,11 @@ class ApiController extends AbstractController
         $getUser = $doctrine->getRepository(User::class)->find($id);
 
         $json = json_decode($request->getContent(), true);
-
+        print_r($json);
         empty($json["name"]) ? true : $getUser->setName($json["name"]);
         empty($json["email"]) ? true : $getUser->setEmail($json["email"]);
         empty($json["phone"]) ? true : $getUser->setPhone($json["phone"]);
-        empty($json["surname"]) ? true : $getUser->setSurnames($json["surname"]);
+        empty($json["surnames"]) ? true : $getUser->setSurnames($json["surnames"]);
 
         $repository->update($getUser);
 

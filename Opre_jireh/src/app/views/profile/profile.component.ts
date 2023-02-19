@@ -29,6 +29,11 @@ export class ProfileComponent {
         phone: response.phone,
         events: response.events,
       };
+
+      this.nombre = response.name;
+      this.apellidos = response.surname;
+      this.telefono = response.phone;
+      this.email = response.Email
     });
 
   }
@@ -36,6 +41,7 @@ export class ProfileComponent {
   ngOnInit() {
     this.perfil = 1;
     this.peticio();
+    console.log(this.id);
   }
 
   public onClic() {
@@ -43,7 +49,9 @@ export class ProfileComponent {
   }
 
   public onSubmit() {
-    this.service.updateUser(this.id, this.contents.name, this.contents.surname, this.contents.Email, this.contents.phone).subscribe(response => { });
+    this.service.updateUser(this.id, this.nombre, this.apellidos, this.email, this.telefono).subscribe(response => { 
+      console.log(response);
+    });
     this.perfil = 1;
     this.peticio();
   }
