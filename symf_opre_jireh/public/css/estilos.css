@@ -30,14 +30,13 @@ header::before{
 h2{
     margin-top: -2%;
 }
-
-.nav-pills .nav-link.active,
-.show>.nav-pills .nav-link{
+.button{
     background: rgb(218, 218, 218) !important;
     color: black;
-    border-radius: 20px;
+    border-radius: 2em;
+    border: 1px solid black;
+    margin-right: 2em;
 }
-
 .events{
     background-image: url("../assets/users.jpg");
     background-repeat: no-repeat;
@@ -85,16 +84,6 @@ width: 15em;
 
 }
  /* footer */
- a{
-    text-decoration:none;
-    font-size: 25px;
-    color: black;
-}
-
-a:hover {
-    
-    color: #e10000;
-}
 p{
     font-size: 26px;
 }
