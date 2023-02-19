@@ -3,14 +3,12 @@
     <div class="container">
 	<h1>FSAEHUUHIEWFUEWFUHIIHU</h1>
                 <div >
-			{# List de resultados paginado #}
+			
 			{% for task in data %}
 					<article class="eventList">
-						
-							{# <a href="{{ path('app_detailCategoria', {categoria:task["idCategoria"]}) }}" class="text-muted me-3">{{ task["nameCategoria"] }}</a> #}
 							<a class="text-muted text-decoration-none"  href="/twig/listProducts/{{task["idCategoria"]}} ">{{task["nameCategoria"] }}</a>
- 							 <a href="{{ path('app_deleteCategoria', {categoria:task["idCategoria"]}) }}" class="btn btn-danger"> [x] </a>{#}  
-							<a href=' {{ path('app_updateCategoria',{categoria:task["idCategoria"]}) }} ' class="btn btn-warning">[U]</a>  #}
+ 							 <a href="/twig/deleteCategories/{{task["idCategoria"]}}" class="btn btn-danger"> [x] </a>
+							<a href='/twig/updateCategories/{{task["idCategoria"]}} ' class="btn btn-warning">[U]</a>  
 				
 					</article>
 					<br>
@@ -20,4 +18,5 @@
 
       </div>
     </div>
+
 {% endblock %}

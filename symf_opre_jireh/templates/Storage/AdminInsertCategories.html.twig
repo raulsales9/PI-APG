@@ -1,34 +1,34 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-	<section id="content">
-	<div class="container" >
-			<form method="post" action="">
-				<fieldset class="fieldset dark">
-				
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-						<h1 class="text-uppercasse">nueva categoria</h1>
+<section id="content">
+	<div class="container">	
+  <div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
+      <form method="post" action="">
+				<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+						<h1 class="text-uppercase">nueva categoria</h1>
+						  <a  href="/twig/listCategories"><=</a> 
 					</div>
 				</div>
-				<div class="row">
-					
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-					<label for="idCategoria">Id Categoria</label>
-						<input name="idCategoria" type="number" size="5" value="{{data.getIdCategoria()}}"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+				<div class="row mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5">
 						<label for="nameCategoria" class="text-uppercase">Nombre de Categoria</label>
-						<input name="nameCategoria" type="text" maxlength="40" size="40" value="{{data.getNameCategoria()}}"/>
+						<input name="nameCategoria" type="text" maxlength="40" size="40" value=""/>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+				<div class="row  mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
 						<input type="submit" name="submit" class="btn btn-primary" value="Insert"/>
 					 </div>
 				</div>
 		</form>
-	</div>
+	</article>
+    </div>
+  </div>
+</div>
 </section>
+	
+
 {% endblock %}
