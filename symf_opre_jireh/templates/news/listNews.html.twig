@@ -3,15 +3,15 @@
        
   <section id="content">
     <div class="container">
-				
+			<a class="btn btn-primary" href="/">⇦</a>
+				<h1>Noticias <a class="btn btn-success" href="/twig/insertNews">Crear</a></h1> 
 			 {% set elementsPerPage = 5 %}
 			{% set lowerLimit = (page -1) * elementsPerPage + 1 %}
 			{% set upperLimit = page * elementsPerPage %} 
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<article class="eventList mb-3">
-						<a class="btn btn-primary" href="/">⇦</a>
-						<h1>Noticias <a class="btn btn-success" href="/twig/insertNews">Crear</a></h1> 
+						
 						 <span class="fs-3 me-3">{{ task.getTitulo() }}</span>	
 						<span class="text-muted">{{ task.getDate()|date('d/m/Y') }}</span> 
 						<div class="float-end">

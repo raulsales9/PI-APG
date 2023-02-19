@@ -2,6 +2,9 @@
     {% block content %}
 	<section id="contaner">
     <div class="container">
+		
+				<a class="btn btn-primary" href="/">⇦</a>
+				<h1>Usuarios <a class="btn btn-success" href="/twig/insertUser">Crear</a></h1>
 
                  {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
@@ -11,13 +14,12 @@
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 				<article class="eventList">
-				<a class="btn btn-primary" href="/">⇦</a>
-				<h1>Usuarios <a class="btn btn-success" href="/twig/insertUser">Crear</a></h1>
-					<a class="text-decoration-none nameUser" href="{{ path('app_detailUser', {usuario:task["id"]}) }}">{{ task["name"] }} {{task["surnames"]}}</a>
+					<a class="nameUser" >{{ task["name"] }} {{task["surnames"]}}</a>
 					<span class="text-muted ms-3">{{task["email"] }}</span>
 					<span class="text-muted ms-3">{{task["phone"] }}</span>
 					<span class="text-muted ms-3">- {{task["roles"] }} -</span>
 					<div class="float-end">
+						<a class="btn btn-primary"href="{{ path('app_detailUser', {usuario:task["id"]}) }}">Editar Usuario</a>
 						<a class="btn btn-warning" href="/twig/updateUser/{{task["id"]}}">Editar Usuario</a>
 						<a class="btn btn-danger" href="/twig/deleteUser/{{task["id"]}}">Borrar Usuario</a>
 					</div>
