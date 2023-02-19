@@ -51,14 +51,21 @@ class ProductsRepository extends ServiceEntityRepository
     }
 
         
-    public function updateProducts(int $id, array $data): void
+    public function updateProducts($product, $request): void
     {
-        $result = $this->find($id);
-        $result
-        ->setNameProduct($data["nameProduct"])
-        ->setIdProduct($data["idProduct"])
-        ->setPrice($data["price"]);
-        $this->save($result, true);
+        if($request->request->get("price")) {
+            $product
+            ->setNameProduct($request->request->get("nameProduct"))
+            ->setPrice($request->request->get("price"));
+            $this->doctrine->getManager()->persist($product);
+            $this->doctrine->getManager()->flush();
+        }else{
+            $product
+            ->setNameProduct($request->request->get("nameProduct"));
+            $this->doctrine->getManager()->persist($product);
+            $this->doctrine->getManager()->flush();
+        }
+
     } 
            
     public function insertProducts( $request, $idCategoria): void

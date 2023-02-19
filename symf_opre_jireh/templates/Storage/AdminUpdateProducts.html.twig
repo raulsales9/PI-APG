@@ -3,16 +3,11 @@
 {% block content %}
 <section id="content">
 	<div class="container">
-			<form >
+			<form action="" method="POST">
 				<article class="eventList">
 				<div >
-						<h2>Edit Client {{data.getNameProduct()}}</h2>
+						<h2>Actualizar producto {{data.getNameProduct()}}</h2>
 				</div>
-					<label for="idProduct">Id Producto</label>
-					<div  class="mb-3 col-lg-8">
-						<input name="idProduct" type="number" size="5" value="{{data.getIdProduct()}}"/>
-					</div>
-				
 					<label for="nameProduct">Nombre del producto</label>
 					<div  class="mb-3 col-lg-8">
 						<input name="nameProduct" type="text" maxlength="45" size="45" value="{{data.getNameProduct()}}"/>

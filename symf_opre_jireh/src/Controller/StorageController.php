@@ -121,13 +121,13 @@ class StorageController extends AbstractController
         $IdProduct = $gestor->getRepository(Products::class)->find($product);
         $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(Products::class)->updateProducts($request, $product); 
-        } else {
-            $data = $gestor->getRepository(Categorias::class)->find($IdProduct->getIdCategoria());
-            return $this->render('Storage/AdminUpdateProducts.html.twig', [
-                'data' => $data
-            ]);
+             $gestor->getRepository(Products::class)->updateProducts($IdProduct, $request); 
         }
+            $categoria = $gestor->getRepository(Categorias::class)->find($IdProduct->getIdCategoria());
+            return $this->render('Storage/AdminUpdateProducts.html.twig', [
+                'categoria' => $categoria,
+                'data' => $IdProduct
+            ]);
     }  
 
 
