@@ -6,33 +6,15 @@
 <header class="jumbotron jumbotron-fluid mb-5">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-sm fixed-top">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                    <ul class="nav nav-pills">
-                        
-                            <li class="nav-item">
-                              <a href="{{ path('app_main')}}">
-                                Home
-                              </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('app_User')}}">
-                                  PANEL
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('app_events')}}">
-                                  Events
-                                </a>
-                            </li>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+          <div class="container-fluid justify-content-end">
+              <ul class="nav">                  
+                <li class="nav-item mt-3">
+                  <a style="text-decoration: none; color: #e10000; background: rgb(218, 218, 218); border-radius: 20px; padding: 0.5em; margin: 2em; font-size: 1.2em" href="{{ path('app_main')}}">
+                    Home
+                  </a>
+                </li>                  
+              </ul>
+          </div>
         </nav>
 
         <img src="../../../assets/Opre Jireh logo.svg" alt="Logo de la asociación Opre Jireh" class="img-fluid logo">
