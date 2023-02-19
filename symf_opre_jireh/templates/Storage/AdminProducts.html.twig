@@ -8,9 +8,8 @@
 
 			{% for task in data %}	
 							<a href="/twig/DetailProducts/{{task["idProduct"]}}" class="text-muted me-3">{{ task["nameProduct"] }}</a>
- 							 <a href="{{ path('app_deleteCategoria', {usuario:task["idCategoria"]}) }}" class="btn btn-danger"> [x] </a>  
-							<a href=' {{ path('app_updateCategoria',{usuario:task["idCategoria"]}) }} ' class="btn btn-warning">[U]</a>  
-					
+ 							 <a href="/twig/DeleteCategories/{{task["idCategoria"] }}" class="btn btn-danger"> [x] </a>  
+							<a href='/twig/UpdateCategories/{{task["idCategoria"] }} ' class="btn btn-warning">[U]</a>  
 			{% endfor %}
 			</article>
 			<br>
