@@ -3,11 +3,10 @@
        
   <section id="content">
     <div class="container">
-	<div class="row">
-    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
 	<a class="btn btn-primary" href="/twig/news">⇦</a>
-					<article class="eventList mb-3">
+				
 						<h1>Noticia</h1> 
+						<article class="eventList mb-3">
 						<span class="fs-3 me-3">{{ task.getTitulo() }}</span>	
 						<span class="text-muted">{{ task.getDate()|date('d/m/Y') }}</span> 
 						<div class="float-end">
@@ -16,7 +15,6 @@
 						</div>
                         <p class="mt-3"> {{task.getTexto()}} </p>
 					</article>
-    </div>
 	</div>
   </section>
 {% endblock %}

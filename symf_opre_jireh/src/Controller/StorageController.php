@@ -68,8 +68,8 @@ class StorageController extends AbstractController
 
     
     //Este lista los products con esa categoria
-    #[Route('/listProducts/{categoria}', name: 'ListProducts')]
-    public function listProducts(?int $page, EntityManagerInterface $entityManager, SessionInterface $session,int $categoria): Response
+     #[Route('/listProducts/{categoria}', name: 'ListProducts')]
+    public function listProducts( EntityManagerInterface $entityManager, SessionInterface $session,int $categoria): Response
     {
         $product = $entityManager->getRepository(Products::class)->findAll();
         $data = [];
@@ -82,11 +82,9 @@ class StorageController extends AbstractController
             ];
           } 
         return $this->render('Storage/AdminProducts.html.twig', [
-            'data' => $data,
-            "page" => $this->getLastPage($page, $session)
+            'data' => $data
         ]);
     }
-
     #[Route('/DetailProducts/{product?}', name: 'DetailProducts')]
     public function DetailProducts(int $product, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
@@ -105,9 +103,8 @@ class StorageController extends AbstractController
         if (count($container) > 1) {
             $gestor->getRepository(Products::class)->insertProducts($request); 
         }
-            $data = $gestor->getRepository(Categorias::class)->findAll();
             return $this->render('Storage/AdminInsertProducts.html.twig', [
-                'data' => $data
+               
             ]);
     }
 

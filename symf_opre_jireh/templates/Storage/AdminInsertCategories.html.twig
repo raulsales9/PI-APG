@@ -2,31 +2,23 @@
 {% block content %}
 <section id="content">
 	<div class="container">	
-  <div class="row">
-    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-		<article class="eventList">
+		
       <form method="post" action="">
-				<div class="row mt-5 mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+					<div >
 						<h1 class="text-uppercase">nueva categoria</h1>
 						  <a  href="/twig/listCategories"><=</a> 
 					</div>
-				</div>
-				<div class="row mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5">
+					<article class="eventList">
+				<div  class="mb-3 col-lg-8">
 						<label for="nameCategoria" class="text-uppercase">Nombre de Categoria</label>
 						<input name="nameCategoria" type="text" maxlength="40" size="40" value=""/>
-					</div>
+
 				</div>
-				<div class="row  mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+				<div >
 						<input type="submit" name="submit" class="btn btn-primary" value="Insert"/>
-					 </div>
 				</div>
 		</form>
 	</article>
-    </div>
-  </div>
 </div>
 </section>
 	
