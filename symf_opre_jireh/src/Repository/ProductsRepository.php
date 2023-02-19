@@ -51,7 +51,7 @@ class ProductsRepository extends ServiceEntityRepository
     }
 
         
-    public function updateUser(int $id, array $data): void
+    public function updateProducts(int $id, array $data): void
     {
         $result = $this->find($id);
         $result
@@ -61,15 +61,12 @@ class ProductsRepository extends ServiceEntityRepository
         $this->save($result, true);
     } 
            
-    public function insertProducts( $idCatgeoria, array $container): void
+    public function insertProducts( $request): void
     {
         $result = new Products;
-
         $result
-        ->setNameProduct($container["nameProduct"])
-        ->setIdProduct($container["idProduct"])
-        ->setPrice($container["price"])
-        ->setIdCategoria($container["idCategoria"]);
+        ->setNameProduct($request->request->get("nameProduct"))
+        ->setPrice($request->request->get("price"));
         $this->save($result, true);
     } 
 //    /**

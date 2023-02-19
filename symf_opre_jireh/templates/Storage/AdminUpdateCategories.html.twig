@@ -2,33 +2,26 @@
 {% block content %}
 <section id="content">
 	<div class="container" >
-			<form method="post" action="">
-				<fieldset class="fieldset dark">
-				
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-						<h1 class="text-uppercasse">{{data.getIdCategoria()}}</h1>
-					</div>
-				</div>
-				<div class="row">
-					
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-					<label for="id">Id Categoria</label>
-						<input name="id" type="number" size="5" value="{{data.getIdCategoria()}}"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-						<label for="price" class="text-uppercase">Nombre de Categoria</label>
-						<input name="price" type="text" maxlength="40" size="40" value="{{data.getNameCategoria()}}"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-						<input type="submit" name="submit" class="btn btn-primary" value="Update"/>
-					 </div>
-				</div>
-		</form>
+		<div class="row">
+    		<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+				<article class="eventList">
+					<form method="post" action="">
+						<h1>Cambiando Categoria {{data.getNameCategoria()}}</h1>
+							<div class="row mt-5 mb-3">
+								<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+									<label for="price" class="text-uppercase">Nombre de Categoria</label>
+									<input name="price" type="text" maxlength="40" size="40" value="{{data.getNameCategoria()}}"/>
+								</div>
+							</div>
+							<div class="row mt-5 mb-3">
+								<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+									<input type="submit" name="submit" class="btn btn-primary" value="Update"/>
+					 			</div>
+							</div>
+					</form>
+				</article>
+			</div>
+		</div>
 	</div>
 </section>
 {% endblock %}

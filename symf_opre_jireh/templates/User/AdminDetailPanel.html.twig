@@ -1,9 +1,12 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
+	<section id="content">
     <div class="container">
+		<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
 	<a class="btn btn-primary" href="/twig/listUser">⇦</a>
 	<h3>Usuario {{detalleClient["name"]}}</h3>
-	<article class="eventList mb-3">
  		<span class="fs-3 me-3">{{detalleClient["name"]}}, {{detalleClient["surnames"]}}</span>
 		<span class="text-muted ms-3"> {{detalleClient["email"]}} </span>
 		<span class="text-muted ms-3"> {{detalleClient["phone"]}} </span>
@@ -30,4 +33,6 @@
 	</div>
 		
 	</div>
+	</div>
+</section>
 {% endblock %}
