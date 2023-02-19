@@ -116,10 +116,10 @@ class TwigController extends AbstractController
     }
 
     #[Route('/deleteUser/{usuario}', name: 'deleteUser')]
-    public function delete(EntityManagerInterface $gestor, int $usuario): Response
+    public function delete(EntityManagerInterface $gestor, int $usuario, FilesRepository $filesRepository): Response
     {
         $user = $gestor->getRepository(User::class)->find($usuario);
-        $gestor->getRepository(User::class)->remove($user, true); 
+        $gestor->getRepository(User::class)->delete($user, $filesRepository); 
         return $this->redirect('/twig/listUser');
     }
 

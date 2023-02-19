@@ -45,7 +45,6 @@ class FilesRepository extends ServiceEntityRepository
 
     public function insert($request, $idUser)
     {
-        //request = Array ( [name] => asd [type] => asd [isSubmited] => on )
         $File = new Files;
         
         $File

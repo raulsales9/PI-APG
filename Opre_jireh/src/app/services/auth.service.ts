@@ -20,7 +20,6 @@ export class AuthService {
 
     if (localStorage.getItem('isUserLoggedIn') === "true") {
       this.router.navigate(['/home']);
-      window.location.reload();
     }else{
       alert("Usuario o contraseña incorrectos");
     }
@@ -35,7 +34,6 @@ export class AuthService {
 
     if (localStorage.getItem('isUserLoggedIn') === "false") {
       this.router.navigate(['/login']);
-      window.location.reload();
     }else{
       alert("No se ha podido cerrar sesión");
     }
