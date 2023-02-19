@@ -41,6 +41,7 @@ export class ProfileComponent {
   ngOnInit() {
     this.perfil = 1;
     this.peticio();
+    console.log(this.id);
   }
 
   public onClic() {
