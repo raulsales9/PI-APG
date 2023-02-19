@@ -25,11 +25,6 @@ export class LoginComponent {
       }
     })
     
-    if (localStorage.getItem('isUserLoggedIn') === "true") {
-      this.router.navigate(['/home']);
-    }else{
-      alert("Usuario o contraseña incorrectos");
-    }
   }
 
 
