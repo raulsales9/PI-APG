@@ -81,8 +81,8 @@ class ApiController extends AbstractController
             $data[] = [
                 "name" => $getEvent->getName(),
                 "place" => $getEvent->getPlace(),
-                "end_date" => explode(" ", $getEvent->getEndDate())[0],
-                "start_date" => explode(" ", $getEvent->getStartDate())[0],
+                "end_date" => $getEvent->getEndDate(),
+                "start_date" => $getEvent->getStartDate(),
                 "description" => $getEvent->getDescription(),
                 "imagen" => $getEvent->getImagen(),
                 "id" => $getEvent->getId()
