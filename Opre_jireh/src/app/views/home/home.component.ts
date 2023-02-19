@@ -10,7 +10,7 @@ import { News } from './home.interface';
 })
 export class HomeComponent {
   public number: number = 1;
-  public contents : News[] = contents;
+  public contents : any = contents;
   public counter: number = 1;
 
   constructor (public service : ApiRequestService){}
