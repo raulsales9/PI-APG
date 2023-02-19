@@ -3,12 +3,10 @@
        
   <section id="content">
    <div class="container">
-		<div class="row">
-    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-		<article class="eventList">
+		
 	<a class="btn btn-primary" href="/">⇦</a>
 	<h1>Eventos <a class="btn btn-success" href="/twig/insertEvent">Crear</a></h1> 
-                <div >
+        
                  {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
 			{% set lowerLimit = (page -1) * elementsPerPage + 1 %}
@@ -16,7 +14,7 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-				
+				<article class="eventList">
 						<div class="{% if (curDate < task.getEndDate()) and (curDate > task.getStartDate()) %} greenDot {% elseif curDate < task.getStartDate() %} yellowDot {% elseif curDate > task.getEndDate() %} redDot {% endif %} me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
 						<span class="text-muted">{{ task.getStartDate()|date('d/m/Y') }}</span> - 
 						<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
@@ -56,8 +54,6 @@
 			<span>&gt;</span>
 			<span>&gt;&gt;</span>
 		{% endif %} 
-             </div>
-      </div>
     </div>
   </section>
 

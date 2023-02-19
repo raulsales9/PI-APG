@@ -2,22 +2,17 @@
 {% block content %}
 <section id="content">
 	<div class="container" >
-		<div class="row">
-    		<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-				<article class="eventList">
+				
 					<form method="post" action="">
 						<h1>Cambiando Categoria {{data.getNameCategoria()}}</h1>
-							<div class="row mt-5 mb-3">
-								<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-									<label for="price" class="text-uppercase">Nombre de Categoria</label>
-									<input name="price" type="text" maxlength="40" size="40" value="{{data.getNameCategoria()}}"/>
-								</div>
+									<article class="eventList">
+							<label for="price" class="text-uppercase">Nombre de Categoria</label>
+							<div  class="mb-3 col-lg-8">
+								<input name="price" type="text" maxlength="40" size="40" value="{{data.getNameCategoria()}}"/>
 							</div>
-							<div class="row mt-5 mb-3">
-								<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-									<input type="submit" name="submit" class="btn btn-primary" value="Update"/>
-					 			</div>
-							</div>
+							<div>
+								<input type="submit" name="submit" class="btn btn-primary" value="Update"/>
+			 				</div>
 					</form>
 				</article>
 			</div>

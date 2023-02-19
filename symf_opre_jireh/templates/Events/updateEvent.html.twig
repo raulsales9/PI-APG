@@ -3,52 +3,45 @@
        
   <section id="content">
 	<div class="container">
-		<div class="row">
-    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-		<article class="eventList">
+		
 		<a class="btn btn-primary" href="/twig/listEvent/">⇦</a>	
 	<h1>Evento {{ task.getName() }}</h1>
-					<form method="post" action="" class="row">
-					<div class="row mt-5 mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
-						<label class="form-label" for="name"> Nombre: </label>
+
+			<form method="post" action="" class="row">
+				<article class="eventList">
+					<label class="form-label" for="name"> Nombre: </label>
+					<div class="mb-3 col-lg-8">
 						<input class="form-control" name="name" type="text" value="{{ task.getName() }}">
 					</div>
-					</div>
-					<div class="row mt-5 mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
-						<label class="form-label" for="description"> Descripción: </label>
+
+				
+					<label class="form-label" for="description"> Descripción: </label>
+					<div class="mb-3 col-lg-8">
 						<textarea name="description" class="form-control">{{ task.getDescription() }}</textarea>
 					</div>
-					</div>
-					<div class="row mt-5 mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
-						<label class="form-label" for="startDate"> fecha de comienzo: </label>
+
+					
+					<label class="form-label" for="startDate"> fecha de comienzo: </label>
+					<div class="mb-3 col-lg-8">
 						<input class="form-control" name="startDate" type="date" value="{{ task.getStartDate()|date('Y-m-d') }}">
 					</div>
-					</div>
 
-					<div class="row mt-5 mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
-						<label class="form-label" for="endDate"> fecha de finalización: </label>
+					
+					<label class="form-label" for="endDate"> fecha de finalización: </label>
+					<div class="mb-3 col-lg-8">
 						<input class="form-control" name="endDate" type="date" value="{{ task.getEndDate()|date('Y-m-d') }}">
 					</div>
-					</div>
 
-					<div class="row mt-5 mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
-						<label class="form-label" for="place"> Localización: </label>
+					
+					<label class="form-label" for="place"> Localización: </label>
+					<div class="mb-3 col-lg-8">
 						<input class="form-control" name="place" type="text" value="{{ task.getPlace() }}">
 					</div>
-					</div>
-					<div class="row mt-5 mb-3">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+					<div class="mb-3 col-lg-8">
 						<button type="submit" class="btn btn-primary mb-3 col-lg-3">Actualizar</button>
 					</div>
-					</div>
 				</article>
-			</div>
-      </div>
+			</form>
     </div>
   </section>
 

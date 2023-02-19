@@ -3,38 +3,27 @@
 {% block content %}
 <section id="content">
 	<div class="container">
-		<div class="row">
-    		<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-			<article class="eventList">
 			<form >
-				<fieldset class="fieldset">
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+				<article class="eventList">
+				<div >
 						<h2>Edit Client {{data.getNameProduct()}}</h2>
-					</div>
 				</div>
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-						<label for="idProduct">Id Producto</label>
+					<label for="idProduct">Id Producto</label>
+					<div  class="mb-3 col-lg-8">
 						<input name="idProduct" type="number" size="5" value="{{data.getIdProduct()}}"/>
 					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-						<label for="nameProduct">Nombre del producto</label>
+				
+					<label for="nameProduct">Nombre del producto</label>
+					<div  class="mb-3 col-lg-8">
 						<input name="nameProduct" type="text" maxlength="45" size="45" value="{{data.getNameProduct()}}"/>
 					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
-						<label for="price">Precio del producto</label>
+					<label for="price">Precio del producto</label>
+					<div  class="mb-3 col-lg-8">
 						<input name="price" type="text" maxlength="40" size="40" value="{{data.getPrice()}}"/>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+				
+					<div>
 						<input type="submit" name="submit" value="Update"/>
 					</div>
 				</div>
