@@ -15,11 +15,7 @@
     src: url(./assets/fonts/OpenDyslexic-Regular.otf) format("opentype");
   
   }
-  *{
-    
-    
-      margin: 0;
-  }
+
   
   h1,h2,h3{
     font-family:'JosefinSans' ;
