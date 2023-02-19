@@ -55,7 +55,7 @@ class CategoriasRepository extends ServiceEntityRepository
     }
 
     
-    public function updateUser(int $id, array $data): void
+    public function updateCategoria($id,  $data): void
     {
         $result = $this->find($id);
         $result
