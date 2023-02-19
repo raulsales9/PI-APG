@@ -1,7 +1,11 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
-    <div class="container">
-	<h1>FSAEHUUHIEWFUEWFUHIIHU</h1>
+    <section id="content">
+	<div class="container">
+		<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
+	<h1>Listado de categorias</h1>
                 <div >
 			
 			{% for task in data %}
@@ -14,9 +18,9 @@
 					<br>
 			
 			{% endfor %}
-
-
+			</article>
+		</div>
       </div>
     </div>
-
+	</section>
 {% endblock %}

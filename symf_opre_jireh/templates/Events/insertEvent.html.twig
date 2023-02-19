@@ -3,45 +3,63 @@
        
   <section id="content">
     <div class="container">
+		<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
 	<a class="btn btn-primary" href="/twig/listEvent/">⇦</a>
 	<h1>Evento</h1>
-					<article class="eventList ">
+					
 					<form method="post" action="" class="row" enctype="multipart/form-data">
-					<label class="form-label" for="name"> Nombre: </label>
-					<div class="mb-3 col-lg-8">
+					<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+						<label class="form-label" for="name"> Nombre: </label>
 						<input class="form-control" name="name" type="text" value="">
 					</div>
-					<label class="form-label" for="description"> Descripción: </label>
-					<div class="mb-3 col-lg-8">
+					</div>
+					<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+						<label class="form-label" for="description"> Descripción: </label>
 						<textarea name="description" class="form-control"></textarea>
 					</div>
+					</div>
 
-					<label class="form-label" for="startDate"> fecha de comienzo: </label>
-					<div class="mb-3 col-lg-8">
+					<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+						<label class="form-label" for="startDate"> fecha de comienzo: </label>
 						<input class="form-control" name="startDate" type="date" value="">
 					</div>
+					</div>
 
-					<label class="form-label" for="endDate"> fecha de finalización: </label>
-					<div class="mb-3 col-lg-8">
+					<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+						<label class="form-label" for="endDate"> fecha de finalización: </label>
 						<input class="form-control" name="endDate" type="date" value="">
 					</div>
+					</div>
 
-					<label class="form-label" for="place"> Localización: </label>
-					<div class="mb-3 col-lg-8">
+					<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+						<label class="form-label" for="place"> Localización: </label>
 						<input class="form-control" name="place" type="text" value="">
 					</div>
+					</div>
 
-					<label for="imagen"> Imagen: </label>
-					<div class="mb-3 col-lg-8">
+					<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+						<label for="imagen"> Imagen: </label>
 						<input class="form-control" type="file" name="imagen">
 					</div>
-
-					<div class="col-lg-12">
+					</div>
+					<div class="row mt-5 mb-3">
+					<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
 						<button type="submit" class="btn btn-primary mb-3 col-lg-3">Crear</button>
 					</div>
-					</article>
+					</div>
+					</form>
+				</article>
+			</div>
       </div>
     </div>
   </section>
-</div>
+
 {% endblock %}
