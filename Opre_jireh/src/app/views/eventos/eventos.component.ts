@@ -25,7 +25,7 @@ export class EventosComponent {
           foto: "http://localhost:8000/assets/img/" + response[i].imagen,
           titulo: response[i].name,
           descripcion: response[i].description,
-          horario: start_date[0] + " - " + end_date,
+          horario: start_date[0] + " - " + end_date[0],
           lugar: response[i].place,
           id: response[i].id
         };
