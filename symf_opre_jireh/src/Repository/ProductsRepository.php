@@ -61,12 +61,14 @@ class ProductsRepository extends ServiceEntityRepository
         $this->save($result, true);
     } 
            
-    public function insertProducts( $request): void
+    public function insertProducts( $request, $idCategoria): void
     {
         $result = new Products;
+        $id = $this->getEntityManager()->getRepository(Categorias::class)->find($idCategoria);
         $result
-        ->setNameProduct($request->request->get("nameProduct"))
-        ->setPrice($request->request->get("price"));
+        ->setNameProduct($request["nameProduct"])
+        ->setPrice($request["price"])
+        ->setIdCategoria($id);
         $this->save($result, true);
     } 
 //    /**
