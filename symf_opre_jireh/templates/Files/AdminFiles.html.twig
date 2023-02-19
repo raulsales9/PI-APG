@@ -7,11 +7,9 @@
 	<h1>Administrador de Ficheros</h1>
 	<article class="eventList">
                 <div >
-                 {# Cálculo de valores para la paginación #}
 			 {% set elementsPerPage = 5 %}
 			{% set lowerLimit = (page -1) * elementsPerPage + 1 %}
 			{% set upperLimit = page * elementsPerPage %} 
-			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<p>
@@ -20,7 +18,6 @@
 				 {% endif %} 
 			{% endfor %}
 		</table>
-		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}
 			<a href="{{ path('app_events',{'page':1}) }}">&lt;&lt;</a>

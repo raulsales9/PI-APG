@@ -70,7 +70,6 @@ class StorageController extends AbstractController
 
 
     
-    //Este lista los products con esa categoria
      #[Route('/listProducts/{categoria}', name: 'ListProducts')]
     public function listProducts( EntityManagerInterface $entityManager,int $categoria): Response
     {
@@ -134,7 +133,6 @@ class StorageController extends AbstractController
     }  
 
 
-    //Este detalla el producto en si
     private function getLastPage($page, $session): int
     {
       if ($page != null) {

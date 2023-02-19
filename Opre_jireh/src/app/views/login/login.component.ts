@@ -20,7 +20,7 @@ export class LoginComponent {
       if (typeof response === "object") {
         this.Auth.login(response)
       }else{
-        // mensaje de error aquí
+       
       }
     })
     
