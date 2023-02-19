@@ -17,4 +17,12 @@ export class AuthService {
     localStorage.setItem('email', user.email)
     localStorage.setItem('id', user.id.toString())
   }
+
+  public logOut() {
+    this.isUserLoggedIn = false;
+    localStorage.setItem('isUserLoggedIn', "false")
+    localStorage.setItem('userName', "")
+    localStorage.setItem('email', "")
+    localStorage.setItem('id', "")
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { ApiRequestService } from "../../services/api-request.service";
 import { User, contents } from './user.interface';
 
@@ -9,7 +10,7 @@ import { User, contents } from './user.interface';
 })
 export class ProfileComponent {
 
-  constructor(public service: ApiRequestService) { }
+  constructor(public service: ApiRequestService, public AuthService : AuthService) { }
 
   public perfil: number = 1;
   public contents: User = contents;
@@ -56,7 +57,10 @@ export class ProfileComponent {
     this.peticio();
   }
 
-  public cerrarSesion() {}
+  public cerrarSesion() 
+  {
+    this.AuthService.logOut();
+  }
 
 
 
