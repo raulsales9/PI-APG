@@ -7,6 +7,7 @@ import { Response } from '../models/events';
 import { RegisterResponse } from '../models/register';
 import { News } from '../models/news';
 import { User } from '../models/user';
+import { AssistResponse } from '../models/assist';
 
 
 @Injectable({
@@ -22,6 +23,7 @@ export class ApiRequestService {
   news = "http://localhost:8000/api/news"
   user = "http://localhost:8000/api/users/"
   update = "http://localhost:8000/api/update/users/"
+  assist = "http://localhost:8000/api/update/event/"
 
   public getLoginResponse($email : string, $password : string) : Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.login, { "email" : $email, "password" : $password })
@@ -56,5 +58,9 @@ export class ApiRequestService {
       "email" : email,
       "phone" : phone
     })
+  }
+
+  public assistEventResponse(idUser : string | null, idEvent : number) : Observable<AssistResponse> {
+    return this.http.put<AssistResponse>(this.assist + idEvent + "/" + idUser, { });
   }
 }
