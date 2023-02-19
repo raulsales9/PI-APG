@@ -15,7 +15,6 @@ export class HomeComponent {
 
   constructor (public service : ApiRequestService){}
   ngOnInit(){
-    window.location.reload();
     this.service.getNews().subscribe(response=>{
 
       for (let i = 0; i < this.contents.length; i++) {
