@@ -70,13 +70,23 @@ class ProductsRepository extends ServiceEntityRepository
            
     public function insertProducts( $request, $idCategoria): void
     {
-        $result = new Products;
-        $id = $this->getEntityManager()->getRepository(Categorias::class)->find($idCategoria);
-        $result
-        ->setNameProduct($request["nameProduct"])
-        ->setPrice($request["price"])
-        ->setIdCategoria($id);
-        $this->save($result, true);
+        if ($request["price"]) {
+            $result = new Products;
+            $id = $this->getEntityManager()->getRepository(Categorias::class)->find($idCategoria);
+            $result
+            ->setNameProduct($request["nameProduct"])
+            ->setPrice($request["price"])
+            ->setIdCategoria($id);
+            $this->save($result, true);
+        }else{
+            $result = new Products;
+            $id = $this->getEntityManager()->getRepository(Categorias::class)->find($idCategoria);
+            $result
+            ->setNameProduct($request["nameProduct"])
+            ->setIdCategoria($id);
+            $this->save($result, true);
+        }
+
     } 
 //    /**
 //     * @return Products[] Returns an array of Products objects

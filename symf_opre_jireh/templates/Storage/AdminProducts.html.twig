@@ -3,9 +3,9 @@
 	<section id="content">
     <div class="container">
 	<h1 class="text-uppercase">Adminisratrador de productos </h1>
-	
+	<a href="/twig/insertProducts/{{ categoria }}" class="btn btn-primary">Nuevo</a>
 			{% for task in data %}
-			<a href="/twig/insertProducts/{{task["IdCategoria"]}}" class="btn btn-primary">Nuevo</a>
+			
 			<article class="eventList">
 							<a>{{task["nameProduct"]}}</a>
 							<a href="/twig/DetailProducts/{{ task["idProduct"] }}" class="btn btn-primary">Detalles</a>

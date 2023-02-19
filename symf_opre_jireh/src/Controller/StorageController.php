@@ -83,7 +83,8 @@ class StorageController extends AbstractController
             ];
           } 
         return $this->render('Storage/AdminProducts.html.twig', [
-            'data' => $data
+            'data' => $data,
+            'categoria' => $categoria
         ]);
     }
     #[Route('/DetailProducts/{product?}', name: 'DetailProducts')]
