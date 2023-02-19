@@ -39,12 +39,8 @@ class StorageController extends AbstractController
         $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(Categorias::class)->insertCategorias($request); 
-            return $this->redirect($this->generateUrl("listCategories"));
-        } else {
-            return $this->render('User/AdminInsertCategories.html.twig', [
-              
-            ]);
         }
+            return $this->render('Storage/AdminInsertCategories.html.twig', []);
     }
 
     #[Route('/deleteCategories/{categoria}', name: 'deleteCategoria')]
@@ -57,12 +53,12 @@ class StorageController extends AbstractController
     #[Route('/updateCategories/{categoria}', name: 'updateCategories')]
     public function updateCategoria(EntityManagerInterface $gestor, Request $request, string $categoria): Response
     {
+        $data = $gestor->getRepository(Categorias::class)->find($categoria);
     $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(Categorias::class)->updateCategoria($request, $categoria); 
+             $gestor->getRepository(Categorias::class)->updateCategoria($request, $data); 
             return $this->redirect($this->generateUrl("listCategories"));
         } else {
-            $data = $gestor->getRepository(Categorias::class)->find($categoria);
             return $this->render('Storage/AdminUpdateCategories.html.twig', [
                 'data' => $data
             ]);
@@ -102,18 +98,18 @@ class StorageController extends AbstractController
     } 
 
     #[Route('/insertProducts', name: 'insertProducts')]
-    public function insertProducts(EntityManagerInterface $gestor, Request $request, int $id): Response
+    public function insertProducts(EntityManagerInterface $gestor, Request $request): Response
     {
+
         $container = $request->request->all();
-        $idCategoria = $gestor->getRepository(Categorias::class)->find($id);
         if (count($container) > 1) {
-            $gestor->getRepository(Products::class)->insertProducts($container, $idCategoria); 
-            return $this->redirectToRoute('app_ListProducts', []);
+            $gestor->getRepository(Products::class)->insertProducts($request); 
         }
+            $data = $gestor->getRepository(Categorias::class)->findAll();
             return $this->render('Storage/AdminInsertProducts.html.twig', [
+                'data' => $data
             ]);
     }
-    
 
     #[Route('/deleteProducts/{product}', name: 'deleteProducts')]
     public function deleteProducts(EntityManagerInterface $gestor, int $product): Response
@@ -123,15 +119,16 @@ class StorageController extends AbstractController
     }
     
 
-    #[Route('/updateProducts/{product}', name: 'updateCategories')]
-    public function updateProducts(EntityManagerInterface $gestor, Request $request, string $product): Response
+    #[Route('/updateProducts/{product}', name: 'updateProducts')]
+    public function updateProducts(EntityManagerInterface $gestor, Request $request, int $product): Response
     {
-    $container = $request->request->all();
+        $IdProduct = $gestor->getRepository(Products::class)->find($product);
+        $container = $request->request->all();
         if (count($container) > 1) {
              $gestor->getRepository(Products::class)->updateProducts($request, $product); 
             return $this->redirect($this->generateUrl("list"));
         } else {
-            $data = $gestor->getRepository(Products::class)->find($product);
+            $data = $gestor->getRepository(Categorias::class)->find($IdProduct->getIdCategoria());
             return $this->render('Storage/AdminUpdateProducts.html.twig', [
                 'data' => $data
             ]);

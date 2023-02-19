@@ -153,16 +153,16 @@
             </svg>
             </button>
             <div class="collapse navbar-collapse " id="collapsibleNavbar1">
-                <ul class="nav nav-pills navbar-nav">
+                <ul class="nav nav-pills navbar-nav ">
                     <div *ngIf="Dixleoff==2">
-                        <li class="nav-item">
-                            <a class="nav-link active" (click)="onDixleon()">Dislexia off</a>
+                        <li class="nav-item ms-3 mb-3 mt-3">
+                            <a class="nav-link active" onclick="Dislexiaon()" (click)="onDixleon()">OpenDislexia off</a>
                         </li>
                     </div>
-                    <div *ngIf="Dixleon==2">
-                        <li class="nav-item ">
+                    <div *ngIf="Dixleon==2 ">
+                        <li class="nav-item ms-3 mb-3 mt-3 ">
                             <a class="nav-link active" [ngStyle]="{'color':'#e10000'}"
-                            (click)="onDixleoff()">Dislexia on</a>
+                            onclick="Dislexiaoff()"  (click)="onDixleoff()">OpenDislexia on</a>
                         </li>
                     </div>
                   

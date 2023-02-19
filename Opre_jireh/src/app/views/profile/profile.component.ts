@@ -15,6 +15,11 @@ export class ProfileComponent {
   public contents: User = contents;
   public id: any = localStorage.getItem('id');
 
+  public nombre : string = "";
+  public apellidos : string = "";
+  public telefono : string = "";
+  public email : string = "";
+
   public peticio() {
     this.service.getUser(this.id).subscribe(response => {
       this.contents = {
@@ -24,7 +29,6 @@ export class ProfileComponent {
         phone: response.phone,
         events: response.events,
       };
-      console.log(this.contents);
     });
 
   }

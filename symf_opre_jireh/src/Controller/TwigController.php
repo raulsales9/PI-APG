@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Files;
 use App\Entity\User;
 use App\Repository\FilesRepository;
 use App\Repository\UserRepository;
@@ -106,6 +107,13 @@ class TwigController extends AbstractController
             'userFiles' => $userFiles
         ]);
     }
+    #[Route('/deleteFile/{id}/{idUser}', name: 'updateFiles')]
+    public function deleteFiles(EntityManagerInterface $doctrine, $id, $idUser): Response
+    {
+        $file = $doctrine->getRepository(Files::class)->find($id);
+        $doctrine->getRepository(Files::class)->remove($file, true);
+        return $this->redirect('/twig/detailUser/' . $idUser);
+    }
 
     #[Route('/deleteUser/{usuario}', name: 'deleteUser')]
     public function delete(EntityManagerInterface $gestor, int $usuario): Response
@@ -129,25 +137,10 @@ class TwigController extends AbstractController
         ]);
     } 
 
-  
-    #[Route('/listEvent/{page?}', name: 'notices')]
-    public function listNotices(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
+    #[Route('/', name: 'twigRedirect')]
+    public function redirectTwig(): Response
     {
-        $event = $entityManager->getRepository(Noticias::class);
-        return $this->render('AdminNotices.html.twig', [
-            'data' => $event->findAll(),
-            "page" => $this->getLastPage($page, $session)
-        ]);
-    }
-
-    #[Route('/listEvent/{page?}', name: 'files')]
-    public function listfiles(?int $page, EntityManagerInterface $entityManager, SessionInterface $session): Response
-    {
-        $event = $entityManager->getRepository(Event::class);
-        return $this->render('AdminFiles.html.twig', [
-            'data' => $event->findAll(),
-            "page" => $this->getLastPage($page, $session)
-        ]);
+        return $this->redirect('/');
     }
             
     private function getLastPage($page, $session): int

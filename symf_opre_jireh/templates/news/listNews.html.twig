@@ -3,17 +3,18 @@
        
   <section id="content">
     <div class="container">
-	<a class="btn btn-primary" href="/">⇦</a>
-	<h1>Noticias <a class="btn btn-success" href="/twig/insertNews">Crear</a></h1> 
-                <div >
-                 {# Cálculo de valores para la paginación #}
+		<div class="row">
+    		<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+				<article class="eventList">
+					
 			 {% set elementsPerPage = 5 %}
 			{% set lowerLimit = (page -1) * elementsPerPage + 1 %}
 			{% set upperLimit = page * elementsPerPage %} 
-			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
 					<article class="eventList mb-3">
+						<a class="btn btn-primary" href="/">⇦</a>
+						<h1>Noticias <a class="btn btn-success" href="/twig/insertNews">Crear</a></h1> 
 						 <span class="fs-3 me-3">{{ task.getTitulo() }}</span>	
 						<span class="text-muted">{{ task.getDate()|date('d/m/Y') }}</span> 
 						<div class="float-end">
@@ -22,10 +23,8 @@
 						<a class="btn btn-danger" href="/twig/deleteNews/{{task.getId()}}">Borrar Noticia</a>
 						</div>
 					</article>
-
 				 {% endif %} 
 			{% endfor %}
-		{# Navegador #}
 		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
 		{% if page > 1 %}
 			<a href="{{ path('app_events',{'page':1}) }}">&lt;&lt;</a>
