@@ -1,16 +1,15 @@
 <section class="container">
     <div class="login-container mb-5 mt-5 col-xl-7 col-lg-7 col-md-10 col-sm-12 col-12">
-        <form action=""  (ngSubmit)=
-        "onSubmit()" class="form-login">
+        <form action="" (ngSubmit)="onSubmit()" class="form-login">
             <div class="container">
                 <div class="row">
                     <ul class="login-nav">
-                            <li class="login-nav__item active mt-2">
-                                <a [routerLink]="['/login']" class="text-uppercase">Iniciar sesión</a>
-                            </li>
-                            <li class="login-nav__item mt-2">
-                                <a [routerLink]="['/signin']" class="text-uppercase">Crear cuenta</a>
-                            </li>
+                        <li class="login-nav__item active mt-2">
+                            <a [routerLink]="['/login']" class="text-uppercase">Iniciar sesión</a>
+                        </li>
+                        <li class="login-nav__item mt-2">
+                            <a [routerLink]="['/signin']" class="text-uppercase">Crear cuenta</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="row justify-content-around mt-2">
@@ -27,7 +26,8 @@
                         <label for="password" class="login__label">
                             Contraseña
                         </label>
-                        <input [(ngModel)]="password" ID="txtPassword" type="Password" Class="login__input" name="password">
+                        <input [(ngModel)]="password" ID="txtPassword" type="Password" Class="login__input"
+                            name="password">
 
                     </div>
                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
@@ -39,7 +39,7 @@
                     </div>
 
                 </div>
-                <button type="submit" [routerLink]="['home']" class="login__submit mt-5">Iniciar sesión</button>
+                <button type="submit" class="login__submit mt-5">Iniciar sesión</button>
             </div>
         </form>
     </div>

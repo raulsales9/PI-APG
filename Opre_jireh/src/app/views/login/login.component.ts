@@ -23,13 +23,13 @@ export class LoginComponent {
       }else{
         // mensaje de error aquí
       }
-
-      if (localStorage.getItem('isUserLoggedIn') === "true") {
-        this.router.navigate(['/'])
-      }else{
-        // mensaje de error aquí
-      }
     })
+    
+    if (localStorage.getItem('isUserLoggedIn') === "true") {
+      this.router.navigate(['/home']);
+    }else{
+      alert("Usuario o contraseña incorrectos");
+    }
   }
 
 
