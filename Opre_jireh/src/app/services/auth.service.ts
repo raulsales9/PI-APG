@@ -31,5 +31,11 @@ export class AuthService {
     localStorage.setItem('userName', "")
     localStorage.setItem('email', "")
     localStorage.setItem('id', "")
+
+    if (localStorage.getItem('isUserLoggedIn') === "false") {
+      this.router.navigate(['/login']);
+    }else{
+      alert("No se ha podido cerrar sesión");
+    }
   }
 }
