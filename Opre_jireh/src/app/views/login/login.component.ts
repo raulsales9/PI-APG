@@ -14,7 +14,9 @@ export class LoginComponent {
   password : string = "";
 
   constructor(public service : ApiRequestService, public Auth : AuthService, private router: Router ) { }
-
+  ngOnInit(): void {
+    window.location.reload();
+  }
   onSubmit()
   {
     this.service.getLoginResponse(this.email, this.password).subscribe(response =>{
