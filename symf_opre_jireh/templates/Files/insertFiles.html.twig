@@ -1,28 +1,41 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
-  <div class="container">
+    <section class="content">
+ <div class="container">
+		<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
   	<a class="btn btn-primary" href="/twig/detailUser/{{user.getId()}}">⇦</a>
     <h1>Nuevo fichero para <strong> {{ user.getName() }} {{ user.getSurnames() }} </strong></h1>
-    <div class="contenedor mb-3">
 
       <form method="post" action="" class="row ms-3">
-        <label class="form-label mt-3" for="name"> Nombre del fichero: </label>
-        <div class="mb-3 col-lg-8">
+        <div class="row mt-5 mb-3">
+        <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">
+          <label class="form-label mt-3" for="name"> Nombre del fichero: </label>
 						<input class="form-control" name="name" type="text" value="">
 				</div>
 
-        <label class="form-label mt-3" for="type"> tipo del fichero (eg. documentación): </label>
-        <div class="mb-3 col-lg-8">
+        <div class="row mt-5 mb-3">
+				<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">	
+           <label class="form-label mt-3" for="type"> tipo del fichero (eg. documentación): </label>
 						<input class="form-control" name="type" type="text" value="">
 				</div>
-        <div class="mb-3 col-lg-8">
+        </div>
+        <div class="row mt-5 mb-3">
+				<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">	
           <input type="checkbox" class="form-check-input" id="exampleCheck1" name="isSubmited">
           <label class="form-check-label" for="exampleCheck1">El fichero ha sido entregado por el usuario?</label>
         </div>
-        <div class="mb-3 col-lg-8">
+        </div>
+        <div class="row mt-5 mb-3">
+				<div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12 mt-5 mb-5">	
           <button type="submit" class="btn btn-primary">Crear</button>
         </div>
+        </div>
       </form>
+      </article>
+      </div>
     </div>
   </div>
+  </section>
 {% endblock %}

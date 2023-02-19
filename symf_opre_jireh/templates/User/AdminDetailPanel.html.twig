@@ -1,9 +1,12 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
+	<section id="content">
     <div class="container">
+		<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
 	<a class="btn btn-primary" href="/twig/listUser">⇦</a>
 	<h3>Usuario {{detalleClient["name"]}}</h3>
-	<article class="eventList mb-3">
  		<span class="fs-3 me-3">{{detalleClient["name"]}}, {{detalleClient["surnames"]}}</span>
 		<span class="text-muted ms-3"> {{detalleClient["email"]}} </span>
 		<span class="text-muted ms-3"> {{detalleClient["phone"]}} </span>
@@ -18,7 +21,7 @@
 				{% for task in detalleClient["files"] %}
 				 	
 					<div class="ms-3">
-						{{task["name"]}}, <span class="text-muted"> {{task["type"]}} </span> <span>{{task["isSubmited"]}}</span>
+						{{task["name"]}}, <span class="text-muted"> {{task["type"]}} </span> <span>{{task["isSubmited"]}}</span> &emsp; <a class="text-decoration-none text-danger fs-5" href="/twig/deleteFile/{{task["idFile"]}}/{{detalleClient["id"]}}">Borrar fichero</a>
 					</div> 
 				{% endfor %}
 				<a class="btn btn-warning mt-3 mb-3" href="/twig/updateFiles/{{ detalleClient["id"] }}">Editar ficheros</a>
@@ -28,24 +31,8 @@
 
 	</article>
 	</div>
-{# 	<nav>
-		<ul>
-			<li>ID Usuario : {{detalleClient["id"]}}</li>
-			<li>Nombre : {{detalleClient["name"]}}</li>
-			<li>Apellidos : {{detalleClient["surnames"]}}</li>
-			<li>Correo Electrónico : {{detalleClient["email"]}}</li>
-			<li>Rol  : {{detalleClient["roles"]}}</li>
- 			
-			{% for task in detalleClient["files"] %}
-				<li>Archivos : {{task["idFile"]}}, {{task["name"]}}, {{task["type"]}}</li> 
-			{% endfor %}	 
-			<li>Telefono : {{detalleClient["phone"]}}</li>
-			{% for task in detalleClient["events"] %}
- 				<li>Eventos : {{task["id"]}},  {{task["name"]}},  {{task["place"]}}</li> 
-			{% endfor %}
-			
-		</ul>
-	</nav> #}
 		
 	</div>
+	</div>
+</section>
 {% endblock %}

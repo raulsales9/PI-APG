@@ -27,13 +27,19 @@ export class HeaderComponent {
   {
     if (localStorage.getItem('isUserLoggedIn') === "true") {
       this.userName = localStorage.getItem('userName');
+      this.perfil = 3;
     }
   }
 
   public onHome(): void {
     this.home = 2;
     this.contacto = 1;
-    this.perfil = 1;
+    if (localStorage.getItem('isUserLoggedIn') === "true") {
+      this.perfil = 3;
+    }else{
+      this.perfil = 1;
+    }
+    
     this.eventos = 1;
     this.quienessomos = 1;
   }
@@ -41,7 +47,11 @@ export class HeaderComponent {
   public onContacto(): void {
     this.home = 1;
     this.contacto = 2;
-    this.perfil = 1;
+    if (localStorage.getItem('isUserLoggedIn') === "true") {
+      this.perfil = 3;
+    }else{
+      this.perfil = 1;
+    }
     this.eventos = 1;
     this.quienessomos = 1;
   }
@@ -49,7 +59,11 @@ export class HeaderComponent {
   public onPerfil(): void {
     this.home = 1;
     this.contacto = 1;
-    this.perfil = 2;
+    if (localStorage.getItem('isUserLoggedIn') === "true") {
+      this.perfil = 3;
+    }else{
+      this.perfil = 1;
+    }
     this.eventos = 1;
     this.quienessomos = 1;
   }
@@ -57,7 +71,11 @@ export class HeaderComponent {
   public onEventos(): void {
     this.home = 1;
     this.contacto = 1;
-    this.perfil = 1;
+    if (localStorage.getItem('isUserLoggedIn') === "true") {
+      this.perfil = 3;
+    }else{
+      this.perfil = 1;
+    }
     this.eventos = 2;
     this.quienessomos = 1;
 
@@ -65,7 +83,11 @@ export class HeaderComponent {
   public onQuienessomos(): void {
     this.home = 1;
     this.contacto = 1;
-    this.perfil = 1;
+    if (localStorage.getItem('isUserLoggedIn') === "true") {
+      this.perfil = 3;
+    }else{
+      this.perfil = 1;
+    }
     this.eventos = 1;
     this.quienessomos = 2;
 

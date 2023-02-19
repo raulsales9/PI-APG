@@ -81,8 +81,8 @@ class ApiController extends AbstractController
             $data[] = [
                 "name" => $getEvent->getName(),
                 "place" => $getEvent->getPlace(),
-                "end_date" => explode(" ", $getEvent->getEndDate())[0],
-                "start_date" => explode(" ", $getEvent->getStartDate())[0],
+                "end_date" => $getEvent->getEndDate(),
+                "start_date" => $getEvent->getStartDate(),
                 "description" => $getEvent->getDescription(),
                 "imagen" => $getEvent->getImagen(),
                 "id" => $getEvent->getId()
@@ -130,7 +130,8 @@ class ApiController extends AbstractController
                 $data = [
                     "email" => $user->getEmail(),
                     "user" => $user->getName(),
-                    "rol" => ($user->getRoles() === ["USER"]) ? "USER" : "ADMIN"
+                    "rol" => ($user->getRoles() === ["USER"]) ? "USER" : "ADMIN",
+                    "id" => $user->getId()
                 ];
             } else {
                 $data = "";
@@ -147,11 +148,11 @@ class ApiController extends AbstractController
         $getUser = $doctrine->getRepository(User::class)->find($id);
 
         $json = json_decode($request->getContent(), true);
-
+        print_r($json);
         empty($json["name"]) ? true : $getUser->setName($json["name"]);
         empty($json["email"]) ? true : $getUser->setEmail($json["email"]);
         empty($json["phone"]) ? true : $getUser->setPhone($json["phone"]);
-        empty($json["surname"]) ? true : $getUser->setSurnames($json["surname"]);
+        empty($json["surnames"]) ? true : $getUser->setSurnames($json["surnames"]);
 
         $repository->update($getUser);
 

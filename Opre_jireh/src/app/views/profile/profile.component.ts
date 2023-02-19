@@ -9,15 +9,19 @@ import { User, contents } from './user.interface';
 })
 export class ProfileComponent {
 
-  constructor (public service : ApiRequestService) { }
+  constructor(public service: ApiRequestService) { }
 
   public perfil: number = 1;
-  public contents : User = contents;
+  public contents: User = contents;
+  public id: any = localStorage.getItem('id');
 
+  public nombre : string = "";
+  public apellidos : string = "";
+  public telefono : string = "";
+  public email : string = "";
 
-  ngOnInit() {
-    this.perfil = 1;
-    this.service.getUser(1).subscribe(response => {
+  public peticio() {
+    this.service.getUser(this.id).subscribe(response => {
       this.contents = {
         name: response.name,
         surname: response.surname,
@@ -25,19 +29,33 @@ export class ProfileComponent {
         phone: response.phone,
         events: response.events,
       };
-      console.log(this.contents);
+
+      this.nombre = response.name;
+      this.apellidos = response.surname;
+      this.telefono = response.phone;
+      this.email = response.Email
     });
+
+  }
+
+  ngOnInit() {
+    this.perfil = 1;
+    this.peticio();
+    console.log(this.id);
   }
 
   public onClic() {
     this.perfil = 2;
   }
 
-  public onSubmit(){
-    this.service.updateUser(1, this.contents.name, this.contents.surname, this.contents.Email, this.contents.phone).subscribe(response => {});
+  public onSubmit() {
+    this.service.updateUser(this.id, this.nombre, this.apellidos, this.email, this.telefono).subscribe(response => { 
+      console.log(response);
+    });
     this.perfil = 1;
+    this.peticio();
   }
 
-  
+
 
 }

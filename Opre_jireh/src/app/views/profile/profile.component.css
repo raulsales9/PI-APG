@@ -1,6 +1,9 @@
 h1{
     text-align: center;
 }
+.body{
+    background-color: #f2f2f2;
+}
 
 .gris, input{
     background-color: #f2f2f2;

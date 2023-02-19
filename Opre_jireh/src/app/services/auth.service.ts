@@ -15,5 +15,6 @@ export class AuthService {
     localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false")
     localStorage.setItem('userName', user.user)
     localStorage.setItem('email', user.email)
+    localStorage.setItem('id', user.id.toString())
   }
 }

@@ -46,12 +46,11 @@ class CategoriasRepository extends ServiceEntityRepository
         $this->remove($product, true);
     }
 
-    public function insertCategorias($usuario) : void {
+    public function insertCategorias( $request) : void {
 
         $User = new Categorias;
         $User
-            ->setIdCategoria($usuario["idCategoria"])
-            ->setNameCategoria($usuario["nameCategoria"]);
+            ->setNameCategoria($request->request->get("nameCategoria"));
         $this->save($User, true);
     }
 

@@ -1,19 +1,19 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
     <div class="container">
-	<h1 class="text-uppercase">adminisratrador de productos</h1>
-                <div >
-                 {# Cálculo de valores para la paginación #}
-			{# List de resultados paginado #}
-			{% for task in data %}
-					<article class="eventList">			
+	<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
+	<h1 class="text-uppercase">Adminisratrador de productos</h1>
+
+			{% for task in data %}	
 							<a href="/twig/DetailProducts/{{task["idProduct"]}}" class="text-muted me-3">{{ task["nameProduct"] }}</a>
- 							{# <a href="{{ path('app_deleteCategoria', {usuario:task["idCategoria"]}) }}" class="btn btn-danger"> [x] </a>  
-							<a href=' {{ path('app_updateCategoria',{usuario:task["idCategoria"]}) }} ' class="btn btn-warning">[U]</a>  #}
-					</article>
-					<br>
+ 							 <a href="/twig/DeleteCategories/{{task["idCategoria"] }}" class="btn btn-danger"> [x] </a>  
+							<a href='/twig/UpdateCategories/{{task["idCategoria"] }} ' class="btn btn-warning">[U]</a>  
 			{% endfor %}
-		
-      </div>
+			</article>
+			<br>
+	</div>	
+    </div>
     </div>
 {% endblock %}

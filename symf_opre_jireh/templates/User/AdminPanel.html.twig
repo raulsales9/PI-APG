@@ -1,6 +1,10 @@
 {% extends 'layout.html.twig' %}
     {% block content %}
+	<section id="contaner">
     <div class="container">
+	<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 col-12">
+		<article class="eventList">
 	<a class="btn btn-primary" href="/">⇦</a>
 	<h1>Usuarios <a class="btn btn-success" href="/twig/insertUser">Crear</a></h1>
                 <div >
@@ -11,7 +15,6 @@
 			{# List de resultados paginado #}
 			{% for task in data %}
 				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
-				<article class="eventList mb-3">
 					<a class="text-decoration-none nameUser" href="{{ path('app_detailUser', {usuario:task["id"]}) }}">{{ task["name"] }} {{task["surnames"]}}</a>
 					<span class="text-muted ms-3">{{task["email"] }}</span>
 					<span class="text-muted ms-3">{{task["phone"] }}</span>
@@ -20,7 +23,6 @@
 						<a class="btn btn-warning" href="/twig/updateUser/{{task["id"]}}">Editar Usuario</a>
 						<a class="btn btn-danger" href="/twig/deleteUser/{{task["id"]}}">Borrar Usuario</a>
 					</div>
-				</article>
 				 {% endif %} 
 			{% endfor %}
 		{# Navegador #}
@@ -46,7 +48,9 @@
 			<span>&gt;</span>
 			<span>&gt;&gt;</span>
 		{% endif %} 
-             
+             </article>
+			</div>
       </div>
     </div>
+	</section>
 {% endblock %}
