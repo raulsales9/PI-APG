@@ -55,12 +55,11 @@ class CategoriasRepository extends ServiceEntityRepository
     }
 
     
-    public function updateCategoria($id,  $data): void
+    public function updateCategoria($id, $request): void
     {
         $result = $this->find($id);
         $result
-        ->setIdCategoria($data["idCategoria"])
-        ->setNameCategoria($data["nameCategoria"]);
+        ->setNameCategoria($request->request->get("nameCategoria"));
         $this->save($result, true);
     } 
 

@@ -6,18 +6,18 @@
 	<h1>Listado de categorias</h1>
 	<a href="/" class="btn btn-warning">Volver</a>
 	<a href="/twig/insertCategories" class="btn btn-primary ">new</a>
-            <article class="eventList">
 			
 			{% for task in data %}
 					<article class="eventList">
-							<a class="text-muted text-decoration-none">{{task["nameCategoria"] }}</a>
-							<a class="btn btn-primary"  href="/twig/listProducts/{{task["idCategoria"]}} ">Detalles</a>
- 							 <a href="/twig/deleteCategories/{{task["idCategoria"]}}" class="btn btn-danger"> Borrar </a>
-							<a href='/twig/updateCategories/{{task["idCategoria"]}} ' class="btn btn-warning">Actualizar</a>  
+							<span class="fs-3 me-3">{{task["nameCategoria"] }}</span>
+							<div class="float-end">
+								<a class="btn btn-primary"  href="/twig/listProducts/{{task["idCategoria"]}} ">Detalles</a>
+								<a href="/twig/deleteCategories/{{task["idCategoria"]}}" class="btn btn-danger"> Borrar </a>
+								<a href='/twig/updateCategories/{{task["idCategoria"]}} ' class="btn btn-warning">Actualizar</a>  
+							</div>
 					</article>
 					<br>
 			{% endfor %}
-			</article>
     </div>
 	</section>
 {% endblock %}

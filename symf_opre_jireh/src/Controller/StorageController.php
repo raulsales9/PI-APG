@@ -57,7 +57,8 @@ class StorageController extends AbstractController
         $data = $gestor->getRepository(Categorias::class)->find($categoria);
         $container = $request->request->all();
         if (count($container) > 1) {
-             $gestor->getRepository(Categorias::class)->updateCategoria($request, $data); 
+             $gestor->getRepository(Categorias::class)->updateCategoria($categoria, $request); 
+             return $this->redirect($this->generateUrl('app_listCategories'));
         } else {
             return $this->render('Storage/AdminUpdateCategories.html.twig', [
                 'data' => $data
