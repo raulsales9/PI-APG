@@ -107,7 +107,7 @@ class TwigController extends AbstractController
             'userFiles' => $userFiles
         ]);
     }
-    #[Route('/deleteFile/{id}/{idUser}', name: 'updateFiles')]
+    #[Route('/deleteFile/{id}/{idUser}', name: 'deleteFiles')]
     public function deleteFiles(EntityManagerInterface $doctrine, $id, $idUser): Response
     {
         $file = $doctrine->getRepository(Files::class)->find($id);
