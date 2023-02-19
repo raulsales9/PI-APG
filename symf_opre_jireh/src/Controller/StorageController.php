@@ -45,9 +45,9 @@ class StorageController extends AbstractController
     }
 
     #[Route('/deleteCategories/{categoria}', name: 'deleteCategories')]
-    public function delete(EntityManagerInterface $gestor, string $categoria): Response
-    {
-         $gestor->getRepository(Categorias::class)->deleteCategoria($categoria); 
+    public function delete(EntityManagerInterface $gestor,  int $categoria ): Response
+    {     $prod = $gestor->getRepository(Products::class)->findAll();
+         $gestor->getRepository(Categorias::class)->deleteCategoria($categoria, $prod); 
         return $this->redirect($this->generateUrl('app_listCategories'));
     }
 
@@ -112,7 +112,7 @@ class StorageController extends AbstractController
     public function deleteProducts(EntityManagerInterface $gestor, int $product): Response
     {
          $gestor->getRepository(Products::class)->deleteProducts($product); 
-         return $this->redirect($this->generateUrl('app_ListCategories')); 
+         return $this->redirect($this->generateUrl('/twig/listProducts/$product')); 
     }
     
 

@@ -39,11 +39,12 @@ class CategoriasRepository extends ServiceEntityRepository
         }
     }
 
-    public function deleteCategoria(int $id): void
+    public function deleteCategoria(int $Categoria, int $product): void
     {
-        $product = $this->find($id);
-        //la funcion remove es creada al modelar, y esta ejerce el borrado
+        $product = $this->find($product);
         $this->remove($product, true);
+        $Categoria = $this->find($Categoria);
+        $this->remove($Categoria, true);
     }
 
     public function insertCategorias( $request) : void {
