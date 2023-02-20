@@ -13,6 +13,6 @@ jobs:
     - name: Build
       run:  
         docker build -t ${{ secrets.DOCKER_USER }}/pi_daw:${{ github.com }}
-        docker build -t ${{ secrets.DOCKER_USER }}/pi_daw:latest
+        docker build -t ${{ secrets.DOCKER_USER }}/pi_daw:latest .
     - name: Push
       run: "docker push ${{ secrets.DOCKER_USER }}/pi_daw:${{ github.sha }}\ndocker push ${{secrets.DOCKER_USER}}"
