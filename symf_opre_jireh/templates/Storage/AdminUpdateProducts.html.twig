@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<section id="content">
+	<div class="container">
+		<a href="/twig/listCategories" class="btn btn-primary">Volver</a>
+			<form action="" method="POST">
+				<article class="eventList">
+				<div >
+						<h2>Actualizar producto {{data.getNameProduct()}}</h2>
+				</div>
+					<label for="nameProduct">Nombre del producto</label>
+					<div  class="mb-3 col-lg-8">
+						<input name="nameProduct" type="text" maxlength="45" size="45" value="{{data.getNameProduct()}}"/>
+					</div>
+
+					<label for="price">Precio del producto</label>
+					<div  class="mb-3 col-lg-8">
+						<input name="price" type="text" maxlength="40" size="40" value="{{data.getPrice()}}"/>
+					</div>
+				
+					<div>
+						<input type="submit" name="submit" value="Update"/>
+					</div>
+				</div>
+		</form>
+		</article>
+	</div>
+	</div>
+	</div>
+</section>
+{% endblock %}

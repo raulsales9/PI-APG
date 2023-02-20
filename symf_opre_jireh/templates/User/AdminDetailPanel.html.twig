@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+    {% block content %}
+	<section id="content">
+    <div class="container">
+	<a class="btn btn-primary" href="/twig/listUser">⇦</a>
+	<h3>Usuario {{detalleClient["name"]}}</h3>
+	<article class="eventList">
+ 		<span class="fs-3 me-3">{{detalleClient["name"]}}, {{detalleClient["surnames"]}}</span>
+		<span class="text-muted ms-3"> {{detalleClient["email"]}} </span>
+		<span class="text-muted ms-3"> {{detalleClient["phone"]}} </span>
+		<span class="text-muted ms-3">- {{detalleClient["roles"]}} -</span>
+		<div class="float-end">
+			<a class="btn btn-warning" href="/twig/updateUser/{{detalleClient["id"]}}">Editar Usuario</a>
+			<a class="btn btn-danger" href="/twig/deleteUser/{{detalleClient["id"]}}">Borrar Usuario</a>
+		</div>
+		<details class="mt-3"> 
+			<summary>Ficheros </summary>
+		<form method="post" action="">
+			
+				{% for task in detalleClient["files"] %}
+				 	
+					<div class="ms-3">
+						{{task["name"]}}, <span class="text-muted"> {{task["type"]}} </span> <span>{{task["isSubmited"]}}</span> &emsp; <a class="text-decoration-none text-danger fs-5" href="/twig/deleteFile/{{task["idFile"]}}/{{detalleClient["id"]}}">Borrar fichero</a>
+					</div> 
+				{% endfor %}
+				<a class="btn btn-warning mt-3 mb-3" href="/twig/updateFiles/{{ detalleClient["id"] }}">Editar ficheros</a>
+				<a class="btn btn-success" href="/twig/insertFiles/{{ detalleClient["id"] }}">Nuevo fichero</a>
+		</article>
+		</form>
+		</detail>
+	</div>
+</section>
+{% endblock %}

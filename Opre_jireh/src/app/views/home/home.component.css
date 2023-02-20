@@ -1,0 +1,24 @@
+.separador {
+    background-color: #e10000;
+    width: 100%;
+    height: 3px;
+}
+
+
+@media (max-width: 2560px) {
+    .ruedaCorta {
+        position: absolute;
+        width: 13.9%;
+        margin-left: 1.8%;
+        
+    }
+    
+}
+
+@media (max-width: 1199px) {
+    .ruedaCorta {
+        visibility: hidden;
+
+    }
+   
+}

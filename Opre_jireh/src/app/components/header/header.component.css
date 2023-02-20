@@ -1,0 +1,51 @@
+header, header::before{
+    height: 36em;
+}
+
+header::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    background: url("../../../assets/hoguera.jpeg");
+    background-size: cover;
+    background-position: bottom;
+    filter: blur(2px);
+    z-index: -10;
+}
+
+
+.acesibility{
+    margin-right: 20px;
+    }
+.logo{
+    width: 40%;
+    margin-top: 7%;
+}
+
+h2{
+    margin-top: -2%;
+}
+
+.nav-pills .nav-link.active,
+.show>.nav-pills .nav-link{
+    background: rgb(218, 218, 218) !important;
+    color: black;
+    border-radius: 20px;
+
+}
+
+a.nav-link.active{
+    padding-left: 1em;
+    padding-right: 1em;
+    width: fit-content;
+}
+a:hover{
+   color: #e10000 !important;
+;
+}
+ ul{
+    float: right;
+}
+.nav-item{
+    float: right;
+}

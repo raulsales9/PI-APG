@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+    {% block content %}
+       
+  <section id="content">
+    <div class="container">
+		
+	<a class="btn btn-primary" href="/twig/listEvent">⇦</a>
+	<h1>Eventos <a class="btn btn-success" href="/twig/insertEvent">Crear</a></h1> 
+	<article class="eventList">
+				<div class="{% if (curDate < task.getEndDate()) and (curDate > task.getStartDate()) %} greenDot {% elseif curDate < task.getStartDate() %} yellowDot {% elseif curDate > task.getEndDate() %} redDot {% endif %} me-3"></div> <span class="fs-3 me-3">{{ task.getName() }}</span>	
+					<span class="text-muted">{{ task.getStartDate()|date('d/m/Y') }}</span> - 
+					<span class="text-muted me-3">{{ task.getEndDate()|date('d/m/Y') }}</span>
+					<span class="text-muted me-3">{{ task.getPlace() }}</span>
+					<div class="float-end">
+						<a class="btn btn-warning" href="/twig/updateEvent/{{task.getId()}}">Editar Evento</a>
+						<a class="btn btn-danger" href="/twig/deleteEvent/{{task.getId()}}">Borrar Evento</a>
+					</div>
+					<p> {{task.getDescription()}} </p>
+					<details> <summary> Asistentes: {{cantPeople}} </summary>
+					<ul>
+						{% for person in people %}
+							<li>{{ person.getName() }}</li>
+							
+						{% endfor %}
+					</ul>
+					</detail>
+				</div>
+			</article>   
+		</div>
+
+  </section>
+{% endblock %}

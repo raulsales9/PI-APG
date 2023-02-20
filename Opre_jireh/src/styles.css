@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Alice-Regular;
+
+  src: url(./assets/fonts/Alice-Regular.ttf) format("opentype") ;
+}
+@font-face {
+  font-family: JosefinSans;
+ 
+  src: url(./assets/fonts/Josefin_Sans/static/JosefinSans-Medium.ttf) format("opentype");
+
+}
+ @font-face {
+  font-family:OpenDyslexic;
+ 
+  src: url(./assets/fonts/OpenDyslexic-Regular.otf) format("opentype");
+
+}
+*{
+  
+    margin: 0;
+}
+
+h1,h2,h3{
+  font-family:'JosefinSans' ;
+
+}
+p,a,label,input{
+  font-family:'Alice-Regular' ;
+} 

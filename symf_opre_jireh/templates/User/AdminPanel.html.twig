@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+    {% block content %}
+	<section id="contaner">
+    <div class="container">
+		
+				<a class="btn btn-primary" href="/">⇦</a>
+				<h1>Usuarios <a class="btn btn-success" href="/twig/insertUser">Crear</a></h1>
+
+			 {% set elementsPerPage = 5 %}
+			{% set lowerLimit = (page -1) * elementsPerPage + 1 %}
+			{% set upperLimit = page * elementsPerPage %} 
+			{% for task in data %}
+				{% if loop.index >= lowerLimit and loop.index <= upperLimit %} 
+				<article class="eventList">
+					<a class="text-decoration-none nameUser fs-3 me-3" href="/twig/detailUser/{{task["id"]}}" >{{ task["name"] }} {{task["surnames"]}}</a>
+					<span class="text-muted ms-3">{{task["email"] }}</span>
+					<span class="text-muted ms-3">{{task["phone"] }}</span>
+					<span class="text-muted ms-3">- {{task["roles"] }} -</span>
+					<div class="float-end">
+						<a class="btn btn-warning" href="/twig/updateUser/{{task["id"]}}">Editar Usuario</a>
+						<a class="btn btn-danger" href="/twig/deleteUser/{{task["id"]}}">Borrar Usuario</a>
+					</div>
+				</article>
+				 {% endif %} 
+			{% endfor %}
+	
+		 {% set totalPages = (((data|length)/elementsPerPage)|round(0, 'ceil')) %}
+		{% if page > 1 %}
+			<a href="{{ path('app_User',{'page':1}) }}">&lt;&lt;</a>
+			<a href="{{ path('app_User',{'page':page - 1}) }}">&lt;</a>
+		{% else %}
+			<span>&lt;&lt;</span>
+			<span>&lt;</span>
+		{% endif %}
+		{% for pageButton in 1..totalPages %}
+			{% if pageButton == page%}
+				<span>{{ pageButton }}</span>
+			{% else %}
+				<a href="{{ path('app_User',{'page':pageButton}) }}">{{ pageButton }}</a>
+			{% endif %}
+		{% endfor %}
+		{% if page < totalPages %}
+			<a href="{{ path('app_User',{'page':page + 1}) }}">&gt;</a>
+			<a href="{{ path('app_User',{'page':totalPages}) }}">&gt;&gt;</a>
+		{% else %}
+			<span>&gt;</span>
+			<span>&gt;&gt;</span>
+		{% endif %}
+    </div>
+	</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<section id="content">
+	<div class="container" >
+				<a href="/twig/listCategories" class="btn btn-primary">Volver</a>
+					<form method="post" action="">
+						<h1>Cambiando Categoria {{data.getNameCategoria()}}</h1>
+									<article class="eventList">
+							<label for="nameCategoria" class="text-uppercase">Nombre de Categoria</label>
+							<div  class="mb-3 col-lg-8">
+								<input name="nameCategoria" type="text" maxlength="40" size="40" value="{{data.getNameCategoria()}}"/>
+							</div>
+							<div>
+								<input type="submit" name="submit" class="btn btn-primary" value="Update"/>
+			 				</div>
+					</form>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

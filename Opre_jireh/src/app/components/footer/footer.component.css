@@ -1,0 +1,26 @@
+a{
+    text-decoration:none;
+    font-size: 25px;
+    color: black;
+}
+
+a:hover {
+    
+    color: #e10000;
+}
+p{
+    font-size: 26px;
+}
+iframe{
+    margin-top: 20px;
+}
+.col-xl-4{
+    margin-right:50px ;
+    margin-left:20px ;
+}
+h1{
+  font-size: 1.5em;  
+}
+footer{
+    color: black;
+}
