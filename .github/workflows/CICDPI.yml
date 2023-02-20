@@ -11,11 +11,11 @@ jobs:
     - name: Docker Login
       run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build
-      run:  
+      run:  |
         docker build -t ${{ secrets.DOCKER_USER }}/pi-apg:${{ github.sha }} .
         docker build -t ${{ secrets.DOCKER_USER }}/pi-apg:latest .
     - name: Push
-      run:
+      run: |
           docker push ${{ secrets.DOCKER_USER }}/pi-apg:${{ github.sha }}
           docker push ${{secrets.DOCKER_USER}}/pi-apg:latest
 
