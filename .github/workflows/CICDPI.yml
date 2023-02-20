@@ -15,4 +15,7 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USER }}/pi-apg:${{ github.sha }} .
         docker build -t ${{ secrets.DOCKER_USER }}/pi-apg:latest .
     - name: Push
-      run: "docker push ${{ secrets.DOCKER_USER }}/pi-apg:${{ github.sha }}\ndocker push ${{secrets.DOCKER_USER}}"
+      run:
+          docker push ${{ secrets.DOCKER_USER }}/pi-apg:${{ github.sha }}
+          docker push ${{secrets.DOCKER_USER}}/pi-apg:latest
+
